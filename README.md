@@ -1,7 +1,7 @@
 Co-Opp Stack Engine
 ===================
 
-This is very much *in development* and by no means ready for use.
+This is very much **in development** and by no means ready for use.
 
 ## What on Earth is a stack engine?
 
@@ -28,70 +28,70 @@ Co-Opp also occasionally does "IRL" stacks for drinks nights, birthday parties o
 
 ## Template Functions
 
-*stack_requested_by()* | string
+**stack_requested_by()** | string  
 Returns the user_id of the member that requested the stack
 eg. Requested by <?php echo stack_requested_by(); ?>
 
-*stack_requested()* | boolean
+**stack_requested()** | boolean  
 Checks if this stack has been requested. 
 eg. if( stack_requested() ){ echo "This stack was requested"; } else { echo "This stack was not requested"; }
 
-*stack_date()* | string
+**stack_date()** | string  
 The date of the stack
 
-*stack_time()* | string
+**stack_time()** | string  
 The time of the stack
 
-*stack_datetime()* | string
+**stack_datetime()** | string  
 An alias of <?php echo stack_date() . " at " . stack_time(); ?>
 
-*stack_location()* | string
+**stack_location()** | string  
 The location of the stack
 
-*stack_type()* | string
+**stack_type()** | string  
 Returns the type of stack the author has set
 
-*stack_steamid()* | string
+**stack_steamid()** | string  
 The steamid of the stack
 
-*stack_memberstotal()* | integer
+**stack_memberstotal()** | integer  
 Returns the number of members that have signed up to stack
 eg. <?php if( stack_memberstotal() > 3 ) {echo "More than three people are going.";} ?>
 
-*stack_memberlist()* | array
+**stack_memberlist()** | array  
 Returns an array of memberids that have signed up to stack
 
-*stack_links_array()* | array
+**stack_links_array()** | array  
 Returns a complete array of all links and titles
 
-*stack_links_number()* | number
+**stack_links_number()** | number  
 Returns the number of links associated with the stack
 
-*stack_link_text($id)* | string
+**stack_link_text($id)** | string  
 Returns the text of a specific link for this stack
 
-*stack_link_url($id)* | string
+**stack_link_url($id)** | string  
 Returns the URL of a specific link for this stack
 
-*stack_link_display()* | string
+**stack_link_display()** | string  
 Returns a pre-made template of links in a list format
 
-*is_past_stack()* | boolean
+**is_past_stack()** | boolean  
 Checks if the stack_date() is older than today's date
 
-*stack_feed_url()* | string
+**stack_feed_url()** | string  
 Returns the URL of the stack feed
 
-*stack_feed()* | string
+**stack_feed()** | string  
 Returns a pre-made link element with the feed URL already in place
 
-*stack_art_large()* | string
+**stack_art_large()** | string  
 Returns the URL of the featured image using the bigstack image size
 
-*stack_art_small()* | string
+**stack_art_small()** | string  
 Returns the URL of the featured image using the shortstack image size
 
-*stack_going()* | boolean
+**stack_going()** | boolean  
 Returns true if the currently logged in user is attending the stack
 eg. <?php if( stack_going() ) {echo "You are going";} else {echo "You are not going";} ?>
 

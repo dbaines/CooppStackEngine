@@ -31,17 +31,32 @@
 						'meta_value' => $memberid,
 						'meta_compare' => 'IN',
 						'orderby' => 'stack_date',
-						'order' => 'asc'
+						'order' => 'DESC'
 					);
 					$query = new WP_Query($query_args);
 
+					// Cool little zebra-striping snippet
+					// http://css-tricks.com/snippets/php/php-zebra-striping-a-table/
+					$c = 0;
+
 					// Echo out all the results
 					if( $query->have_posts() ) :
-						echo "<ul class='stacks'>";
+						echo "<div class='stacks-list bp-stack-list'>";
 						while ( $query->have_posts() ) : $query->the_post(); ?>
-							<li class="stack" id="stack-<?php echo get_the_ID(); ?>"><?php echo stack_date(); ?> - <strong><a href="<?php echo the_permalink(); ?>"><?php echo the_title(); ?></strong></a></li>
+
+							<div class="stack clearfix bp-stack <?php echo ($c++%2==1) ? "alt" : "" ?>" id="stack-<?php echo get_the_ID(); ?>">
+								<div class="stack-avatar">
+									<a href="<?php echo the_permalink(); ?>"><img src="<?php echo stack_art_small(); ?>"></a>
+								</div>
+								<div class="stack-details">
+									<strong><a href="<?php echo the_permalink(); ?>"><?php echo the_title(); ?></a></strong>
+									<span class="time"><?php echo date( 'l, jS F Y', strtotime( stack_date() ) ) . " at " . stack_time(); ?></span>
+									<span class="people"><?php echo coopp_membercount(); ?></span>
+								</div>
+							</div>
+
 						<?php endwhile;
-						echo "</ul>";
+						echo "</div>";
 					else : ?>
 						<span class="noresults">This user is not attending any stacks</span>
 					<?php endif;

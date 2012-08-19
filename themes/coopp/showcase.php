@@ -20,7 +20,7 @@ wp_enqueue_script( 'twentyeleven-showcase', get_template_directory_uri() . '/js/
 get_header(); ?>
 
 		<div id="primary" class="showcase">
-			<div id="content" role="main" class="page-content">
+			<div id="content" role="main" class="page-cotnainer">
 
 				<?php while ( have_posts() ) : the_post(); ?>
 

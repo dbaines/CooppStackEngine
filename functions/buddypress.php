@@ -66,40 +66,5 @@ add_action( 'bp_setup_nav', 'stack_add_bpnav' );
 // List all stacks user is going to
 function coopp_bp_screen_stacks_attending(){
 	global $bp;
-
-	//do_action( 'coopp_bp_screen_stacks_attending' );
 	bp_core_load_template( 'members/single/stacks' );
-
-	/*
-	// Set up our custom query of all stacks this member is going to
-	$memberid =  $bp->displayed_user->id;
-	$query_args = array(
-		'post_type' => 'stack',
-		'meta_key' => 'stack_users',
-		'meta_value' => $memberid,
-		'meta_compare' => 'IN',
-		'orderby' => 'stack_date',
-		'order' => 'asc'
-	);
-	$query = new WP_Query($query_args);
-
-	// Echo out all the results
-	if( $query->have_posts() ) :
-		echo "<ul class='stacks'>";
-		while ( $query->have_posts() ) : $query->the_post(); ?>
-			<li class="stack" id="stack-<?php echo get_the_ID(); ?>"><?php echo stack_date(); ?> - <strong><a href="<?php echo the_permalink(); ?>"><?php echo the_title(); ?></strong></a></li>
-		<?php endwhile;
-		echo "</ul>";
-	else : ?>
-		<span class="noresults">This user is not attending any stacks</span>
-	<?php endif;
-	*/
-
-}
-
-function dpa_screen_achievement_activity() {
-	global $bp;
-
-	do_action( 'dpa_screen_achievement_activity' );
-	bp_core_load_template( apply_filters( 'dpa_screen_achievement_activity_template', 'achievements/single/home' ) );
 }

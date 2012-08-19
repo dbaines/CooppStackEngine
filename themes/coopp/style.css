@@ -556,6 +556,21 @@ table.notification-settings .yes, table.notification-settings .no {text-align: c
 
 /* ====================================================
 
+	BUDDYPRESS STACKS
+
+==================================================== */
+
+.bp-stack-list {padding-top: 20px;}
+.bp-stack {margin: 0 -20px; padding: 10px 20px;}
+	.bp-stack .stack-avatar {float: left;}
+		.bp-stack .stack-avatar img {width: 100px; height: auto;}
+	.bp-stack .stack-details {margin-left: 120px; font-size: 80%; color: #666;}
+		.bp-stack .stack-details .time {display: block; font-style: italic; margin-bottom: 10px;}
+		.bp-stack .stack-details .stack_number {font-weight: bold;}
+	.bp-stack.alt {background: #ccc;}
+
+/* ====================================================
+
 	404 Page
 
 ==================================================== */

@@ -70,39 +70,13 @@ add_image_size( 'shortstack', 305, 245, true );
 ==================================================== */
 include("functions/attendees.php");
 
-global $coopp_stack_db_version;
-$coopp_stack_db_version = "0.1";
-
-function coopp_install(){
-    global $wpdb;
-    global $coopp_stack_db_version;
-
-    // Set up table
-    $tablename = $wpdb->prefix.'stack_attendees';
-    echo "<script>alert('".$tablename."')</script>";
-    $sql = "CREATE TABLE $tablename (
-        id mediumint(9) NOT NULL AUTO_INCREMENT,
-        stack_id mediumint(9) NOT NULL,
-        stack_members DEFAULT '',
-        UNIQUE KEY id (id)
-    );";
-
-    // Use dbDelta to create the table
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta($sql);
-
-    // Version check
-    // add_option("coopp_stack_db_version", $coopp_stack_db_version);
-}
-
-// Create the database when the plugin is activated
-register_activation_hook(__FILE__,'coopp_install');
-
 /* ====================================================
 
 	BUDDYPRESS PLUGINS
 
 ==================================================== */
+
+include( "functions/buddypress.php" );
 
 /* ====================================================
 

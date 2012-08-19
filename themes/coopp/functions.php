@@ -45,7 +45,7 @@ if ( !current_user_can('manage_options') ) {
 // Add our default gravatar to the admin settings
 // http://wpengineer.com/502/add-avatar-to-wordpress-default/
 function coopp_gravatar( $avatar_defaults ) {
-	$myavatar = get_bloginfo('template_directory') . '/images/default-gravatar.png';
+	$myavatar = get_bloginfo('url') . '/wp-content/plugins/coopp-stackengine/themes/coopp/images/default-gravatar.png';
 	$avatar_defaults[$myavatar] = 'Co-Opp';
 	return $avatar_defaults;
 }

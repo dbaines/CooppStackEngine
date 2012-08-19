@@ -126,7 +126,18 @@ function coopp_comments_template($comment, $args, $depth){
 		    		<?php printf( __( '<cite class="fn">%s</cite>', 'twentyten' ), get_comment_author_link() ); ?>
 		    	</div>
 		    	<div class="comment-posted-date">
-		    		<?php printf( __( '%2$s on %1$s', 'twentyten' ), get_comment_date(),  get_comment_time() ); ?>
+		    		<?php 
+		    			// Time Ago before certain time
+		    			// http://wp-snippets.com/display-time-agotwitter-style/
+		    			$human_time = human_time_diff(get_comment_time('U'), current_time('timestamp')) . ' ago';
+		    			$robot_time = get_comment_time() . " on " . get_comment_date(); 
+		    			$time_difference = current_time('timestamp') - get_comment_time('U');
+		    			if($time_difference < 172800 ) {
+		    				echo $human_time;
+		    			} else {
+		    				echo $robot_time;
+		    			}
+		    		?>
 		    	</div>
 		    	<?php if ( $comment->comment_approved == '0' ) : ?>
 					<span class="comment-moderation"><?php _e( 'Your comment is awaiting moderation.', 'twentyten' ); ?></span><br />

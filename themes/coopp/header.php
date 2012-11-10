@@ -130,6 +130,24 @@
 	<section class="navigation clearfix">
 		<div class="cFull">
 			<?php wp_nav_menu( array( 'container' => false, 'menu_id' => 'nav', 'theme_location' => 'primary', 'fallback_cb' => 'bp_dtheme_main_nav' ) ); ?>
+			<form class="search-field" id="search" name="searchform" method="get" action="<?php bloginfo("url"); ?>">
+				<div class="search-field-input">
+					<input type="search" id="s" name="s" title="Search Co-Opp" placeholder="Search..." accesskey="5">
+				</div>
+				<div class="search-field-button">
+					<button type="submit" value="search" id="searchsubmit">Search</button>
+				</div>
+				<div class="search-field-cancel">Cancel Search</div>
+				<div class="search-field-filters clearfix">
+					<span class="label">Filter</span>
+					<span class="filter filter-stacks"><input type="radio" name="post_type" value="stack" title="Search Stacks" checked />Search Stacks</span>
+					<span class="filter filter-forum"><input type="radio" name="post_type" value="forum" title="Search Forum"/>Search Forum</span>
+					<span class="filter filter-members"><input type="radio" name="post_type" value="member" title="Search Members"/>Search Members</span>
+					<span class="filter filter-group"><input type="radio" name="post_type" value="group" title="Search Groups"/>Search Groups</span>
+				</div>
+			</form>
+			<div class="search-anchor">Search Co-Opp.net</div>
+			<div class="mobile-menu-hitbox">Show Menu</div>
 		</div>
 	</section>
 

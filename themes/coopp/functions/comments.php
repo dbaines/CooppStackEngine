@@ -95,10 +95,12 @@ function coopp_comments_template($comment, $args, $depth){
 			$additional_classes .= " attending";
 			$user_going = true;
 		}
+		/*
 		if ( groups_is_user_member( $comment->user_id, 2 ) ) {
 			$additional_classes .= " commleader";
 			$community_leader = true;
 		}
+		*/
 	endif;
 	?>
 

@@ -30,6 +30,28 @@ function stack_add_bpnav(){
 	);
 	bp_core_new_nav_item( $main_nav );
 
+	// Profile Subnavigation
+	$sub_nav[] = array(
+		'name'            =>  __( 'Stacks Attending', '' ),
+		'slug'            => 'attending',
+		'parent_url'      => 'stacks',
+		'parent_slug'     => 'stacks',
+		'screen_function' => 'coopp_bp_screen_stacks_attending',
+		'position'        => 20,
+		'item_css_id'     => 'attending'
+	);
+	$sub_nav[] = array(
+		'name'            =>  __( 'Stacks Requested', '' ),
+		'slug'            => 'requested',
+		'parent_url'      => 'stacks',
+		'parent_slug'     => 'stacks',
+		'screen_function' => 'coopp_bp_screen_stacks_requested',
+		'position'        => 40,
+		'item_css_id'     => 'requested'
+	);
+	foreach( $sub_nav as $nav )
+		bp_core_new_subnav_item( $nav );
+
 	// Profile "stacks" page output
 	if ( bp_is_current_component( "stacks" ) ) {
 		$bp->is_single_item = true;

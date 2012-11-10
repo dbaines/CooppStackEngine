@@ -65,7 +65,7 @@
 				foreach($memberlist as $memberid){
 					// Look up member details
 					$avatar = get_avatar( $memberid, '20' );
-					$membername = get_user_meta( $memberid, 'first_name', true ) . " " . get_user_meta( $memberid, 'last_name', true);
+					$membername = get_user_meta( $memberid, 'nickname', true );
 					$class = "member";
 					if( $memberid == stack_requested_by() ) {
 						$class .= " requested";
@@ -93,7 +93,7 @@
 				<?php 
 					$memberid = stack_requested_by();
 					$avatar = get_avatar( $memberid, '20' );
-					$membername = get_user_meta( $memberid, 'first_name', true ) . " " . get_user_meta( $memberid, 'last_name', true);
+					$membername = get_user_meta( $memberid, 'nickname', true );
 					$profilelink = bp_core_get_user_domain( $memberid );
 				?>
 				<a href="<?php echo $profilelink ?>">

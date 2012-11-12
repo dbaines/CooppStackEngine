@@ -37,7 +37,7 @@
 					$memberid =  $bp->displayed_user->id;
 					$query_args = array(
 						'post_type' => 'stack',
-						'meta_key' => 'stack_users',
+						'meta_key' => 'stack_requestedby',
 						'meta_value' => $memberid,
 						'meta_compare' => 'IN',
 						'orderby' => 'stack_date',

@@ -8,85 +8,205 @@
 
 /* ====================================================
 
-	ADD STACKS TO PROFILES
-	code lovingly stolen from Achievements for 
-	BuddyPress by DJPaul
-	http://wordpress.org/extend/plugins/achievements/
+	STACKS COMPONENT
+	based on bp-messages-loader.php
 
 ==================================================== */
 
-// Add "stack" tab to profile page
-function stack_add_bpnav(){
-	global $bp, $is_member_page;
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit;
 
-	// Add to the profile navigation
-	$main_nav = array(
-		'name'                => __( 'Stacks', '' ),
-		'slug'                => "stacks",
-		'position'            => 50,
-		'screen_function'     => 'coopp_bp_screen_stacks_attending',
-		'default_subnav_slug' => "attending",
-		'item_css_id'         => "stacks"
-	);
-	bp_core_new_nav_item( $main_nav );
+class BP_Stacks_Component extends BP_Component {
 
-	// Profile Subnavigation
-	$sub_nav[] = array(
-		'name'            =>  __( 'Stacks Attending', '' ),
-		'slug'            => 'attending',
-		'parent_url'      => 'stacks',
-		'parent_slug'     => 'stacks',
-		'screen_function' => 'coopp_bp_screen_stacks_attending',
-		'position'        => 20,
-		'item_css_id'     => 'attending'
-	);
-	$sub_nav[] = array(
-		'name'            =>  __( 'Stacks Requested', '' ),
-		'slug'            => 'requested',
-		'parent_url'      => 'stacks',
-		'parent_slug'     => 'stacks',
-		'screen_function' => 'coopp_bp_screen_stacks_requested',
-		'position'        => 40,
-		'item_css_id'     => 'requested'
-	);
-	foreach( $sub_nav as $nav )
-		bp_core_new_subnav_item( $nav );
-
-	// Profile "stacks" page output
-	if ( bp_is_current_component( "stacks" ) ) {
-		$bp->is_single_item = true;
-
-		// Page Titles
-		if ( bp_is_my_profile() && !$bp->is_single_item ) {
-			$bp->bp_options_title = __( 'Stacks', '' );
-
-		} elseif ( !bp_is_my_profile() && !$bp->is_single_item ) {
-			$bp->bp_options_title = $bp->displayed_user->fullname;
-
-		} elseif ( $bp->is_single_item ) {
-			$bp->current_item = $bp->current_action;
-
-			if ( isset( $bp->action_variables[0] ) )
-				$bp->current_action = $bp->action_variables[0];
-			else
-				$bp->current_action = '';
-
-			array_shift( $bp->action_variables );
-
-			$bp->bp_options_title = apply_filters( 'dpa_get_achievement_name', 'Test' );
-			$achievement_link     = $url . $bp->achievements->current_achievement->slug . '/';
-			$parent_slug          = 'test';
-
-		}
-
+	/**
+	 * Start the messages component creation process
+	 *
+	 * @since BuddyPress (1.5)
+	 */
+	function __construct() {
+		parent::start(
+			'stacks',
+			__( 'Stacks', 'buddypress' ),
+			BP_PLUGIN_DIR
+		);
 	}
 
+	/*
+	function includes() {
+		// Files to include
+		$includes = array(
+			'cssjs',
+			'cache',
+			'actions',
+			'screens',
+			'classes',
+			'filters',
+			'template',
+			'functions',
+			'notifications'
+		);
 
+		parent::includes( $includes );
+	}
+	*/
+
+	/**
+	 * Setup globals
+	 *
+	 */
+	function setup_globals() {
+		global $bp;
+
+		// Define a slug, if necessary
+		if ( !defined( 'BP_STACKS_SLUG' ) )
+			define( 'BP_STACKS_SLUG', $this->id );
+
+		// Global tables for messaging component
+		/*
+		$global_tables = array(
+			'table_name_notices'    => $bp->table_prefix . 'bp_messages_notices',
+			'table_name_messages'   => $bp->table_prefix . 'bp_messages_messages',
+			'table_name_recipients' => $bp->table_prefix . 'bp_messages_recipients'
+		);
+		*/
+
+		// All globals for messaging component.
+		// Note that global_tables is included in this array.
+		$globals = array(
+			'slug'                  => BP_STACKS_SLUG,
+			'has_directory'         => false,
+			'notification_callback' => false,
+			'search_string'         => __( 'Search Stacks...', 'buddypress' ),
+			'global_tables'         => $global_tables
+		);
+
+		$this->autocomplete_all = defined( 'BP_MESSAGES_AUTOCOMPLETE_ALL' );
+
+		parent::setup_globals( $globals );
+	}
+
+	/**
+	 * Setup BuddyBar navigation
+	 *
+	 * @global BuddyPress $bp The one true BuddyPress instance
+	 */
+	function setup_nav() {
+
+		$sub_nav = array();
+		$name    = sprintf( __( 'Stacks', 'buddypress' ) );
+
+		// Add 'Messages' to the main navigation
+		$main_nav = array(
+			'name'                    => $name,
+			'slug'                    => $this->slug,
+			'position'                => 50,
+			'show_for_displayed_user' => true,
+			'screen_function'         => 'coopp_bp_screen_stacks_attending',
+			'default_subnav_slug'     => 'attending',
+			'item_css_id'             => $this->id
+		);
+
+		// Link to user messages
+		// $stacks_link = trailingslashit( bp_loggedin_user_domain() . $this->slug );
+
+		// Determine user to use
+		// (from bp-forums-loader.php)
+		if ( bp_displayed_user_domain() ) {
+			$user_domain = bp_displayed_user_domain();
+		} elseif ( bp_loggedin_user_domain() ) {
+			$user_domain = bp_loggedin_user_domain();
+		} else {
+			return;
+		}
+
+		$stacks_link = trailingslashit( $user_domain . $this->slug );
+
+		// Add the subnav items to the profile
+		$sub_nav[] = array(
+			'name'            => __( 'Attending', 'buddypress' ),
+			'slug'            => 'attending',
+			'parent_url'      => $stacks_link,
+			'parent_slug'     => 'stacks',
+			'screen_function' => 'coopp_bp_screen_stacks_attending',
+			'position'        => 10
+		);
+
+		$sub_nav[] = array(
+			'name'            => __( 'Requested', 'buddypress' ),
+			'slug'            => 'requested',
+			'parent_url'      => $stacks_link,
+			'parent_slug'     => $this->slug,
+			'screen_function' => 'coopp_bp_screen_stacks_requested',
+			'position'        => 20
+		);
+
+		$sub_nav[] = array(
+			'name'            => __( 'Calendar View', 'buddypress' ),
+			'slug'            => 'calendar',
+			'parent_url'      => $stacks_link,
+			'parent_slug'     => $this->slug,
+			'screen_function' => 'coopp_bp_screen_calendar',
+			'position'        => 20,
+			'user_has_access' => bp_is_my_profile()
+		);
+
+		parent::setup_nav( $main_nav, $sub_nav );
+	}
+
+	/**
+	 * Sets up the title for pages and <title>
+	 *
+	 * @global BuddyPress $bp The one true BuddyPress instance
+	 */
+	function setup_title() {
+		global $bp;
+
+		if ( bp_is_messages_component() ) {
+			if ( bp_is_my_profile() ) {
+				$bp->bp_options_title = __( 'My Messages', 'buddypress' );
+			} else {
+				$bp->bp_options_avatar = bp_core_fetch_avatar( array(
+					'item_id' => bp_displayed_user_id(),
+					'type'    => 'thumb',
+					'alt'     => sprintf( __( 'Profile picture of %s', 'buddypress' ), bp_get_displayed_user_fullname() )
+				) );
+				$bp->bp_options_title = bp_get_displayed_user_fullname();
+			}
+		}
+
+		parent::setup_title();
+	}
 }
-add_action( 'bp_setup_nav', 'stack_add_bpnav' );
+
+function bp_setup_stacks() {
+	global $bp;
+	$bp->stacks = new BP_Stacks_Component();
+}
+add_action( 'bp_setup_components', 'bp_setup_stacks', 6 );
+
+/* ====================================================
+
+	PROFILE SCREENS
+
+==================================================== */
 
 // List all stacks user is going to
 function coopp_bp_screen_stacks_attending(){
 	global $bp;
 	bp_core_load_template( 'members/single/stacks' );
 }
+
+// List all stacks user has requested
+function coopp_bp_screen_stacks_requested(){
+	global $bp;
+	bp_core_load_template( 'members/single/stacks/requested' );
+}
+
+// Show Calendar Options
+function coopp_bp_screen_calendar(){
+	global $bp;
+	bp_core_load_template( 'members/single/stacks/calendar' );
+}
+
+
+?>

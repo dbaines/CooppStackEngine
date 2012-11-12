@@ -252,6 +252,7 @@ h4 {margin: 15px 0 5px 0;}
 		top: 0;
 		right: 0;
 		box-shadow: 0 4px 7px rgba(0,0,0,0.5);
+		z-index: 10;
 		&.search-field-visible {display: block;}
 		.search-field-button {
 			float: left;
@@ -365,7 +366,11 @@ h4 {margin: 15px 0 5px 0;}
 
 .stack-full {margin-top: 20px;}
 	.stack-full .stackArt {position: relative; overflow: hidden; z-index: 4;}
-		.stack-full .stackArt img {width: auto; height: auto; max-width: 960px; display: block;}
+		.stack-full .stackArt img {
+			width: 100%; 
+			height: auto; 
+			display: block;
+		}
 	.stack-full .stackArt .stackIRL {position: absolute; top: 0; left: 0; width: 100%; background: $coBlue url("../images/sprite-icons.png") 14px -15px no-repeat; background-color: rgba(7,115,179,0.85); color: #fff; font-size: 150%; padding: 20px 20px 20px 58px;}
 	.stack-full .stackInfo {position: absolute; bottom: 0; left: 0; width: 100%; background: #b93131; background: rgba(185,49,49,0.85); color: #fff; padding: 20px;}
 		.stack-full .stackInfo h2 {font-size: 250%; font-weight: normal; line-height: 1.2;}
@@ -557,6 +562,14 @@ h4 {margin: 15px 0 5px 0;}
 	}
 	#primary {margin-top: 20px;}
 
+	.cFull {
+		-webkit-transition: width .3s ease-in-out;
+		-moz-transition: width .3s ease-in-out;
+		-ms-transition: width .3s ease-in-out;
+		-o-transition: width .3s ease-in-out;
+		transition: width .3s ease-in-out;
+	}
+
 /* ====================================================
 
 	BUDDYPRESS CORE & PROFILES
@@ -699,6 +712,7 @@ table.notification-settings .yes, table.notification-settings .no {text-align: c
 ==================================================== */
 
 .bp-stack-list {padding-top: 20px;}
+#item-body .noresults {display: block; padding-top: 20px; font-style: italic;}
 .bp-stack {margin: 0 -20px; padding: 10px 20px;}
 	.bp-stack .stack-avatar {float: left;}
 		.bp-stack .stack-avatar img {width: 100px; height: auto;}
@@ -812,18 +826,26 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 	FLEXIBLE MEDIA QUERY
 
 ==================================================== */
-
+@media (max-width: 1000px) {
+	.cFull {width: 700px;}
+}
 
 /* ====================================================
 
 	MOBILE WEBSITE
 
 ==================================================== */
-@media (max-width: 500px) {
+@media (max-width: 850px) {
 
 	// Layout
 	.cFull {
 		width: 90%;
+		//max-width: 500px;
+		-webkit-transition: none;
+		-moz-transition: none;
+		-ms-transition: none;
+		-o-transition: none;
+		transition: none;
 	}
 		.logo {
 			display: block; 
@@ -850,7 +872,7 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 		width: 100%;
 		z-index: 10;
 		.search-field-input {width: 65%;}
-		.search-field-button {width: 20%; float: right;}
+		.search-field-button {width: 60px; float: right;}
 		.search-field-cancel {display: none;}
 	}
 
@@ -858,12 +880,13 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 	.navigation .cFull {
 		position: relative;
 		width: 100%;
+		max-width: inherit;
 	}
 	.menu {
 		display: none;
 		z-index: 10;
 		> li:first-child > a {
-			border: none !important;
+			border-left: none !important;
 		}
 		&.mobile-visible {
 			display: block;
@@ -872,12 +895,13 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 			background: #222;
 			width: 100%;
 			float: none;
-			border-bottom: 3px solid $coBlue;
+			border-bottom: 5px solid $coBlue;
 			> li {
 				float: none;
 				width: 100%;
 				a {
-					border: none;
+					border-bottom: 1px solid $coBlue;
+					border-width: 0 0 1px 0;
 				}
 				ul {
 					display: none !important;
@@ -899,10 +923,6 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 
 	// Large Stacks
 	.stack-full {
-		.stackArt img {
-			width: 100%; 
-			height: auto;
-		}
 		.stackInfo {
 			position: static; 
 			width: auto;

@@ -25,6 +25,11 @@ require_once(ABSPATH.'wp-includes/pluggable.php');
 
 function add_attendee($stack){
 
+	// exit if not logged in
+	if (!is_user_logged_in()){
+		return false;
+	};
+
 	// Get array of existing members
 	$stack_members = get_post_meta($stack,"stack_users");
 
@@ -61,6 +66,12 @@ if( $_GET['action'] == "join" ) {
 ==================================================== */
 
 function remove_attendee($stack){
+
+	// exit if not logged in
+	if (!is_user_logged_in()){
+		return false;
+	};
+
 	// Get current memberid
 	global $current_user;
     get_currentuserinfo();
@@ -81,7 +92,7 @@ if( $_GET['action'] == "leave_stack" ) {
 	CHECK IF CURRENT USER IS ALREADY JOINED
 	returns true if they are
 
-	if( stack_going ) {echo "i'm going!";}
+	if( stack_going() ) {echo "i'm going!";}
 
 ==================================================== */
 

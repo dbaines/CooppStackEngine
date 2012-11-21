@@ -2,7 +2,7 @@
 // http://wordpress.stackexchange.com/questions/56187/dynamic-ical-generator-outside-inside-wordpress
 class SH_Event_ICAL_Export  {
 
-    public function load() { add_feed('calendar-event8', array(__CLASS__,'export_events')); }
+    public function load() { add_feed('calendar-event', array(__CLASS__,'export_events')); }
 
     // Creates an ICAL file of events in the database
     public function export_events(){ 
@@ -61,7 +61,7 @@ X-WR-CALNAME:<?php echo get_bloginfo('name');?>: <?php if($allstacks == true){ e
         //$dtstamp = date_i18n('Ymd\THis\Z',time(), true); // Date stamp for now.
         //$created_date = get_post_time('Ymd\THis\Z', true, get_the_ID() ); // Time event created
         $stackDate = stack_date() . stack_time();
-        $stackDateEnd = ;
+        $stackDateEnd = "test";
         $stackDescription = the_title() . " - " . the_post();
         $stackLocation = stack_location();
         $stackURL = the_permalink();
@@ -124,5 +124,9 @@ END:VCALENDAR
     }   
 
 } // end class
-SH_Event_ICAL_Export::load();
+
+function insertEventsFeed(){
+    SH_Event_ICAL_Export::load();
+}
+add_action( 'init', 'insertEventsFeed' );
 ?>

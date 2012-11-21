@@ -91,5 +91,8 @@ include( "functions/buddypress.php" );
 ==================================================== */
 register_theme_directory( WP_PLUGIN_DIR . "/coopp-stackengine/themes" );
 
+// iCal export functions
+require("functions/ical.php");
+
 
 ?>

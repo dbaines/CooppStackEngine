@@ -80,10 +80,20 @@
 							<div class="celendar-selectors">
 								<form>
 									<select name="month">
-										<option>months</option>
+										<?php for ($i=0; $i<12; $i++) {
+											$m = $i+1;
+											$month = date("F", mktime(0,0,0,$m,1,2000));
+										    echo "<option value='".$m."'>".$month."</a>";
+										} ?>
 									</select>
 									<select name="year">
-										<option>years</option>
+										<?php 
+											$minyear = "2012";
+											$maxyear = date("Y") + 2;
+											for ($i=$minyear; $i<$maxyear; $i++) {
+										    	echo "<option value='".$i."'>".$i."</a>";
+											} 
+										?>
 									</select>
 									<button>Update</button>
 								</form>
@@ -113,6 +123,7 @@
 							for ($i=0; $i<($maxday+$startday); $i++) {
 							    if(($i % 7) == 0 ) echo "<tr class='date-row'>";
 							    if($i < $startday) echo "<td class='date-none'></td>";
+							    else if ($i > $maxday+$startday) echo "<td class='date-none'></td>";
 							    else if (($i - $startday + 1) == $cDay) echo "<td class='date-today'>". ($i - $startday + 1) . "</td>";
 							    else echo "<td class='date'>". ($i - $startday + 1) . "</td>";
 							    if(($i % 7) == 6 ) echo "</tr>";
@@ -127,7 +138,7 @@
 					do_action( 'bp_after_member_body' ) ?>
 
 					<div class="calendar-footer">
-						<a href="#">Download iCal</a> | <a href="#">Import to Google Calendar</a>
+						<strong>Download:</strong> <a href="<?php echo get_feed_link('calendar-event'); ?>">ical (all stacks)</a> <a href="#">ical (my stacks)</a>
 					</div>
 
 			</div><!-- #item-body -->

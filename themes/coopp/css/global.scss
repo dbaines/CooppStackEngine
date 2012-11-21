@@ -663,6 +663,50 @@ a.bp-secondary-action, span.highlight {font-size: 80%; margin-right: 10px;}
 
 /* ====================================================
 
+	BUDDYPRESS STACK CALENDAR
+
+==================================================== */
+
+.stack-calendar-view {
+	.stack-calendar-navigation {
+		background: #131313;
+		color: #fff;
+		border-bottom: 3px solid $coBlue;
+		@include clearfix;
+		.celendar-selectors {
+			float: left;
+		}
+		.calendar-nextprev {
+			float: right;
+		}
+	}
+	table {
+		th {
+			background: #aeaeae;
+			text-align: center;
+			vertical-align: middle;
+			padding: 5px;
+		}
+		td {
+			background: #c4c4c4;
+			text-align: center;
+			vertical-align: middle;
+			padding: 5px;
+			border: 1px solid #d8d8d8;
+			&.date-today {
+				background: #0773b3;
+				color: #fff;
+				font-weight: bold;
+			}
+			&.date-none {
+				background: #d8d8d8;
+			}
+		}
+	}
+}
+
+/* ====================================================
+
 	BUDDYPRESS MESSAGES
 
 ==================================================== */

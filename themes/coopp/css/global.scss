@@ -675,9 +675,37 @@ a.bp-secondary-action, span.highlight {font-size: 80%; margin-right: 10px;}
 		@include clearfix;
 		.celendar-selectors {
 			float: left;
+			.select {
+				float: left;
+				border-right: 1px solid $coBlue;
+				padding: 8px 9px;
+			}
+			.submit {
+				float: left;
+				padding: 8px 9px;
+			}
 		}
 		.calendar-nextprev {
 			float: right;
+			div {
+				float: left; 
+				width: 48px;
+				height: 48px;
+				@include ir;
+				border-left: 1px solid $coBlue;
+				a {
+					display: block;
+					width: 48px;
+					height: 48px;
+					background: url("../images/sprite-icons.png") 0 0 no-repeat;
+				}
+			}
+			.calendar-last-month a {
+				background-position: 21px -1483px;
+			}
+			.calendar-next-month a {
+				background-position: -31px -1483px;	
+			}
 		}
 	}
 	table {

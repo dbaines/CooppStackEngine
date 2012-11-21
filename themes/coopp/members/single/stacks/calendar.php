@@ -79,28 +79,42 @@
 						<div class="stack-calendar-navigation">
 							<div class="celendar-selectors">
 								<form>
-									<select name="month">
-										<?php for ($i=0; $i<12; $i++) {
-											$m = $i+1;
-											$month = date("F", mktime(0,0,0,$m,1,2000));
-										    echo "<option value='".$m."'>".$month."</a>";
-										} ?>
-									</select>
-									<select name="year">
-										<?php 
-											$minyear = "2012";
-											$maxyear = date("Y") + 2;
-											for ($i=$minyear; $i<$maxyear; $i++) {
-										    	echo "<option value='".$i."'>".$i."</a>";
-											} 
-										?>
-									</select>
-									<button>Update</button>
+									<div class="select">
+										<select name="month">
+											<?php for ($i=0; $i<12; $i++) {
+												$m = $i+1;
+												$month = date("F", mktime(0,0,0,$m,1,2000));
+												if( $cMonth == $m ) {
+													echo "<option value='".$m."' selected='selected'>".$month."</a>";
+												} else {
+											    	echo "<option value='".$m."'>".$month."</a>";
+												}
+											} ?>
+										</select>
+									</div>
+									<div class="select">
+										<select name="year">
+											<?php 
+												$minyear = "2012";
+												$maxyear = date("Y") + 2;
+												for ($i=$minyear; $i<$maxyear; $i++) {
+													if( $cYear == $i ) {
+											    		echo "<option value='".$i."' selected='selected'>".$i."</a>";
+											    	} else {
+											    		echo "<option value='".$i."'>".$i."</a>";
+											    	}
+												} 
+											?>
+										</select>
+									</div>
+									<div class="submit">
+										<button>Update</button>
+									</div>
 								</form>
 							</div>
 							<div class="calendar-nextprev">
-								<div class="calendar-last-month"><a href="<?php echo "?month=".$prev_month."&year=".$prev_year; ?>">Previous Year</a></div>
-								<div class="calendar-next-month"><a href="<?php echo "?month=".$next_month."&year=".$next_year; ?>">Next Year</a></div>
+								<div class="calendar-last-month"><a href="<?php echo "?month=".$prev_month."&year=".$prev_year; ?>" title="Previous Month">Previous Month</a></div>
+								<div class="calendar-next-month"><a href="<?php echo "?month=".$next_month."&year=".$next_year; ?>" title="Next Month">Next Month</a></div>
 							</div>
 						</div>
 						<table border="0" cellspacing="0" cellpadding="0">
@@ -138,7 +152,7 @@
 					do_action( 'bp_after_member_body' ) ?>
 
 					<div class="calendar-footer">
-						<strong>Download:</strong> <a href="<?php echo get_feed_link('calendar-event'); ?>">ical (all stacks)</a> <a href="#">ical (my stacks)</a>
+						<strong>Download:</strong> <a href="<?php echo get_feed_link('calendar-event'); ?>">ical (my stacks)</a> <a href="<?php echo get_feed_link('calendar-event'); ?>?scope=all">ical (all stacks)</a>
 					</div>
 
 			</div><!-- #item-body -->

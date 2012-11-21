@@ -64,6 +64,7 @@
 	$(".stack-short .stackLink a").tipsy({gravity: 'e'});
 	$(".commenticon").tipsy({gravity: 'n'});
 	$(".search-field-filters .filter input").tipsy({gravity: 'n'});
+	$(".calendar-nextprev a").tipsy({gravity: "n"});
 
 /* ====================================================
 

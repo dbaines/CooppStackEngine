@@ -35,6 +35,8 @@
 
 					// Set up our custom query of all stacks this member is going to
 					$memberid =  $bp->displayed_user->id;
+					// check for URL variables to specify which direction to sort the posts by
+					// if no URL variables found for the sort order, default to DESC (newest at top)
 					if( $_GET['sort'] == "asc"){$sortorder = "ASC";} else {$sortorder = "DESC";}
 					$query_args = array(
 						'post_type' => 'stack',

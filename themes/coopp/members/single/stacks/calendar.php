@@ -134,19 +134,88 @@
 							$maxday = date("t",$timestamp);
 							$thismonth = getdate ($timestamp);
 							$startday = $thismonth['wday'];
+
+// Add a zero to this months number if required
+if (strlen($cMonth)==1){
+	$thisMonth = "0".$cMonth;
+} else {
+	$thisMonth = $cMonth;
+}
+// Get all stacks for this month
+$query_args = array(
+	'post_type' => 'stack',
+	'meta_key' => 'stack_date',
+	'meta_value' => array($cYear.'-'.$thisMonth.'-01', $cYear.'-'.$thisMonth.'-'.$maxday),
+	'meta_compare' => 'BETWEEN'
+);
+$query = new WP_Query($query_args);
+
+// create a new empty array for stacksthismonth
+$stacksthismonth = array();
+
+// Run through stacks and insert in to an array
+if( $query->have_posts() ) :
+	while ( $query->have_posts() ) : $query->the_post();
+
+		// create a nested array of post information
+		$thisstack = array(
+			"id" => get_the_ID(),
+			"date" => stack_date(),
+			"time" => stack_time(),
+			"name" => get_the_title(),
+			"url" => get_permalink(),
+			"type" => stack_type()
+		);
+
+		// add to array using key value pair of stack_date
+		// potential issue with this is that this will not allow for the display of more than one stack per day :(
+		$stacksthismonth[stack_date()] = $thisstack;
+	endwhile;
+	// debug
+	//print_r($stacksthismonth);
+else :
+	//echo "no stacks this month :(";
+endif;
+
+
 							for ($i=0; $i<($maxday+$startday); $i++) {
 							    if(($i % 7) == 0 ) echo "<tr class='date-row'>";
 							    if($i < $startday) echo "<td class='date-none'></td>";
 							    else if ($i > $maxday+$startday) echo "<td class='date-none'></td>";
-							    else if (($i - $startday + 1) == $cDay) echo "<td class='date-today'>". ($i - $startday + 1) . "</td>";
-							    else echo "<td class='date'>". ($i - $startday + 1) . "</td>";
+							    else if ( (($i - $startday + 1) == $cDay ) and ( date("n") == $cMonth) and (date("Y") == $cYear) ) {
+							    	echo "<td class='date-today'>". ($i - $startday + 1) . "</td>";
+							    }
+							    else {
+
+							    	// Look up date
+							    	$lookupdate = $cYear."-".$thisMonth."-".($i - $startday + 1);
+
+							    	// Look for this date in the $stacksthismonth array
+							    	if( array_key_exists( $lookupdate, $stacksthismonth ) ) {
+							    		$stackdetails = $stacksthismonth[$lookupdate];
+							    		if($stackdetails['type']=="irl"){
+							    			echo "<td class='date has-stack has-irl' title='".$stackdetails['name']." at ".$stackdetails['time']."'>";	
+							    		} else {
+							    			echo "<td class='date has-stack' title='".$stackdetails['name']." at ".$stackdetails['time']."'>";
+							    		}
+							    		echo "<a href='".$stackdetails['url']."'>".($i - $startday + 1)."</a>";
+							    		#echo "<div class='stack-details'>";
+							    		#	echo "<h3>".$stackdetails['name']."</h3>";
+							    		#	echo "<h4>".$stackdetails['date']." at ".$stackdetails['time']."</h4>";
+							    		#echo "</div>";
+							    		echo "</td>";
+							    	} else {
+							    		echo "<td class='date'>";
+							    		echo ($i - $startday + 1);
+							    		echo "</td>";
+							    	}
+							    }
 							    if(($i % 7) == 6 ) echo "</tr>";
 							}
 							?>
 
 						</table>
 					</div>
-
 
 					<?php
 					do_action( 'bp_after_member_body' ) ?>

@@ -9,11 +9,16 @@ $coRed: #B93131;
 $coGreen: #5B9929;
 $coBlueTransparent: rgba(7, 115, 179, 0.85);
 
+// Calendar Box colours
+$calToday: $coBlue;
+$calHasStack: $coBlue;
+$calHasIRL: $coBlue;
+
 @mixin ir {
 	font: 0/0 a; 
 	text-shadow: none; 
 	color: transparent; 
-	background-color: transparent;
+	//background-color: transparent;
 }
 
 @mixin clearfix {
@@ -163,7 +168,7 @@ h4 {margin: 15px 0 5px 0;}
 		.userinfo-messages,
 		.userinfo-name,
 		.userinfo-settings,
-		.userinfo-logout {padding: 5px; float: left; border: 1px solid transparent;
+		.userinfo-logout {padding: 5px; float: left; border: 1px solid transparent; background: #ccc; margin-left: 5px;
 			-webkit-border-radius: 3px;
 			-moz-border-radius: 3px;
 			-ms-border-radius: 3px;
@@ -173,7 +178,7 @@ h4 {margin: 15px 0 5px 0;}
 
 		.userinfo-name:hover,
 		.userinfo-settings:hover,
-		.userinfo-logout:hover {border: 1px solid #ccc;
+		.userinfo-logout:hover {border: 1px solid #ccc; background-color: transparent;
 			-webkit-box-shadow: inset 0 0 2px rgba(255,255,255,.75);
 			-moz-box-shadow: inset 0 0 2px rgba(255,255,255,.75);
 			-ms-box-shadow: inset 0 0 2px rgba(255,255,255,.75);
@@ -181,11 +186,11 @@ h4 {margin: 15px 0 5px 0;}
 			box-shadow: inset 0 0 2px rgba(255,255,255,.75);
 		}
 
-		.userinfo-messages {background: #ccc; margin-right: 5px; font-size: 85%; padding: 5px 15px;}
+		.userinfo-messages {font-size: 85%; padding: 5px 15px;}
 			.userinfo-messages.new {color: #fff; background: #b93131;}
 		.userinfo-name img {float: left; margin-right: 5px;}
-		.userinfo-settings {width: 20px; height: 20px; background: url("../images/sprite-icons.png") -1px -537px no-repeat;}
-		.userinfo-logout {width: 20px; height: 20px; background: url("../images/sprite-icons.png") -1px -492px no-repeat;}
+		.userinfo-settings {width: 20px; height: 20px; background: #ccc url("../images/sprite-icons.png") -1px -537px no-repeat;}
+		.userinfo-logout {width: 20px; height: 20px; background: #ccc url("../images/sprite-icons.png") -1px -492px no-repeat;}
 
 	/* Login form */
 	.login {float: right; padding: 10px 0; font-size: 85%;}
@@ -721,13 +726,33 @@ a.bp-secondary-action, span.highlight {font-size: 80%; margin-right: 10px;}
 			vertical-align: middle;
 			padding: 5px;
 			border: 1px solid #d8d8d8;
+			position: relative;
 			&.date-today {
-				background: #0773b3;
+				background: $calToday;
 				color: #fff;
 				font-weight: bold;
 			}
 			&.date-none {
 				background: #d8d8d8;
+			}
+			&.has-stack {
+				background: $calHasStack;
+				color: #fff;
+			}
+			&.has-irl {
+				background: $calHasIRL;
+				color: #fff;
+			}
+			.stack-details {
+				position: absolute;
+				top: -100px;
+				left: 0;
+				width: 200px;
+				height: 100px;
+				background: $coBlueTransparent;
+			}
+			a {
+				color: #fff;
 			}
 		}
 	}

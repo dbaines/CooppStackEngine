@@ -1,7 +1,4 @@
-	<?php 
-
-		$ip=$_SERVER['REMOTE_ADDR'];
-		if ($ip !== "60.242.71.28") : ?>
+	<?php ?>
 
 			<!doctype html>
 			<html class="no-js">
@@ -41,8 +38,6 @@
 				</body>
 			</html>
 
-
-	<?php else : ?>
 
 
 <?php
@@ -90,5 +85,3 @@ get_header(); ?>
 		</div>
 		
 <?php get_footer(); ?>
-
-<?php endif; // End development code ?>

@@ -65,6 +65,7 @@
 	$(".commenticon").tipsy({gravity: 'n'});
 	$(".search-field-filters .filter input").tipsy({gravity: 'n'});
 	$(".calendar-nextprev a").tipsy({gravity: "n"});
+	$("td.has-stack").tipsy({gravity: "n"});
 
 /* ====================================================
 

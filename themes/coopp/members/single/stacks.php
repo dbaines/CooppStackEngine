@@ -35,13 +35,20 @@
 
 					// Set up our custom query of all stacks this member is going to
 					$memberid =  $bp->displayed_user->id;
+					if( $_GET['sort'] == "asc"){$sortorder = "ASC";} else {$sortorder = "DESC";}
 					$query_args = array(
 						'post_type' => 'stack',
-						'meta_key' => 'stack_users',
-						'meta_value' => $memberid,
-						'meta_compare' => 'IN',
-						'orderby' => 'stack_date',
-						'order' => 'DESC'
+						'meta_key' => 'stack_date',
+						'orderby' => 'meta_value',
+						'order' => $sortorder,
+						'posts_per_page' => 20,
+						'meta_query' => array(
+							array(
+								'key' => 'stack_users',
+								'value' => $memberid,
+								'compare' => 'IN',
+							)
+						)
 					);
 					$query = new WP_Query($query_args);
 
@@ -52,6 +59,10 @@
 					// Echo out all the results
 					if( $query->have_posts() ) :
 						echo "<div class='stacks-list bp-stack-list'>";
+						echo "<div class='stacks-list-sort'>";
+						echo "<a href='?sort=desc' class='sortorder sort-desc'>Newest at Top</a>";
+						echo "<a href='?sort=asc' class='sortorder sort-asc'>Oldest at Top</a>";
+						echo "</div>";
 						while ( $query->have_posts() ) : $query->the_post(); ?>
 
 							<div class="stack clearfix bp-stack <?php echo ($c++%2==1) ? "alt" : "" ?>" id="stack-<?php echo get_the_ID(); ?>">

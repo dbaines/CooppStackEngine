@@ -114,8 +114,6 @@ include("functions/shortcodes-helper.php");
 // Theme Options
 include("functions/theme-options-live.php");
 
-// Calendar Display
-
 // Social Networking
 
 // Error Pages, Login and Registration

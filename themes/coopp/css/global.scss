@@ -561,7 +561,13 @@ h4 {margin: 15px 0 5px 0;}
 ==================================================== */
 
 .page-title {margin: 0; padding: 15px 0 15px; font-weight: normal; @include OpenSans;}
-.page-container {margin: 0 0 20px 0; background: #d8d8d8; padding: 20px; color: #292727; border-top: 4px solid $coBlue;
+.page-container {
+	margin: 0 0 20px 0; 
+	background: #d8d8d8; 
+	padding: 20px; 
+	color: #292727; 
+	border-top: 4px solid $coBlue;
+	line-height: 1.5;
 	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	-moz-box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	-ms-box-shadow: 0 0 20px rgba(0,0,0,0.5);
@@ -905,6 +911,13 @@ table {width: 100%;}
 table tr td, table tr th {padding: 8px; vertical-align: top;}
 table tr th {text-align: left; background: #ccc;}
 table tr td.label {font-weight: bold; width: 25%;}
+
+/* ====================================================
+
+	FORUM
+
+==================================================== */
+@import url("bbpress.css");
 
 /* ====================================================
 

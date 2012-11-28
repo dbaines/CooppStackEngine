@@ -81,7 +81,7 @@
 						<?php endwhile;
 						echo "</div>";
 					else : ?>
-						<span class="noresults">This user is not attending any stacks</span>
+						<span class="noresults">This user has not requested any stacks</span>
 					<?php endif;
 
 				do_action( 'bp_after_member_body' ) ?>

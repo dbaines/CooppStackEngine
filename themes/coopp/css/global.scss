@@ -848,6 +848,16 @@ table.notification-settings .yes, table.notification-settings .no {text-align: c
 		.bp-stack .stack-details .stack_number {font-weight: bold;}
 	.bp-stack.alt {background: #ccc;}
 
+// Stack sorting options
+.stacks-list-sort {
+	float: right;
+	margin: -15px 0 15px;
+	font-size: 85%;
+	a {
+		margin-left: 10px;
+	}
+}
+
 /* ====================================================
 
 	404 Page

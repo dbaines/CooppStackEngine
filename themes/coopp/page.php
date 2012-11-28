@@ -15,14 +15,12 @@
 get_header(); ?>
 
 		<div id="primary">
-			<h2 class="page-title"><?php the_title(); ?></h2>
-			<div id="content" role="main" class="page-container">
-
-				<?php while ( have_posts() ) : the_post(); ?>
+			<?php while ( have_posts() ) : the_post(); ?>
+				<h2 class="page-title"><?php the_title(); ?></h2>
+				<div id="content" role="main" class="page-container">
 					<?php get_template_part( 'content', 'page' ); ?>
-				<?php endwhile; // end of the loop. ?>
-
-			</div><!-- #content -->
+				</div><!-- #content -->
+			<?php endwhile; // end of the loop. ?>
 		</div><!-- #primary -->
 
 <?php get_footer(); ?>

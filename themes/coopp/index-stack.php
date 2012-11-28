@@ -14,6 +14,7 @@
 
 get_header(); ?>
 
+	<div id="primary">
 		<div class="nextStack clearfix">
 
 			<h2 class="sectionHead">Next Stack</h2>
@@ -75,5 +76,6 @@ get_header(); ?>
 			<a href="past-stacks" class="ctaBlue"><?php $options = get_option('coopp_text'); echo $options['stack_archive']; ?></a>
 
 		</div>
+	</div>
 		
 <?php get_footer(); ?>

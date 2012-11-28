@@ -15,6 +15,7 @@
 get_header(); ?>
 
 		<div id="primary">
+			<h2 class="page-title"><?php the_title(); ?></h2>
 			<div id="content" role="main" class="page-container">
 
 				<?php while ( have_posts() ) : the_post(); ?>

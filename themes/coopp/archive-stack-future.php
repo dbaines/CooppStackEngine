@@ -42,7 +42,7 @@ get_header(); ?>
 				// The loop
 				if( $query->have_posts() ) :
 					while ( $query->have_posts() ) : $query->the_post();
-						get_template_part('stacks/shortstack');
+						get_template_part('stacks/bigstack');
 					endwhile;
 				else : ?>
 					<span class="noresults">Sorry, no upcoming stacks :(</span>

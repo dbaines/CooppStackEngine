@@ -9,18 +9,6 @@
 ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<header class="entry-header">
-
-			<?php if ( is_sticky() ) : ?>
-				<hgroup>
-					<h2 class="entry-title"><?php the_title(); ?></h2>
-					<h3 class="entry-format"><?php _e( 'Featured', 'twentyeleven' ); ?></h3>
-				</hgroup>
-			<?php else : ?>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
-			<?php endif; ?>
-
-		</header><!-- .entry-header -->
 
 		<div class="entry-content">
 			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?>

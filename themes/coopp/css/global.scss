@@ -36,6 +36,8 @@ $calHasIRL: $coBlue;
 	transition: all .3s ease-in-out;
 }
 
+@mixin OpenSans {font-family: Open Sans, arial, sans-serif;}
+
 /* ====================================================
 
 	NORMALISATION
@@ -140,7 +142,7 @@ input::-moz-focus-inner {border: 0; padding: 0;}
 textarea {overflow: auto; vertical-align: top;}
 table {border-collapse: collapse; border-spacing: 0;}
 
-h1,h2,h3,h4,h5,h6 {margin: 0; padding: 0;}
+h1,h2,h3,h4,h5,h6 {margin: 0; padding: 0; font-weight: normal;}
 h2 {font-size: 180%;}
 h3 {margin: 0 0 20px 0; font-size: 150%;}
 h4 {margin: 15px 0 5px 0;}
@@ -355,7 +357,7 @@ h4 {margin: 15px 0 5px 0;}
 ==================================================== */
 
 .stack-full,
-.stack-short {background: #d8d8d8; color: #292727;
+.stack-short {background: #d8d8d8; color: #292727; clear: both;
 	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	-moz-box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	-ms-box-shadow: 0 0 20px rgba(0,0,0,0.5);
@@ -477,10 +479,10 @@ h4 {margin: 15px 0 5px 0;}
 
 ==================================================== */
 
-.archiveTabs {margin-bottom: 20px;}
-	.archiveTabs a {float: left; color: #fff; padding: 10px 20px; border-bottom: 3px solid #1e1e1e;}
+.archiveTabs {margin-bottom: -3px; padding-top: 20px;}
+	.archiveTabs a {float: left; color: #fff; padding: 10px 20px; border-bottom: 3px solid transparent; margin-top: 20px;}
 	.archiveTabs a:hover {border-color: #0b527c; background: #272727;}
-	.archiveTabs a.current {border-color: $coBlue;}
+	.archiveTabs a.current {border-color: $coGreen; font-size: 180%; @include OpenSans; margin-top: 0;}
 
 /* ====================================================
 
@@ -549,7 +551,7 @@ h4 {margin: 15px 0 5px 0;}
 
 ==================================================== */
 .announcement {background: #05598a; background: rgba(5,89,138,0.85); padding: 20px 0; color: #fff; margin-bottom: 20px;}
-.announcement h2 {margin-bottom: 5px;}
+.announcement h2 {margin-bottom: 5px; font-weight: normal;}
 .announcement p {line-height: 1.5;}
 
 /* ====================================================
@@ -558,13 +560,15 @@ h4 {margin: 15px 0 5px 0;}
 
 ==================================================== */
 
-.page-container {margin: 20px 0; background: #d8d8d8; padding: 20px; color: #292727;
+.page-title {margin: 0; padding: 15px 0 15px; font-weight: normal; @include OpenSans;}
+.page-container {margin: 0 0 20px 0; background: #d8d8d8; padding: 20px; color: #292727; border-top: 4px solid $coBlue;
 	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	-moz-box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	-ms-box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	-o-box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	}
+	.page-container p:last-child {padding-bottom: 0;}
 	#primary {margin-top: 20px;}
 
 	.cFull {
@@ -585,7 +589,8 @@ h4 {margin: 15px 0 5px 0;}
 html {margin-top: 0 !important;}
 
 .bp-user .page-container,
-.groups .page-container {margin-top: 40px;}
+.groups .page-container,
+.members .page-container {margin-top: 40px;}
 	#item-header {}
 	#item-header-avatar {margin: -40px 20px 0 0; float: left;}
 		#item-header-avatar img {
@@ -927,7 +932,7 @@ table tr td.label {font-weight: bold; width: 25%;}
 h1,h2,h3,h4,h5,
 .ctaBlue,
 .stackThis,
-.navigation {font-family: Open Sans, arial, sans-serif;}
+.navigation {@include OpenSans;}
 
 /* ====================================================
 
@@ -944,8 +949,7 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 	a.ctaBlue:hover {background: #549cd9;}
 
 /* Headings */
-.sectionHead,
-.page-title {color: #fff; padding: 20px 0 10px;}
+.sectionHead {color: #fff; padding: 20px 0 10px;}
 
 /* HTML5Boilerplate common */
 .ir {@include ir;}

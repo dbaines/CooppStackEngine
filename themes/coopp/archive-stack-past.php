@@ -6,7 +6,8 @@
 
 get_header(); ?>
 
-		<div class="futureStacks clearfix">
+	<div id="primary">
+		<div class="pastStacks clearfix">
 
 			<div class="archiveTabs clearfix">
 				<a href="../future-stacks">Future Stacks</a>
@@ -45,5 +46,6 @@ get_header(); ?>
 			stack navigation
 
 		</div>
+	</div>
 		
 <?php get_footer(); ?>

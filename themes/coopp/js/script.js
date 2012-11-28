@@ -139,6 +139,9 @@
 
 ==================================================== */
 
+	var globalsearch = $("#search"),
+		globalsearch_originalaction = globalsearch.attr("action");
+
 	$(".search-field-filters .filter").each(function(){
 		var filter = $(this),
 			input = filter.find("input"),
@@ -148,11 +151,37 @@
 		filter.click(function(e){
 			filter.addClass(aclass).siblings().removeClass(aclass);
 			input.prop("checked",true);
+			updateSearchAction(input.val());
 		});
 
 		// listen for existing states
 		if(input.prop("checked") == true) {
 			filter.addClass(aclass).siblings().removeClass(aclass);
+		}
+
+		// updateSearchAction(val)
+		// updates the search action URL based on what the user clicks
+		function updateSearchAction(val){
+			
+			//console.log(val);
+			switch(val) {
+				case "forum":
+					var action = globalsearch_originalaction + "/forum";
+					globalsearch.attr("action",action);
+					break;
+				case "member":
+					var action = globalsearch_originalaction + "/members";
+					globalsearch.attr("action",action);
+					break;
+				case "group":
+					var action = globalsearch_originalaction + "/groups";
+					globalsearch.attr("action",action);
+					break;
+				case "stack":
+					var action = globalsearch_originalaction;
+					globalsearch.attr("action",action);
+					break;
+			}
 		}
 
 	});

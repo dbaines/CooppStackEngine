@@ -14,6 +14,7 @@
 
 get_header(); ?>
 
+	<div id="primary">
 		<div class="futureStacks clearfix">
 
 			<div class="archiveTabs clearfix">
@@ -53,5 +54,6 @@ get_header(); ?>
 			stack navigation
 
 		</div>
+	</div>
 		
 <?php get_footer(); ?>

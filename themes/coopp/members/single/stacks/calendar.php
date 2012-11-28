@@ -32,9 +32,6 @@
 						</ul>
 					</div>
 
-					<div class="stacks-calendar-key">
-						Key
-					</div>
 					<?php
 
 					// Set up our custom query of all stacks this member is going to
@@ -135,47 +132,47 @@
 							$thismonth = getdate ($timestamp);
 							$startday = $thismonth['wday'];
 
-// Add a zero to this months number if required
-if (strlen($cMonth)==1){
-	$thisMonth = "0".$cMonth;
-} else {
-	$thisMonth = $cMonth;
-}
-// Get all stacks for this month
-$query_args = array(
-	'post_type' => 'stack',
-	'meta_key' => 'stack_date',
-	'meta_value' => array($cYear.'-'.$thisMonth.'-01', $cYear.'-'.$thisMonth.'-'.$maxday),
-	'meta_compare' => 'BETWEEN'
-);
-$query = new WP_Query($query_args);
+							// Add a zero to this months number if required
+							if (strlen($cMonth)==1){
+								$thisMonth = "0".$cMonth;
+							} else {
+								$thisMonth = $cMonth;
+							}
+							// Get all stacks for this month
+							$query_args = array(
+								'post_type' => 'stack',
+								'meta_key' => 'stack_date',
+								'meta_value' => array($cYear.'-'.$thisMonth.'-01', $cYear.'-'.$thisMonth.'-'.$maxday),
+								'meta_compare' => 'BETWEEN'
+							);
+							$query = new WP_Query($query_args);
 
-// create a new empty array for stacksthismonth
-$stacksthismonth = array();
+							// create a new empty array for stacksthismonth
+							$stacksthismonth = array();
 
-// Run through stacks and insert in to an array
-if( $query->have_posts() ) :
-	while ( $query->have_posts() ) : $query->the_post();
+							// Run through stacks and insert in to an array
+							if( $query->have_posts() ) :
+								while ( $query->have_posts() ) : $query->the_post();
 
-		// create a nested array of post information
-		$thisstack = array(
-			"id" => get_the_ID(),
-			"date" => stack_date(),
-			"time" => stack_time(),
-			"name" => get_the_title(),
-			"url" => get_permalink(),
-			"type" => stack_type()
-		);
+									// create a nested array of post information
+									$thisstack = array(
+										"id" => get_the_ID(),
+										"date" => stack_date(),
+										"time" => stack_time(),
+										"name" => get_the_title(),
+										"url" => get_permalink(),
+										"type" => stack_type()
+									);
 
-		// add to array using key value pair of stack_date
-		// potential issue with this is that this will not allow for the display of more than one stack per day :(
-		$stacksthismonth[stack_date()] = $thisstack;
-	endwhile;
-	// debug
-	//print_r($stacksthismonth);
-else :
-	//echo "no stacks this month :(";
-endif;
+									// add to array using key value pair of stack_date
+									// potential issue with this is that this will not allow for the display of more than one stack per day :(
+									$stacksthismonth[stack_date()] = $thisstack;
+								endwhile;
+								// debug
+								//print_r($stacksthismonth);
+							else :
+								//echo "no stacks this month :(";
+							endif;
 
 
 							for ($i=0; $i<($maxday+$startday); $i++) {
@@ -217,12 +214,17 @@ endif;
 						</table>
 					</div>
 
-					<?php
-					do_action( 'bp_after_member_body' ) ?>
+					<div class="stacks-calendar-key">
+						<span class="key"><i class="keybox has-stack"></i> Stack</span>
+						<span class="key"><i class="keybox has-irl"></i> IRL Stack</span>
+						<span class="key"><i class="keybox today"></i> Today</span>
+					</div>
 
-					<div class="calendar-footer">
+					<div class="stacks-calendar-downloads">
 						<strong>Download:</strong> <a href="<?php echo get_feed_link('calendar-event'); ?>">ical (my stacks)</a> <a href="<?php echo get_feed_link('calendar-event'); ?>?scope=all">ical (all stacks)</a>
 					</div>
+
+					<?php do_action( 'bp_after_member_body' ) ?>
 
 			</div><!-- #item-body -->
 

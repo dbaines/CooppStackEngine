@@ -16,8 +16,8 @@ get_header(); ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
+					<h2 class="page-title"><?php the_title(); ?></h2>
 					<div id="bbp-topic-tags" class="bbp-topic-tags">
-						<h1 class="entry-title"><?php the_title(); ?></h1>
 						<div class="entry-content">
 
 							<?php get_the_content() ? the_content() : _e( '<p>This is a collection of tags that are currently popular on our forums.</p>', 'bbpress' ); ?>

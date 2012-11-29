@@ -46,6 +46,20 @@ $calHasIRL: $coBlue;
 	box-sizing: border-box;
 }
 
+@mixin bluebutton {
+	background: $coBlue; 
+	padding: 5px 15px; 
+	color: #fff;
+	-webkit-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
+	-moz-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
+	-ms-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
+	-o-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
+	box-shadow: 0 1px 0px rgba(255,255,255,0.8);
+	&:hover {
+		background: #549cd9;
+	}
+}
+
 /* ====================================================
 
 	NORMALISATION
@@ -722,6 +736,9 @@ a.bp-secondary-action, span.highlight {font-size: 80%; margin-right: 10px;}
 			.submit {
 				float: left;
 				padding: 8px 9px;
+				button {
+					@include bluebutton;
+				}
 			}
 		}
 		.calendar-nextprev {
@@ -935,6 +952,10 @@ table tr td.label {font-weight: bold; width: 25%;}
 	.bbp-breadcrumb-home+span {
 		display: none;
 	}
+	// hide breadcrumbs on forum index
+	#forum-front & {
+		display: none;
+	}
 }
 
 .bbp-breadcrumb,
@@ -951,6 +972,7 @@ div.bbp-template-notice.info {
 table.bbp-forums,
 table.bbp-replies,
 table.bbp-topics {
+	color: #292727;
 	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	-moz-box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	-ms-box-shadow: 0 0 20px rgba(0,0,0,0.5);
@@ -987,9 +1009,19 @@ table.bbp-replies th {
 	color: #666;
 }
 
+// hiding seemingly unncessary tfoots
+#content table.bbp-forums tfoot, 
+#content table.bbp-topics tfoot, 
+#content table.bbp-topic tfoot, 
 #content table.bbp-replies tfoot {
 	display: none;
 }
+
+#content table.bbp-replies tfoot {
+	display: none;
+}
+
+.bbp-pagination-count {font-size: 85%;}
 
 // ---- Forum Index ---- //
 .bbp-forum-info,
@@ -1006,10 +1038,6 @@ table.bbp-replies th {
 .bbp-topic-freshness > a,
 .bbp-forum-freshness > a {
 	font-size: 75%;
-}
-
-.bbp-forum-info {
-	a {font-weight: bold;}
 }
 
 #content table.bbp-topics, 
@@ -1030,6 +1058,12 @@ table.bbp-replies td {
 	padding: 20px;
 }
 
+// ---- Thread/Topic Lists ---- //
+.bbp-forum-title,
+.bbp-topic-permalink {
+	font-size: 130%;
+}
+
 // ---- Thread Posts ---- //
 .bbp-topic a.bbp-topic-permalink, 
 .bbp-replies a.bbp-reply-permalink,
@@ -1041,6 +1075,16 @@ span.bbp-admin-links a {
 	border-top: 1px solid $coBlue;
 	&:first-child {
 		border-top: none;
+	}
+}
+
+#content div.bbp-topic-tags {
+	background: #222;
+	color: #ccc;
+	padding: 10px 15px;
+	p {
+		margin-bottom: 0;
+		padding-bottom: 0;
 	}
 }
 
@@ -1068,8 +1112,39 @@ span.bbp-admin-links a {
 		color: #ccc;
 		border-bottom: 3px solid $coBlue;
 	}
+	.bbp-submit-wrapper button {
+		@include bluebutton;
+	}
 	.mceIframeContainer {
 		background: #fff;
+	}
+}
+// Popup tools
+body .wp-dialog {
+	border: none;
+	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	-ms-box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	-o-box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	.ui-dialog-titlebar {
+		background: #222;
+		color: #ccc;
+		padding: 5px 20px;
+		border-bottom: 3px solid $coBlue;
+		.ui-dialog-titlebar-close {
+			top: 8px;
+		}
+	}
+	.ui-dialog-content {
+		color: #222;
+		input[type=text] {
+			border: none !important;
+			padding: 5px !important;
+		}
+		p.toggle-arrow {
+			padding-bottom: 0;
+		}
 	}
 }
 

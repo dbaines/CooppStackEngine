@@ -38,6 +38,14 @@ $calHasIRL: $coBlue;
 
 @mixin OpenSans {font-family: Open Sans, arial, sans-serif;}
 
+@mixin border-box {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
 /* ====================================================
 
 	NORMALISATION
@@ -917,7 +925,153 @@ table tr td.label {font-weight: bold; width: 25%;}
 	FORUM
 
 ==================================================== */
+// ---- Forum Index ---- //
 @import url("bbpress.css");
+
+// ---- Breadcrumbs ---- //
+.bbp-breadcrumb {
+	// hide homepage breadcrumb
+	.bbp-breadcrumb-home,
+	.bbp-breadcrumb-home+span {
+		display: none;
+	}
+}
+
+.bbp-breadcrumb,
+.bbp-pagination {color: #ccc;}
+
+// ---- Top Notice ---- //
+div.bbp-template-notice.info {
+	background: #212121;
+	color: #ccc;
+	border-color: transparent;
+}
+
+// ---- General Forum Display Styles ---- //
+table.bbp-forums,
+table.bbp-replies,
+table.bbp-topics {
+	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	-ms-box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	-o-box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+#content table tbody tr.even td {
+	background: #ccc;
+}
+#content table tbody tr.odd td {
+	background: #d8d8d8;
+}
+
+table.bbp-forums th, 
+table.bbp-topics th, 
+table.bbp-topic th, 
+table.bbp-replies th {
+	border-bottom: 3px solid $coBlue;
+	background: #131313;
+	color: #ccc;
+	font-weight: normal;
+	padding: 10px 20px;
+}
+
+#content table.bbp-forums tfoot td, 
+#content table.bbp-topics tfoot td, 
+#content table.bbp-topic tfoot td, 
+#content table.bbp-replies tfoot td, 
+#content table.bbp-replies tr.bbp-reply-header td, 
+#content table.bbp-topic tr.bbp-topic-header td {
+	background: #ececec;
+	padding: 10px 15px;
+	color: #666;
+}
+
+#content table.bbp-replies tfoot {
+	display: none;
+}
+
+// ---- Forum Index ---- //
+.bbp-forum-info,
+.bbp-forum-topic-count, 
+.bbp-forum-reply-count, 
+.bbp-topic-reply-count, 
+.bbp-topic-voice-count, 
+.bbp-topic-action,
+.bbp-topic-freshness, 
+.bbp-forum-freshness {
+	vertical-align: middle;
+}
+// x time ago link
+.bbp-topic-freshness > a,
+.bbp-forum-freshness > a {
+	font-size: 75%;
+}
+
+.bbp-forum-info {
+	a {font-weight: bold;}
+}
+
+#content table.bbp-topics, 
+#content table.bbp-forums, 
+#content table.bbp-replies, 
+#container table.bbp-topics, 
+#container table.bbp-forums, 
+#container table.bbp-replies, 
+#main table.bbp-topics, 
+#main table.bbp-forums, 
+#main table.bbp-replies {
+	margin-bottom: 20px;
+}
+
+table.bbp-topics td, 
+table.bbp-forums td, 
+table.bbp-replies td {
+	padding: 20px;
+}
+
+// ---- Thread Posts ---- //
+.bbp-topic a.bbp-topic-permalink, 
+.bbp-replies a.bbp-reply-permalink,
+span.bbp-admin-links a {
+	color: $coBlue;
+}
+
+.bbp-reply-header {
+	border-top: 1px solid $coBlue;
+	&:first-child {
+		border-top: none;
+	}
+}
+
+// ---- Form for New Posts/Threads/Replies ---- //
+#content fieldset.bbp-form, 
+#container fieldset.bbp-form, 
+#wrapper fieldset.bbp-form {
+	background: #eee;
+	border: none;
+	padding: 60px 20px 20px;
+	position: relative;
+	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	-ms-box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	-o-box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	> legend {
+		position: absolute;
+		top: 0;
+		left: 0;
+		@include border-box;
+		width: 100%;
+		background: #131313;
+		padding: 15px 20px;
+		color: #ccc;
+		border-bottom: 3px solid $coBlue;
+	}
+	.mceIframeContainer {
+		background: #fff;
+	}
+}
 
 /* ====================================================
 

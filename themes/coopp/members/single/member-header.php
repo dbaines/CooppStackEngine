@@ -44,6 +44,33 @@
 
 		<div id="item-buttons">
 			<?php do_action( 'bp_member_header_actions' ); ?>
+			<?php
+
+			  // Loop through the profile fields
+				if ( bp_has_profile() ) :
+					while ( bp_profile_groups() ) :
+						bp_the_profile_group();
+						if ( bp_profile_group_has_fields() ) :
+
+							// Only get the Social Networking fields
+							if (bp_get_the_profile_group_name() == "Social Networking") :
+								while ( bp_profile_fields() ) : bp_the_profile_field();
+									if ( bp_field_has_data() ) :
+
+										// Display Fields
+										global $field;
+										$name = $field->name;
+										$value = $field->data->value = bp_unserialize_profile_field( $field->data->value );
+
+										echo "<a href='".$value."' target='_blank'".bp_get_field_css_class('icon')." title='".$name."'>".$name."</a>";
+
+									endif;
+								endwhile;
+							endif;
+						endif;
+					endwhile;
+				endif;
+			?>
 		</div><!-- #item-buttons -->
 
 		<?php

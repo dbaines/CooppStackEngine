@@ -668,6 +668,11 @@ html {margin-top: 0 !important;}
 		#item-buttons a.remove {background-position: -1px -975px;}
 		#item-buttons a.send-message {background-position: -2px -868px;}
 
+	// Social Networking Icons
+	#item-buttons {
+		.icon { background: #ccc; }
+	}
+
 /* Top level tabs */
 #item-nav {padding-top: 20px;}
 .item-list-tabs {clear: both; margin: 0 -20px; background: #131313; height: 36px; line-height: 36px;}

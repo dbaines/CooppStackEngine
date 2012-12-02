@@ -621,6 +621,7 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 	REGISTER/ACTIVATE
 
 ==================================================== */
+#register-page .submit {margin-top: 20px;}
 #activation-form #key {float: left; margin-right: 10px;}
 
 /* ====================================================
@@ -1163,6 +1164,9 @@ body .wp-dialog {
 		}
 	}
 }
+
+// search results
+.search-results .forum-results h3 {margin: 25px 0 10px 0;}
 
 /* ====================================================
 

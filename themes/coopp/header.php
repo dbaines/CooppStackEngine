@@ -52,13 +52,13 @@
 	<link href="<?php bloginfo('comments_rss2_url'); ?>" rel="alternate" type="application/atom+xml" title="Co-Opp.net Comments" />
 
 	<?php // SOCIAL SHARE ICONS
-		// if you're on a single post, use the featured image 
-		// otherwise, fall back to a generic co-opp image 
+		// if you're on a single post, use the featured image
+		// otherwise, fall back to a generic co-opp image
 
 		if(is_single() && has_post_thumbnail()){
 			$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail' );
 			$thumbnail = $thumbnail[0];
-			
+
 			// Facebook thumbnail
 			echo "<meta property='og:image' content='".$thumbnail."' />";
 
@@ -92,10 +92,10 @@
 			<?php if( is_user_logged_in() ) { ?>
 
 				<div class="userinfo">
-					<?php 
+					<?php
 						$notifications = bp_core_get_notifications_for_user( bp_loggedin_user_id(), 'object' );
 						$messages = !empty( $notifications ) ? count( $notifications ) : 0;
-						if( $messages == 1 ) {$messageverb = "message";} else {$messageverb = "messages";} 
+						if( $messages == 1 ) {$messageverb = "message";} else {$messageverb = "messages";}
 					?>
 					<a class="userinfo-messages <?php if( $messages > 0 ){echo "new";}?>" href="<?php echo bp_loggedin_user_domain() ?>messages" title="<?php echo $messages; ?> new <?php echo $messageverb; ?>">
 						<?php echo $messages; ?>
@@ -141,7 +141,7 @@
 				<div class="search-field-filters clearfix">
 					<span class="label">Filter</span>
 					<span class="filter filter-stacks"><input type="radio" value="stack" title="Search Stacks" checked />Search Stacks</span>
-					<span class="filter filter-forum"><input type="radio" value="forum" title="Search Forum"/>Search Forum</span>
+					<span class="filter filter-forum"><input type="radio" name="post_type" value="reply" title="Search Forum"/>Search Forum</span>
 					<span class="filter filter-members"><input type="radio" value="member" title="Search Members"/>Search Members</span>
 					<span class="filter filter-group"><input type="radio" value="group" title="Search Groups"/>Search Groups</span>
 				</div>

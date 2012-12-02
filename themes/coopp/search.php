@@ -9,9 +9,9 @@
 
 get_header(); ?>
 
-		<section id="primary">
+		<section id="primary" class="forum-results">
 			<h2 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyeleven' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
-			
+
 
 			<?php if ( have_posts() ) : ?>
 
@@ -23,7 +23,17 @@ get_header(); ?>
 						 * If you want to overload this in a child theme then include a file
 						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 						 */
-						get_template_part( 'stacks/shortstack' );
+
+						// if post_type=reply (forum) change display to forum results
+						if($_GET['post_type'] == "reply"){
+							//get_template_part( 'search_forum' );
+							get_template_part( 'search-forum' );
+
+						// otherwise, assume we're search stacks
+						} else {
+							get_template_part( 'stacks/shortstack' );
+						}
+
 					?>
 
 				<?php endwhile; ?>

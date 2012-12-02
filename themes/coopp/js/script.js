@@ -31,7 +31,7 @@
 	coments
 
 ==================================================== */
-	
+
 	// Hide all comments OLs
 	function hideCommentTabs(){
 		$(".commentlist").hide();
@@ -162,11 +162,11 @@
 		// updateSearchAction(val)
 		// updates the search action URL based on what the user clicks
 		function updateSearchAction(val){
-			
+
 			//console.log(val);
 			switch(val) {
 				case "forum":
-					var action = globalsearch_originalaction + "/forum";
+					var action = globalsearch_originalaction;
 					globalsearch.attr("action",action);
 					break;
 				case "member":

@@ -186,6 +186,30 @@
 
 	});
 
+/* ====================================================
+
+	SETTING SEARCH FILTERS BASED ON WHAT PAGE YOU'RE ON
+
+==================================================== */
+
+	// forum
+	if( $("body").hasClass("bbPress") ) {
+		$(".filter.filter-forum").click();
+
+	// users
+	} else if( $("body").hasClass("members") || $("body").hasClass("bp-user") ) {
+		$(".filter.filter-members").click();
+
+	// groups
+	} else if( $("body").hasClass("groups") ) {
+		$(".filter.filter-group").click();
+
+	// fallback - stacks
+	} else {
+		$(".filter.filter-stacks").click();
+
+	}
+
 	/* End jQuery */
 	});
 

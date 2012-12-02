@@ -62,7 +62,7 @@
 										$name = $field->name;
 										$value = $field->data->value = bp_unserialize_profile_field( $field->data->value );
 
-										echo "<a href='".$value."' target='_blank'".bp_get_field_css_class('icon')." title='".$name."'>".$name."</a>";
+										echo "<a href='".$value."' target='_blank'".bp_get_field_css_class('icon')." title='".$name."'><i></i></a>";
 
 									endif;
 								endwhile;

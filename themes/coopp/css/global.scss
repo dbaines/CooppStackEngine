@@ -38,6 +38,19 @@ $calHasIRL: $coBlue;
 
 @mixin OpenSans {font-family: Open Sans, arial, sans-serif;}
 
+@font-face {
+  font-family: 'fontello';
+  src: url("../font/fontello.eot");
+  src:  url("../font/fontello.eot?#iefix") format('embedded-opentype'),
+  			url("../font/fontello.svg#fontello") format('svg'),
+  			url("../font/fontello.woff") format('woff'),
+  			url("../font/fontello.ttf") format('truetype');
+
+  font-weight: normal;
+  font-style: normal;
+}
+@mixin IconFont {font-family: fontello;}
+
 @mixin border-box {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -670,8 +683,44 @@ html {margin-top: 0 !important;}
 
 	// Social Networking Icons
 	#item-buttons {
-		.icon { background: #ccc; }
+		.icon {
+			text-indent: 0;
+			text-align: center;
+			position: relative;
+			@include IconFont;
+			i:after {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: #222;
+				font-style: normal;
+			}
+			&.field_steam-community i:after {content: '\3d';}
+			&.field_facebook i:after {content: '\71';}
+			&.field_google i:after {content: '\34';}
+			&.field_twitter i:after {content: '\28';}
+			&.field_flickr i:after {content: '\26';}
+			&.field_linkedin i:after {content: '\f31b';}
+			&.field_last-fm i:after {content: '\f318';}
+			&.field_reddit i:after {content: '\23';}
+			&.field_instagram i:after {content: '\f31f';}
+			&.field_vimeo i:after {content: '\2d';}
+			&.field_youtube i:after {content: '\29';}
+			&.field_pinterest i:after {content: '\36';}
+			&.field_tumblr i:after {content: '\74';}
+			&.field_github i:after {content: '\77';}
+			&.field_stumbleupon i:after {content: '';}
+			&.field_picasa i:after {content: '';}
+			&.field_forrst i:after {content: '\39';}
+			&.field_dribble i:after {content: '\5e';}
+			&.field_digg i:after {content: '\21';}
+			&.field_delicious i:after {content: '\31';}
+		}
 	}
+
+	// Hiding "Social Networking" group from regular profile view
+	.bp-widget.social-networking {display: none;}
 
 /* Top level tabs */
 #item-nav {padding-top: 20px;}

@@ -731,7 +731,8 @@ a.bp-secondary-action, span.highlight {font-size: 80%; margin-right: 10px;}
 		.standard-form .field-visibility-settings label {font-weight: normal; margin: 5px 0;}
 
 	// Submit buttons should have some space above them
-	.xprofile .submit {padding-top: 20px;}
+	.xprofile .submit,
+	.bp-user .submit {padding-top: 20px;}
 
 /* Wordpress/Buddypress Standard Forms */
 .standard-form label, .standard-form span.label {display: block; font-weight: bold; margin: 15px 0 5px;}
@@ -933,6 +934,67 @@ a.bp-secondary-action, span.highlight {font-size: 80%; margin-right: 10px;}
 .dir-search {margin-top: -50px; float: right;}
 .standard-form label ul, .standard-form span.label ul {font-weight: normal;}
 .groups #item-actions {float: right; margin: 0 0 20px 20px;}
+
+#members-list,
+#member-list,
+#groups-list {
+	&,
+	li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	li {
+		padding: 20px 0;
+		border-top: 1px solid #bbb;
+		&:first-child {
+			border-top: none;
+		}
+		.item-avatar,.item {
+			float: left;
+		}
+		.action {
+			float: right;
+			font-size: 80%;
+			color: #666;
+		}
+		.item-avatar {
+			padding-right: 10px;
+		}
+		.item-meta {
+			font-size: 80%;
+			color: #666;
+		}
+	}
+}
+
+// Group member listing
+// out-dated codebase? different format to above
+#member-list li {
+	> a {
+		float: left;
+		margin-right: 10px;
+	}
+	h5 {
+		font-size: 100%;
+	}
+	span {
+		font-size: 80%;
+		color: #666;
+	}
+}
+
+// Group admins
+#group-admins {
+	&,li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	li {
+		float: left;
+	}
+}
 
 /* ====================================================
 

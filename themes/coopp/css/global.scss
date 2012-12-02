@@ -167,7 +167,7 @@ table {border-collapse: collapse; border-spacing: 0;}
 h1,h2,h3,h4,h5,h6 {margin: 0; padding: 0; font-weight: normal;}
 h2 {font-size: 180%;}
 h3 {margin: 0 0 20px 0; font-size: 150%;}
-h4 {margin: 15px 0 5px 0;}
+h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; padding: 10px 0;}
 
 /* ====================================================
 
@@ -615,6 +615,13 @@ h4 {margin: 15px 0 5px 0;}
 		-o-transition: width .3s ease-in-out;
 		transition: width .3s ease-in-out;
 	}
+
+/* ====================================================
+
+	REGISTER/ACTIVATE
+
+==================================================== */
+#activation-form #key {float: left; margin-right: 10px;}
 
 /* ====================================================
 

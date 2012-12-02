@@ -1,5 +1,15 @@
 <?php get_header( 'buddypress' ); ?>
 
+	<?php if ( bp_account_was_activated() ) : ?>
+
+		<h2 class="page-title widgettitle"><?php _e( 'Account Activated', 'buddypress' ); ?></h2>
+
+	<?php else : ?>
+
+		<h2 class="page-title"><?php _e( 'Activate your Account', 'buddypress' ); ?></h2>
+
+	<?php endif; ?>
+
 	<div id="content" class="page-container">
 		<div class="padder">
 
@@ -20,8 +30,6 @@
 				<?php endif; ?>
 
 			<?php else : ?>
-
-				<h3><?php _e( 'Activate your Account', 'buddypress' ); ?></h3>
 
 				<?php do_action( 'bp_before_activate_content' ); ?>
 

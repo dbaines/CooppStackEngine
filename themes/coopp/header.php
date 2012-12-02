@@ -102,7 +102,7 @@
 					</a>
 					<a class="userinfo-name" href="<?php echo bp_loggedin_user_domain(); ?>" title="View Your Profile">
 						<?php bp_loggedin_user_avatar( 'type=thumb&width=22&height=22' ); ?>
-						<?php echo get_user_meta(get_current_user_id(), 'nickname', true ); ?>
+						<?php echo get_userdata(get_current_user_id())->display_name; ?>
 					</a>
 					<a class="userinfo-settings ir" href="<?php echo bp_loggedin_user_domain(); ?>settings" title="Your Settings">Settings</a>
 					<a class="userinfo-logout ir" href="<?php echo wp_logout_url( wp_guess_url() ); ?>" title="Log Out">Log out</a>

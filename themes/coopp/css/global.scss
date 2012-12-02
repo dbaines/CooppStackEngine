@@ -996,6 +996,11 @@ a.bp-secondary-action, span.highlight {font-size: 80%; margin-right: 10px;}
 	}
 }
 
+// hiding members and group searches
+// replaced with global search in header.php
+#members-dir-search,
+#group-dir-search {display: none;}
+
 /* ====================================================
 
 	BUDDYPRESS SETTINGS

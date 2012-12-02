@@ -65,7 +65,7 @@
 				foreach($memberlist as $memberid){
 					// Look up member details
 					$avatar = get_avatar( $memberid, '20' );
-					$membername = get_user_meta( $memberid, 'nickname', true );
+					$membername = get_userdata($memberid)->display_name;
 					$class = "member";
 					if( $memberid == stack_requested_by() ) {
 						$class .= " requested";
@@ -90,10 +90,11 @@
 		<div class="stackPosters clearfix">
 			<?php if(stack_requested()) { ?>
 			<div class="stackRequested">
-				<?php 
+				<?php
 					$memberid = stack_requested_by();
 					$avatar = get_avatar( $memberid, '20' );
-					$membername = get_user_meta( $memberid, 'nickname', true );
+					//$membername = get_user_meta( $memberid, 'nickname', true );
+					$membername = get_userdata($memberid)->display_name;
 					$profilelink = bp_core_get_user_domain( $memberid );
 				?>
 				<a href="<?php echo $profilelink ?>">

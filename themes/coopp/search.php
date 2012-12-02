@@ -25,7 +25,11 @@ get_header(); ?>
 						 */
 
 						// if post_type=reply (forum) change display to forum results
-						if($_GET['post_type'] == "reply"){
+						if($_GET['post_type'] == "forum"){
+							function setForumTypes() {
+								$query->set('post_type', array('reply', 'topic'));
+								add_filter('pre_get_posts','setForumTypes');
+							}
 							//get_template_part( 'search_forum' );
 							get_template_part( 'search-forum' );
 

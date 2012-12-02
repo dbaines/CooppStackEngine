@@ -46,7 +46,7 @@ get_header(); ?>
 						get_template_part('stacks/bigstack');
 					endwhile;
 				else : ?>
-					<span class="noresults">Sorry, no upcoming stacks :(</span>
+					<span class="noresults">Sorry, there are no upcoming stacks.</span>
 				<?php endif;
 
 			?>
@@ -55,5 +55,5 @@ get_header(); ?>
 
 		</div>
 	</div>
-		
+
 <?php get_footer(); ?>

@@ -15,21 +15,6 @@
 // http://wordpress.stackexchange.com/questions/46335/get-comments-after-specific-date
 
 ?>
-	<div id="comments">
-	<?php if ( post_password_required() ) : ?>
-		<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'twentyeleven' ); ?></p>
-	</div><!-- #comments -->
-
-	<?php
-			/* Stop the rest of comments.php from being processed,
-			 * but don't kill the script entirely -- we still have
-			 * to fully load the template.
-			 */
-			return;
-		endif;
-	?>
-
-	<?php if ( have_comments() ) : ?>
 
 		<div class="commentsTabs clearfix">
 			<?php if(is_past_stack()){ ?>
@@ -41,6 +26,22 @@
 		</div>
 
 		<div class="comments-container">
+
+			<div id="comments">
+			<?php if ( post_password_required() ) : ?>
+				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'twentyeleven' ); ?></p>
+			</div><!-- #comments -->
+
+			<?php
+					/* Stop the rest of comments.php from being processed,
+					 * but don't kill the script entirely -- we still have
+					 * to fully load the template.
+					 */
+					return;
+				endif;
+			?>
+
+		<?php if ( have_comments() ) : ?>
 
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 			<nav id="comment-nav-above">

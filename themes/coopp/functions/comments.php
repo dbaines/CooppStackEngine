@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /* ====================================================
 
@@ -9,8 +9,8 @@ if ( ! function_exists( 'coopp_comments' ) ) :
 	function coopp_comments( $comment, $args, $depth ) {
 
 		$GLOBALS ['comment'] = $comment;
-		if ( '' == $comment->comment_type ) : 
-		
+		if ( '' == $comment->comment_type ) :
+
 			coopp_comments_template($comment, $args, $depth);
 
 		else : ?>
@@ -24,20 +24,20 @@ endif;
 /* ====================================================
 
 	PRE-STACK COMMENTS
-	only show comments that were made on or before 
+	only show comments that were made on or before
 	the stack_date();
 
 ==================================================== */
 if ( ! function_exists( 'coopp_comments_past' ) ) :
 	function coopp_comments_past( $comment, $args, $depth ) {
-		$GLOBALS ['comment'] = $comment; 
+		$GLOBALS ['comment'] = $comment;
 
-		$stack_date = strtotime(stack_date());		
+		$stack_date = strtotime(stack_date());
 		if ( '' == $comment->comment_type ) :
 
 			// Compare stack date to the comment date
 			$comment_date = strtotime(get_comment_date());
-			if($comment_date <= $stack_date) : 
+			if($comment_date <= $stack_date) :
 				coopp_comments_template($comment, $args, $depth);
 			endif;
 		endif;
@@ -56,13 +56,13 @@ if ( ! function_exists( 'coopp_comments_post' ) ) :
 	function coopp_comments_post( $comment, $args, $depth ) {
 		$GLOBALS ['comment'] = $comment;
 
-		
+
 		$stack_date = strtotime(stack_date());
 		if ( '' == $comment->comment_type ) :
 
 			// Compare stack date to the comment date
 			$comment_date = strtotime(get_comment_date());
-			if($comment_date > $stack_date) : 
+			if($comment_date > $stack_date) :
 				coopp_comments_template($comment, $args, $depth);
 			endif;
 
@@ -77,8 +77,8 @@ endif;
 
 ==================================================== */
 
-function coopp_comments_template($comment, $args, $depth){ 
-	
+function coopp_comments_template($comment, $args, $depth){
+
 	// Load some additional details if this is a comment for a stack
 	if( "stack" == get_post_type() ) :
 		// Check if this user is going or if they requested this stack
@@ -108,7 +108,7 @@ function coopp_comments_template($comment, $args, $depth){
 
 	    <div id="comment-<?php comment_ID(); ?>">
 		    <div class="comment-left">
-		    	<?php 
+		    	<?php
 		    		echo get_avatar( $comment, 48 );
 		    		if( "stack" == get_post_type() ) :
 			    		if( $community_leader == true ) {
@@ -128,11 +128,11 @@ function coopp_comments_template($comment, $args, $depth){
 		    		<?php printf( __( '<cite class="fn">%s</cite>', 'twentyten' ), get_comment_author_link() ); ?>
 		    	</div>
 		    	<div class="comment-posted-date">
-		    		<?php 
+		    		<?php
 		    			// Time Ago before certain time
 		    			// http://wp-snippets.com/display-time-agotwitter-style/
 		    			$human_time = human_time_diff(get_comment_time('U'), current_time('timestamp')) . ' ago';
-		    			$robot_time = get_comment_time() . " on " . get_comment_date(); 
+		    			$robot_time = get_comment_time() . " on " . get_comment_date();
 		    			$time_difference = current_time('timestamp') - get_comment_time('U');
 		    			if($time_difference < 172800 ) {
 		    				echo $human_time;
@@ -168,7 +168,7 @@ function coopp_comments_template($comment, $args, $depth){
 	            <?php delete_comment_link(get_comment_ID());  ?>
 			</div>
 		</div>
-    
+
     <?php # end li omitted, for some reason wordpress adds it anyway, adding it in as you would will only break things
 }
 
@@ -183,14 +183,14 @@ function comments_form() {
 
 	$req = get_option('require_name_email');
 	$fields =  array(
-		'author' => '<p>' . '<label for="author">' . __( 'Name' ) . '</label> ' . ( $req ? '<span>*</span>' : '' ) .
-		'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' placeholder = "What should we call you?"' . ( $req ? ' required' : '' ) . '/></p>',
+		'author' => '<p class="comment-fields">' . '<label for="author">' . __( 'Name' ) . ( $req ? '<span>*</span>' : '' ) .
+		'</label><input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' placeholder = "What should we call you?"' . ( $req ? ' required' : '' ) . '/></p>',
 
-		'email'  => '<p><label for="email">' . __( 'Email' ) . '</label> ' . ( $req ? '<span>*</span>' : '' ) .
-		'<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' placeholder="How can we reach you?"' . ( $req ? ' required' : '' ) . ' /></p>',
+		'email'  => '<p class="comment-fields"><label for="email">' . __( 'Email' ) . ( $req ? '<span>*</span>' : '' ) .
+		'</label><input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' placeholder="How can we reach you?"' . ( $req ? ' required' : '' ) . ' /></p>',
 
-		'url'    => '<p><label for="url">' . __( 'Website' ) . '</label>' .
-		'<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="Have you got a website?" /></p>'
+		'url'    => '<p class="comment-fields"><label for="url">' . __( 'Website' ) .
+		'</label><input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="Have you got a website?" /></p>'
 	);
 	return $fields;
 }

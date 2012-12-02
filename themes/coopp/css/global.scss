@@ -558,11 +558,20 @@ h4 {margin: 15px 0 5px 0;}
 
 /* Respond */
 .comment-form-container {border-top: 1px solid #2c2c2c; padding: 20px;}
-	#respond h3 {font-size: 120%; margin-bottom: 5px;}
-	.logged-in-as {color: #666;}
-	.comment-form-comment label {display: block; font-weight: bold; margin: 5px 0;}
-	.comment-form-comment textarea {width: 97.5%;}
-	#respond .form-allowed-tags {color: #666; font-size: 80%; width: auto;}
+	#respond {
+		h3 {font-size: 120%; margin-bottom: 5px;}
+		.logged-in-as {color: #666;}
+
+		// non-logged in fields
+		.comment-fields label {float: left; width: 120px; line-height: 28px; cursor: pointer;}
+
+		// textarea
+		.comment-form-comment label {display: block; margin: 5px 0; cursor: pointer;}
+		.comment-form-comment textarea {width: 97.5%;}
+
+		// allowed tags
+		.form-allowed-tags {color: #666; font-size: 80%; width: auto;}
+	}
 
 	/* Comment Replies */
 	.comment #respond {padding: 10px 0 20px 60px;}

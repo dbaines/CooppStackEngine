@@ -15,9 +15,9 @@ $calHasStack: $coRed;
 $calHasIRL: $coBlue;
 
 @mixin ir {
-	font: 0/0 a; 
-	text-shadow: none; 
-	color: transparent; 
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
 	//background-color: transparent;
 }
 
@@ -47,8 +47,8 @@ $calHasIRL: $coBlue;
 }
 
 @mixin bluebutton {
-	background: $coBlue; 
-	padding: 5px 15px; 
+	background: $coBlue;
+	padding: 5px 15px;
 	color: #fff;
 	-webkit-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
 	-moz-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
@@ -150,7 +150,7 @@ a.button {background: $coBlue; padding: 5px 15px; color: #fff;
 button[disabled],input[disabled] {cursor: default;}
 input[type="checkbox"],
 input[type="radio"] {
-    box-sizing: border-box; padding: 0; *height: 13px; *width: 13px; 
+    box-sizing: border-box; padding: 0; *height: 13px; *width: 13px;
 }
 input[type="search"] {
     -webkit-appearance: textfield;
@@ -255,7 +255,7 @@ h4 {margin: 15px 0 5px 0;}
 	/* Top level search */
 	.search-anchor,
 	.search-field-button {
-		float: right; 
+		float: right;
 		cursor: pointer;
 		@include ir;
 		background: url("../images/sprite-icons.png") 3px -1057px no-repeat;
@@ -396,8 +396,8 @@ h4 {margin: 15px 0 5px 0;}
 .stack-full {margin-top: 20px;}
 	.stack-full .stackArt {position: relative; overflow: hidden; z-index: 4;}
 		.stack-full .stackArt img {
-			width: 100%; 
-			height: auto; 
+			width: 100%;
+			height: auto;
 			display: block;
 		}
 	.stack-full .stackArt .stackIRL {position: absolute; top: 0; left: 0; width: 100%; background: $coBlue url("../images/sprite-icons.png") 14px -15px no-repeat; background-color: rgba(7,115,179,0.85); color: #fff; font-size: 150%; padding: 20px 20px 20px 58px;}
@@ -459,7 +459,7 @@ h4 {margin: 15px 0 5px 0;}
 
 	.stackPosters {background: #b3b3b3; padding: 10px 20px; font-size: 85%;}
 		.stackRequested {float: left; padding-right: 20px;}
-		.stackPosted {float: left;}
+		.stackPosted {float: right;}
 			.stackRequested img,
 			.stackPosted img {float: left; margin-right: 5px;}
 			.stackRequested span,
@@ -584,10 +584,10 @@ h4 {margin: 15px 0 5px 0;}
 
 .page-title {margin: 0; padding: 15px 0 15px; font-weight: normal; @include OpenSans;}
 .page-container {
-	margin: 0 0 20px 0; 
-	background: #d8d8d8; 
-	padding: 20px; 
-	color: #292727; 
+	margin: 0 0 20px 0;
+	background: #d8d8d8;
+	padding: 20px;
+	color: #292727;
 	border-top: 4px solid $coBlue;
 	line-height: 1.5;
 	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.5);
@@ -744,7 +744,7 @@ a.bp-secondary-action, span.highlight {font-size: 80%; margin-right: 10px;}
 		.calendar-nextprev {
 			float: right;
 			div {
-				float: left; 
+				float: left;
 				width: 48px;
 				height: 48px;
 				@include ir;
@@ -760,7 +760,7 @@ a.bp-secondary-action, span.highlight {font-size: 80%; margin-right: 10px;}
 				background-position: 21px -1483px;
 			}
 			.calendar-next-month a {
-				background-position: -31px -1483px;	
+				background-position: -31px -1483px;
 			}
 		}
 	}
@@ -816,7 +816,7 @@ a.bp-secondary-action, span.highlight {font-size: 80%; margin-right: 10px;}
 	.key {
 		margin-right: 10px;
 		.keybox {
-			display: inline-block; 
+			display: inline-block;
 			width: 10px;
 			height: 10px;
 			&.has-stack {
@@ -857,7 +857,7 @@ a.bp-secondary-action, span.highlight {font-size: 80%; margin-right: 10px;}
 		#message-threads .thread-from .activity,
 		#message-threads .thread-excerpt,
 		.message-box .activity {font-size: 80%; color: #666; font-weight: normal;}
-		.message-metadata img {float: left; margin-right: 10px;} 
+		.message-metadata img {float: left; margin-right: 10px;}
 		.message-content {margin-left: 40px;}
 		.message-content textarea,
 		#message_content,
@@ -987,9 +987,9 @@ table.bbp-topics {
 	background: #d8d8d8;
 }
 
-table.bbp-forums th, 
-table.bbp-topics th, 
-table.bbp-topic th, 
+table.bbp-forums th,
+table.bbp-topics th,
+table.bbp-topic th,
 table.bbp-replies th {
 	border-bottom: 3px solid $coBlue;
 	background: #131313;
@@ -998,11 +998,11 @@ table.bbp-replies th {
 	padding: 10px 20px;
 }
 
-#content table.bbp-forums tfoot td, 
-#content table.bbp-topics tfoot td, 
-#content table.bbp-topic tfoot td, 
-#content table.bbp-replies tfoot td, 
-#content table.bbp-replies tr.bbp-reply-header td, 
+#content table.bbp-forums tfoot td,
+#content table.bbp-topics tfoot td,
+#content table.bbp-topic tfoot td,
+#content table.bbp-replies tfoot td,
+#content table.bbp-replies tr.bbp-reply-header td,
 #content table.bbp-topic tr.bbp-topic-header td {
 	background: #ececec;
 	padding: 10px 15px;
@@ -1010,9 +1010,9 @@ table.bbp-replies th {
 }
 
 // hiding seemingly unncessary tfoots
-#content table.bbp-forums tfoot, 
-#content table.bbp-topics tfoot, 
-#content table.bbp-topic tfoot, 
+#content table.bbp-forums tfoot,
+#content table.bbp-topics tfoot,
+#content table.bbp-topic tfoot,
 #content table.bbp-replies tfoot {
 	display: none;
 }
@@ -1025,12 +1025,12 @@ table.bbp-replies th {
 
 // ---- Forum Index ---- //
 .bbp-forum-info,
-.bbp-forum-topic-count, 
-.bbp-forum-reply-count, 
-.bbp-topic-reply-count, 
-.bbp-topic-voice-count, 
+.bbp-forum-topic-count,
+.bbp-forum-reply-count,
+.bbp-topic-reply-count,
+.bbp-topic-voice-count,
 .bbp-topic-action,
-.bbp-topic-freshness, 
+.bbp-topic-freshness,
 .bbp-forum-freshness {
 	vertical-align: middle;
 }
@@ -1040,20 +1040,20 @@ table.bbp-replies th {
 	font-size: 75%;
 }
 
-#content table.bbp-topics, 
-#content table.bbp-forums, 
-#content table.bbp-replies, 
-#container table.bbp-topics, 
-#container table.bbp-forums, 
-#container table.bbp-replies, 
-#main table.bbp-topics, 
-#main table.bbp-forums, 
+#content table.bbp-topics,
+#content table.bbp-forums,
+#content table.bbp-replies,
+#container table.bbp-topics,
+#container table.bbp-forums,
+#container table.bbp-replies,
+#main table.bbp-topics,
+#main table.bbp-forums,
 #main table.bbp-replies {
 	margin-bottom: 20px;
 }
 
-table.bbp-topics td, 
-table.bbp-forums td, 
+table.bbp-topics td,
+table.bbp-forums td,
 table.bbp-replies td {
 	padding: 20px;
 }
@@ -1065,7 +1065,7 @@ table.bbp-replies td {
 }
 
 // ---- Thread Posts ---- //
-.bbp-topic a.bbp-topic-permalink, 
+.bbp-topic a.bbp-topic-permalink,
 .bbp-replies a.bbp-reply-permalink,
 span.bbp-admin-links a {
 	color: $coBlue;
@@ -1089,8 +1089,8 @@ span.bbp-admin-links a {
 }
 
 // ---- Form for New Posts/Threads/Replies ---- //
-#content fieldset.bbp-form, 
-#container fieldset.bbp-form, 
+#content fieldset.bbp-form,
+#container fieldset.bbp-form,
 #wrapper fieldset.bbp-form {
 	background: #eee;
 	border: none;
@@ -1159,18 +1159,18 @@ body .wp-dialog {
 
   /* Rounded corners */
   .tipsy-inner { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
-  
+
   /* Uncomment for shadow */
   /*.tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/
-  
+
   .tipsy-arrow { position: absolute; width: 0; height: 0; line-height: 0; border: 5px dashed #000; }
-  
+
   /* Rules to colour arrows */
   .tipsy-arrow-n { border-bottom-color: #000; }
   .tipsy-arrow-s { border-top-color: #000; }
   .tipsy-arrow-e { border-left-color: #000; }
   .tipsy-arrow-w { border-right-color: #000; }
-  
+
 	.tipsy-n .tipsy-arrow { top: 0px; left: 50%; margin-left: -5px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent; }
     .tipsy-nw .tipsy-arrow { top: 0; left: 10px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent;}
     .tipsy-ne .tipsy-arrow { top: 0; right: 10px; border-bottom-style: solid; border-top: none;  border-left-color: transparent; border-right-color: transparent;}
@@ -1246,16 +1246,16 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 		transition: none;
 	}
 		.logo {
-			display: block; 
-			clear: both; 
-			margin: 10px auto; 
+			display: block;
+			clear: both;
+			margin: 10px auto;
 			float: none;
 		}
 
 	// Account Info
 	.userinfo {
 		float: none;
-		position: absolute; 
+		position: absolute;
 		top: 187px;
 		margin-left: -16px;
 		width: 100%;
@@ -1266,7 +1266,7 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 	// Search
 	.search-anchor.search-field-visible {display: block;}
 	.search-field {
-		top: 65px; 
+		top: 65px;
 		width: 100%;
 		z-index: 10;
 		.search-field-input {width: 65%;}
@@ -1308,10 +1308,10 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 		}
 	}
 	.mobile-menu-hitbox {
-		display: block; 
-		float: right; 
-		width: 60px; 
-		height: 60px; 
+		display: block;
+		float: right;
+		width: 60px;
+		height: 60px;
 		@include ir;
 		background: url("../images/sprite-icons.png") 2px -1008px no-repeat;
 	}
@@ -1322,7 +1322,7 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 	// Large Stacks
 	.stack-full {
 		.stackInfo {
-			position: static; 
+			position: static;
 			width: auto;
 			h2 {
 				font-size: 180%;
@@ -1330,8 +1330,8 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 		}
 		.stackDetailsLeft,
 		.stackDetailsRight {
-			float: none; 
-			clear: both; 
+			float: none;
+			clear: both;
 			width: auto;
 		}
 		.stackDetailsRight .stackThis,

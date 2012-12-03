@@ -1,0 +1,76 @@
+/* ====================================================
+
+	SASSY VARIABLES
+
+==================================================== */
+
+$coBlue: #0773B3;
+$coRed: #B93131;
+$coGreen: #5B9929;
+$coBlueTransparent: rgba(7, 115, 179, 0.85);
+
+// Calendar Box colours
+$calToday: $coGreen;
+$calHasStack: $coRed;
+$calHasIRL: $coBlue;
+
+@mixin ir {
+	//font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+	text-indent: -9999px;
+	//background-color: transparent;
+}
+
+@mixin clearfix {
+	*zoom: 1;
+	&:before,
+	&:after {content: ""; display: table;}
+	&:after {clear: both;}
+}
+
+@mixin CoOppTransition {
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+
+@mixin OpenSans {font-family: Open Sans, arial, sans-serif;}
+
+@font-face {
+  font-family: 'fontello';
+  src:  url("../font/fontello.eot");
+  src:  url("../font/fontello.eot?#iefix") format('embedded-opentype'),
+  			url("../font/fontello.svg#fontello") format('svg'),
+  			url("../font/fontello.woff") format('woff'),
+  			url("../font/fontello.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@mixin IconFont {
+	font-family: fontello;
+}
+
+@mixin border-box {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@mixin bluebutton {
+	background: $coBlue;
+	padding: 5px 15px;
+	color: #fff;
+	-webkit-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
+	-moz-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
+	-ms-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
+	-o-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
+	box-shadow: 0 1px 0px rgba(255,255,255,0.8);
+	&:hover {
+		background: #549cd9;
+	}
+}

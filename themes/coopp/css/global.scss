@@ -1,77 +1,5 @@
-/* ====================================================
-
-	SASSY VARIABLES
-
-==================================================== */
-
-$coBlue: #0773B3;
-$coRed: #B93131;
-$coGreen: #5B9929;
-$coBlueTransparent: rgba(7, 115, 179, 0.85);
-
-// Calendar Box colours
-$calToday: $coGreen;
-$calHasStack: $coRed;
-$calHasIRL: $coBlue;
-
-@mixin ir {
-	font: 0/0 a;
-	text-shadow: none;
-	color: transparent;
-	//background-color: transparent;
-}
-
-@mixin clearfix {
-	*zoom: 1;
-	&:before,
-	&:after {content: ""; display: table;}
-	&:after {clear: both;}
-}
-
-@mixin CoOppTransition {
-	-webkit-transition: all .3s ease-in-out;
-	-moz-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
-	-o-transition: all .3s ease-in-out;
-	transition: all .3s ease-in-out;
-}
-
-@mixin OpenSans {font-family: Open Sans, arial, sans-serif;}
-
-@font-face {
-  font-family: 'fontello';
-  src: url("../font/fontello.eot");
-  src:  url("../font/fontello.eot?#iefix") format('embedded-opentype'),
-  			url("../font/fontello.svg#fontello") format('svg'),
-  			url("../font/fontello.woff") format('woff'),
-  			url("../font/fontello.ttf") format('truetype');
-
-  font-weight: normal;
-  font-style: normal;
-}
-@mixin IconFont {font-family: fontello;}
-
-@mixin border-box {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-@mixin bluebutton {
-	background: $coBlue;
-	padding: 5px 15px;
-	color: #fff;
-	-webkit-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
-	-moz-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
-	-ms-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
-	-o-box-shadow: 0 1px 0px rgba(255,255,255,0.8);
-	box-shadow: 0 1px 0px rgba(255,255,255,0.8);
-	&:hover {
-		background: #549cd9;
-	}
-}
+@import "_variables";
+@import "_font-icons";
 
 /* ====================================================
 
@@ -226,8 +154,8 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 		.userinfo-messages {font-size: 85%; padding: 5px 15px;}
 			.userinfo-messages.new {color: #fff; background: #b93131;}
 		.userinfo-name img {float: left; margin-right: 5px;}
-		.userinfo-settings {width: 20px; height: 20px; background: #ccc url("../images/sprite-icons.png") -1px -537px no-repeat;}
-		.userinfo-logout {width: 20px; height: 20px; background: #ccc url("../images/sprite-icons.png") -1px -492px no-repeat;}
+		.userinfo-settings {width: 20px; height: 20px; position: relative;}
+		.userinfo-logout {width: 20px; height: 20px; position: relative;}
 
 	/* Login form */
 	.login {float: right; padding: 10px 0; font-size: 85%;}
@@ -271,7 +199,7 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 		float: right;
 		cursor: pointer;
 		@include ir;
-		background: url("../images/sprite-icons.png") 3px -1057px no-repeat;
+		//background: url("../images/sprite-icons.png") 3px -1057px no-repeat;
 		width: 60px;
 		height: 60px;
 		@include CoOppTransition;
@@ -350,18 +278,8 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 				float: left;
 				position: relative;
 				@include ir;
-				background: url("../images/sprite-icons.png") -12px -1428px no-repeat;
 				margin: 0 7px;
 				cursor: pointer;
-
-				&.filter-stacks {background-position: -12px -1213px;}
-				&.filter-forum {background-position: -12px -1319px;}
-				&.filter-members {background-position: -12px -1251px;}
-				&.filter-group {background-position: -12px -1285px;}
-				&.active.filter-stacks {background-position: -12px -1356px;}
-				&.active.filter-forum {background-position: -12px -1462px;}
-				&.active.filter-members {background-position: -12px -1394px;}
-				&.active.filter-group {background-position: -12px -1428px;}
 			}
 			input {
 				position: absolute;
@@ -369,6 +287,9 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 				width: 100%;
 				height: 100%;
 				cursor: pointer;
+				top: 0;
+				left: 0;
+				z-index: 10;
 			}
 		}
 	}
@@ -680,44 +601,6 @@ html {margin-top: 0 !important;}
 		#item-buttons a.add {background-position: -3px -923px;}
 		#item-buttons a.remove {background-position: -1px -975px;}
 		#item-buttons a.send-message {background-position: -2px -868px;}
-
-	// Social Networking Icons
-	#item-buttons {
-		.icon {
-			text-indent: 0;
-			text-align: center;
-			position: relative;
-			@include IconFont;
-			i:after {
-				display: block;
-				position: absolute;
-				top: 0;
-				left: 0;
-				color: #222;
-				font-style: normal;
-			}
-			&.field_steam-community i:after {content: '\3d';}
-			&.field_facebook i:after {content: '\71';}
-			&.field_google i:after {content: '\34';}
-			&.field_twitter i:after {content: '\28';}
-			&.field_flickr i:after {content: '\26';}
-			&.field_linkedin i:after {content: '\f31b';}
-			&.field_last-fm i:after {content: '\f318';}
-			&.field_reddit i:after {content: '\23';}
-			&.field_instagram i:after {content: '\f31f';}
-			&.field_vimeo i:after {content: '\2d';}
-			&.field_youtube i:after {content: '\29';}
-			&.field_pinterest i:after {content: '\36';}
-			&.field_tumblr i:after {content: '\74';}
-			&.field_github i:after {content: '\77';}
-			&.field_stumbleupon i:after {content: '';}
-			&.field_picasa i:after {content: '';}
-			&.field_forrst i:after {content: '\39';}
-			&.field_dribble i:after {content: '\5e';}
-			&.field_digg i:after {content: '\21';}
-			&.field_delicious i:after {content: '\31';}
-		}
-	}
 
 	// Hiding "Social Networking" group from regular profile view
 	.bp-widget.social-networking {display: none;}

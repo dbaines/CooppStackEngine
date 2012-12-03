@@ -40,7 +40,7 @@
 		left: 0;
 		width: 100%;
 		@include IconFont;
-		content: "🔍";
+		content: "\1f50d";
 		text-indent: 0;
 		text-align: center;
 		font-size: 180%;
@@ -75,6 +75,22 @@
 	// Profile Icons
 	// Social Networking Icons
 	#item-buttons {
+		#send-private-message a {
+			position: relative;
+			background: transparent !important;
+			&:before {
+				@include IconFont;
+				position: absolute;
+				text-indent: 0;
+				content: "\45";
+				text-align: center;
+				color: #222;
+				font-style: normal;
+				width: 100%;
+				top: 0;
+				left: 0;
+			}
+		}
 		.icon {
 			text-indent: 0;
 			text-align: center;

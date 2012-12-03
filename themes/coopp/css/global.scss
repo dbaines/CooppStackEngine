@@ -582,7 +582,13 @@ html {margin-top: 0 !important;}
 .bp-user .page-container,
 .groups .page-container,
 .members .page-container {margin-top: 40px;}
-	#item-header {}
+	#item-header {
+		.updated {
+			color: $coGreen;
+			font-style: italic;
+			float: right;
+		}
+	}
 	#item-header-avatar {margin: -40px 20px 0 0; float: left;}
 		#item-header-avatar img {
 			-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.5);

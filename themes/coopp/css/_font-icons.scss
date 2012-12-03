@@ -205,3 +205,17 @@
 		@include IconFont;
 		content: "\e83f";
 	}
+
+	// Stacked Members Drop-down
+	.stackedMembers.hasMembers {
+		&:before {
+			@include IconFont;
+			content: "\e4a4";
+			position: absolute;
+			top: 13px;
+			left: 18px;
+		}
+		&.open:before {
+			content: "\e4a3";
+		}
+	}

@@ -10,9 +10,9 @@ get_header(); ?>
 		<div class="pastStacks clearfix">
 
 			<div class="archiveTabs clearfix">
-				<a href="../future-stacks">Future Stacks</a>
-				<a href="../past-stacks" class="current">Past Stacks</a>
-				<a href="../stack">All Stacks</a>
+				<a href="/future-stacks">Future Stacks</a>
+				<a href="/past-stacks" class="current">Past Stacks</a>
+				<a href="/stack">All Stacks</a>
 			</div>
 
 			<div class="page-container">

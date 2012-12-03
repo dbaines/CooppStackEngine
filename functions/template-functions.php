@@ -78,7 +78,7 @@ function stack_links_array(){
 // Links - number of links
 function stack_links_number(){
 	$linkArray = get_post_meta(get_the_ID(), "stack_link_list");
-	return count($linkArray[0]); 
+	return count($linkArray[0]);
 }
 
 // Links - display particular text
@@ -104,7 +104,7 @@ function stack_link_display(){
 	}
 	// Add a steam link if needed
 	if(stack_steamid()){
-		$linkList .= '<li><a href="http://store.steampowered.com/app/'. stack_steamid() .'/" title="View game on the Steam Store">Steam Store Page</a></li>';
+		$linkList .= '<li><a href="http://store.steampowered.com/app/'. stack_steamid() .'/" title="View game on the Steam Store" class="steam">Steam Store Page</a></li>';
 	}
 	// End UL
 	$linkList .= "</ul>\n";
@@ -151,7 +151,7 @@ function stack_art_small(){
 	} else {
 		return bloginfo('url') . '/wp-content/plugins/coopp-stackengine/images/default_small.png';
 	}
-}	
+}
 
 // Check if particular member id is going to stack
 function stack_user_going($member){

@@ -330,6 +330,7 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 ==================================================== */
 
 .stack-full {margin-bottom: 20px;}
+	.singleStack .stack-full {margin-top: 20px;}
 	.stack-full .stackArt {position: relative; overflow: hidden; z-index: 4;}
 		.stack-full .stackArt img {
 			width: 100%;
@@ -369,12 +370,11 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 
 				.stackDetailsRight .cancelStack {padding: 10px; background: #bfbfbf;}
 				.stackDetailsRight .linkList {padding: 20px 0;}
-					.stackDetailsRight .linkList h3 {font-size: 100%;}
+					.stackDetailsRight .linkList h4 {font-size: 100%; margin: 0;}
 
 	.stackedMembers {padding: 10px 20px; color: #575757; border-top: 1px solid #c0c0c0; font-size: 85%; position: relative;}
 		.stackedMembers .stack_number {font-size: 120%; font-weight: bold;}
-		.stackedMembers.hasMembers {background: url("../images/sprite-icons.png") 10px -582px no-repeat; cursor: pointer; padding-left: 40px;}
-		.stackedMembers.open {background-position: 10px -624px;}
+		.stackedMembers.hasMembers {cursor: pointer; padding-left: 40px;}
 		.stackedMembersList {padding: 0 20px 20px; font-size: 85%; display: none; position: relative; @include hwacceleration;}
 			.stackedMembersList ul,
 			.stackedMembersList li {list-style: none; margin: 0; padding: 0; position: relative;}

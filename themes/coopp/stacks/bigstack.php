@@ -37,9 +37,9 @@
 						<?php } else { ?>
 							<a href="?action=join&amp;event=<?php echo get_the_ID() ?>" class="stackThis">I'm in!</a>
 						<?php } ?>
-						<?php if ( stack_links_number() > 0 ) { ?>
+						<?php if ( ( stack_links_number() > 0 ) or ( stack_steamid() != "" ) ) { ?>
 						<div class="linkList">
-							<h3>Links</h3>
+							<h4>Links</h4>
 							<?php echo stack_link_display(); ?>
 						</div>
 						<?php } ?>

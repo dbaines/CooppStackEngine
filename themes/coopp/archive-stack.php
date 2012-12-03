@@ -18,19 +18,22 @@ get_header(); ?>
 			<div id="content" role="main">
 
 			<div class="archiveTabs clearfix">
-				<a href="../future-stacks">Future Stacks</a>
-				<a href="../past-stacks">Past Stacks</a>
-				<a href="../stack" class="current">All Stacks</a>
+				<a href="/future-stacks">Future Stacks</a>
+				<a href="/past-stacks">Past Stacks</a>
+				<a href="/stack" class="current">All Stacks</a>
 			</div>
 
 			<?php
 
 				// Set up our custom query of the next upcoming stack
+				$options = get_option('coopp_settings');
 				$query_args = array(
 					'post_type' => 'stack',
 					'meta_key' => 'stack_date',
 					'orderby' => 'stack_date',
-					'order' => 'DESC'
+					'order' => 'DESC',
+					'posts_per_page' => $options['posts_per_page'],
+					'paged' => get_query_var('paged') ? get_query_var('paged') : 1
 				);
 				$query = new WP_Query($query_args);
 

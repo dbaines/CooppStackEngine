@@ -187,7 +187,7 @@
 				case "forum":
 					var action = globalsearch_originalaction;
 					globalsearch.attr("action",action);
-					$("<input type='hidden' name='post_type' value='' />").attr("value","forum").appendTo(globalsearch);
+					$("<input type='hidden' name='post_type' value='' />").attr("value","forum_search").appendTo(globalsearch);
 					break;
 				case "member":
 					var action = globalsearch_originalaction + "/members";

@@ -219,3 +219,29 @@
 			content: "\e4a3";
 		}
 	}
+
+	// Ajax Page Loading
+	.ajax-pagination a {
+		position: relative;
+		padding-left: 23px;
+		&:before {
+			@include IconFont;
+			content: "\02795";
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+
+	// Forum tags
+	body #content div.bbp-topic-tags {
+		padding-left: 30px;
+		position: relative;
+		&:before {
+			@include IconFont;
+			content: "\3e";
+			position: absolute;
+			top: 13px;
+			left: 10px;
+		}
+	}

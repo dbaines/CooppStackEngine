@@ -373,7 +373,7 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 		.stackedMembers .stack_number {font-size: 120%; font-weight: bold;}
 		.stackedMembers.hasMembers {background: url("../images/sprite-icons.png") 10px -582px no-repeat; cursor: pointer; padding-left: 40px;}
 		.stackedMembers.open {background-position: 10px -624px;}
-		.stackedMembersList {padding: 0 20px 20px; font-size: 85%; display: none; position: relative;}
+		.stackedMembersList {padding: 0 20px 20px; font-size: 85%; display: none; position: relative; @include hwacceleration;}
 			.stackedMembersList ul,
 			.stackedMembersList li {list-style: none; margin: 0; padding: 0; position: relative;}
 			.stackedMembersList li {float: left; width: 33%; box-sizing: border-box;}
@@ -610,7 +610,7 @@ html {margin-top: 0 !important;}
 
 /* Top level tabs */
 #item-nav {padding-top: 20px;}
-.item-list-tabs {clear: both; margin: 0 -20px; background: #131313; height: 36px; line-height: 36px;}
+.item-list-tabs {clear: both; margin: 0 -20px; background: #131313; min-height: 36px; line-height: 36px; @include clearfix;}
 	.item-list-tabs ul,
 	.item-list-tabs li {float: left; list-style: none; padding: 0; margin: 0;}
 	.item-list-tabs li > a,
@@ -626,7 +626,7 @@ html {margin-top: 0 !important;}
 		#activity-filter-select {padding-left: 10px;}
 
 /* Secondary tabs */
-.item-list-tabs#subnav {background: transparent; background: $coBlue; margin-bottom: 20px; border: 0; height: 28px; line-height: 28px; padding: 3px; position: relative;}
+.item-list-tabs#subnav {background: transparent; background: $coBlue; margin-bottom: 20px; border: 0; min-height: 28px; line-height: 28px; padding: 3px; position: relative; @include clearfix;}
 	.item-list-tabs#subnav ul {width: 100%; font-size: 80%; color: #ddd;}
 	.item-list-tabs#subnav a {border: 0;}
 	.item-list-tabs#subnav a:hover {background: #045B8E;}
@@ -1399,11 +1399,22 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 			clear: both;
 			width: auto;
 		}
+		.stackDetailsRight {padding-top: 20px;}
 		.stackDetailsRight .stackThis,
 		.stackDetailsRight .stackThisDisabled {
 			margin-top: 0;
 		}
+		.stackedMembersList li {
+			width: 100%;
+			float: none;
+		}
+		.stackRequested,
+		.stackPosted {float: none; clear: both; width: 100%;}
 	}
 
+	// Profiles
+	#item-header-content h2 {clear: both;}
+
+	// Forum
 
 }

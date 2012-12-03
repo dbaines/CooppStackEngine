@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 add_action( 'init', 'register_cpt_stack' );
 
 function register_cpt_stack() {
 
-    $labels = array( 
+    $labels = array(
 		'name'               => _x( 'Stacks', 'stack' ),
 		'singular_name'      => _x( 'Stack', 'stack' ),
 		'add_new'            => _x( 'Add New Stack', 'stack' ),
@@ -19,7 +19,7 @@ function register_cpt_stack() {
 		'menu_name'          => _x( 'Stacks', 'stack' ),
     );
 
-    $args = array( 
+    $args = array(
 		'labels'              => $labels,
 		'hierarchical'        => true,
 		'description'         => 'description',
@@ -36,7 +36,7 @@ function register_cpt_stack() {
 		'query_var'           => true,
 		'can_export'          => true,
 		'rewrite'             => true,
-		'capability_type'     => 'post', 
+		'capability_type'     => 'post',
 		'supports'            => array( 'title', 'editor', 'author', 'thumbnail', 'custom-fields', 'trackbacks', 'comments', 'revisions', 'page-attributes', 'post-formats' ),
     );
 

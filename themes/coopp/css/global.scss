@@ -1348,11 +1348,9 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 		width: 100%;
 		background: #ccc;
 		float: none;
-		height: 0;
-		-webkit-transition: all 2s ease-in;
+		z-index: 10;
 		&.mobile-visible {
 			display: block;
-			height: auto;
 		}
 		.loginFields {
 			padding-left: 10px;
@@ -1440,7 +1438,7 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 	}
 
 	// Index
-	.pastStacks {display: none;}
+	.home-page .pastStacks {display: none;}
 
 	// Large Stacks
 	.stack-full {

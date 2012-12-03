@@ -24,11 +24,14 @@ get_header(); ?>
 			<?php
 
 				// Set up our custom query of the next upcoming stack
+				$options = get_option('coopp_settings');
 				$query_args = array(
+					'posts_per_page' => $options['posts_per_page'],
 					'post_type' => 'stack',
 					'meta_key' => 'stack_date',
 					'meta_value' => strftime('%Y-%m-%d', time()),
-					'meta_compare' => '<'
+					'meta_compare' => '<',
+					'paged' => get_query_var('paged') ? get_query_var('paged') : 1
 				);
 				$query = new WP_Query($query_args);
 
@@ -36,14 +39,13 @@ get_header(); ?>
 				if( $query->have_posts() ) :
 					while ( $query->have_posts() ) : $query->the_post();
 						get_template_part('stacks/shortstack');
-					endwhile;
+					endwhile; wp_reset_query();
 				else : ?>
 					<span class="noresults">There haven't been any past stacks. </span>
 				<?php endif;
+				get_template_part('stack-navigation');
 
 			?>
-
-			stack navigation
 
 		</div>
 	</div>

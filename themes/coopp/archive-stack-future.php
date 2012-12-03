@@ -32,11 +32,14 @@ get_header(); ?>
 			<?php
 
 				// Set up our custom query of the next upcoming stack
+				$options = get_option('coopp_settings');
 				$query_args = array(
 					'post_type' => 'stack',
 					'meta_key' => 'stack_date',
 					'meta_value' => strftime('%Y-%m-%d', time()),
-					'meta_compare' => '>='
+					'meta_compare' => '>=',
+					'posts_per_page' => $options['posts_per_page'],
+					'paged' => get_query_var('paged') ? get_query_var('paged') : 1
 				);
 				$query = new WP_Query($query_args);
 
@@ -48,10 +51,9 @@ get_header(); ?>
 				else : ?>
 					<span class="noresults">Sorry, there are no upcoming stacks.</span>
 				<?php endif;
+				get_template_part('stack-navigation');
 
 			?>
-
-			stack navigation
 
 		</div>
 	</div>

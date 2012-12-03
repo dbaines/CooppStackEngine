@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /* ====================================================
 
@@ -30,7 +30,7 @@ function coopp_customize($wp_customize){
 	$wp_customize->add_setting( 'coopp_announcements[display]', array(
 		'capability'    => 'edit_theme_options',
 		'type'			=> 'option',
-	) ); 
+	) );
 	$wp_customize->add_control( 'display_announcement', array(
 		'settings' 		=> 'coopp_announcements[display]',
 		'label'			=> __( 'Show announcement box?' ),
@@ -126,7 +126,7 @@ function coopp_customize($wp_customize){
 	$wp_customize->add_setting( 'coopp_settings[steam_show]', array(
 		'capability'    => 'edit_theme_options',
 		'type'			=> 'option',
-	) ); 
+	) );
 	$wp_customize->add_control( 'show_steam_links', array(
 		'settings' 		=> 'coopp_settings[steam_show]',
 		'label'			=> __( 'Auto-add Steam store links to stacks that have a steamid assigned' ),
@@ -135,9 +135,20 @@ function coopp_customize($wp_customize){
 	) );
 
 	// Number of stacks per archive page
+  $wp_customize->add_setting( 'coopp_settings[posts_per_page]', array(
+      'default'       => '10',
+      'capability'    => 'edit_theme_options',
+      'type'          => 'option',
+
+  ) );
+  $wp_customize->add_control( 'posts_per_page', array(
+      'label'      	=> __('Stacks per archive page', 'coopp'),
+      'section'    	=> 'coopp_settings',
+      'settings'   	=> 'coopp_settings[posts_per_page]',
+  ) );
 
 	// Ajax load more stacks or pagination
-	$wp_customize->add_setting( 'coopp_settings[ajax_load]', array( 
+	$wp_customize->add_setting( 'coopp_settings[ajax_load]', array(
 		'default' 		=> 'off',
 		'capability'	=> 'edit_theme_options',
 		'type'			=> 'option',

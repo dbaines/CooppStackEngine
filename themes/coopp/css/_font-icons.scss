@@ -39,7 +39,6 @@
 		top: 15px;
 		left: 0;
 		width: 100%;
-		height: 100%;
 		@include IconFont;
 		content: "🔍";
 		text-indent: 0;
@@ -60,7 +59,6 @@
 			top: 2px;
 			left: 0;
 			width: 100%;
-			height: 100%;
 			font-size: 100%;
 			color: #949494;
 			text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
@@ -105,8 +103,8 @@
 			&.field_pinterest i:after {content: '\36';}
 			&.field_tumblr i:after {content: '\74';}
 			&.field_github i:after {content: '\77';}
-			&.field_stumbleupon i:after {content: '';}
-			&.field_picasa i:after {content: '';}
+			&.field_stumbleupon i:after {content: '\35';}
+			&.field_picasa i:after {content: '\f31c';}
 			&.field_forrst i:after {content: '\39';}
 			&.field_dribble i:after {content: '\5e';}
 			&.field_digg i:after {content: '\21';}
@@ -115,6 +113,54 @@
 	}
 
 	// Calendar Arrows
-
+	.calendar-nextprev {
+		a {
+			position: relative;
+		}
+		a:before {
+			@include IconFont;
+			text-indent: 0;
+			position: absolute;
+			width: 100%;
+			display: block;
+			text-align: center;
+			top: 13px;
+			color: #fff;
+		}
+		.calendar-last-month a:before {content: "\e75d";}
+		.calendar-next-month a:before {content: "\e75e";}
+	}
 
 	// Stack Posts
+	// Comments/Perma/Edit Stack
+	.stackTextMeta {
+		.perma:before,
+		.edit a:before,
+		.comments:before {
+			float: left;
+			width: 22px;
+			@include IconFont;
+		}
+		.comments:before {content: "\e720";}
+		.perma:before {content: "\1f517";}
+		.edit a:before {content: "\65";}
+	}
+	// Stack Location (map pin icon)
+	.stackLocation:before {
+		float: left;
+		width: 32px;
+		font-size: 200%;
+		margin-top: -8px;
+		@include IconFont;
+		content: "\6c";
+	}
+	// IRL Stack
+	.stack-full .stackArt .stackIRL:before {
+		float: left;
+		position: absolute;
+		top: 12px;
+		left: 20px;
+		font-size: 150%;
+		@include IconFont;
+		content: "\e83f";
+	}

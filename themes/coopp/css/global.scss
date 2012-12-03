@@ -334,22 +334,19 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 			height: auto;
 			display: block;
 		}
-	.stack-full .stackArt .stackIRL {position: absolute; top: 0; left: 0; width: 100%; background: $coBlue url("../images/sprite-icons.png") 14px -15px no-repeat; background-color: rgba(7,115,179,0.85); color: #fff; font-size: 150%; padding: 20px 20px 20px 58px;}
+	.stack-full .stackArt .stackIRL {position: absolute; top: 0; left: 0; width: 100%; background: $coBlue; background-color: rgba(7,115,179,0.85); color: #fff; font-size: 150%; padding: 20px 20px 17px 58px;}
 	.stack-full .stackInfo {position: absolute; bottom: 0; left: 0; width: 100%; background: #b93131; background: rgba(185,49,49,0.85); color: #fff; padding: 20px;}
 		.stack-full .stackInfo h2 {font-size: 250%; font-weight: normal; line-height: 1.2;}
 		.stack-full .stackInfo h3 {font-size: 120%; font-weight: normal; margin: 0;}
 
 		.stack-full .stackDetails {padding: 20px; position: relative; z-index: 5;}
 			.stackDetailsLeft {float: left; width: 70%;}
-				.stackLocation {padding: 20px 20px 20px 40px; font-size: 110%; background: url("../images/sprite-icons.png") 4px -103px no-repeat;}
+				.stackLocation {padding: 20px 20px 20px 0; font-size: 110%;}
 				.stack-full .stackText {}
 				.stack-full .stackTextMeta {font-size: 85%; padding: 15px 0;}
 					.stackTextMeta .perma,
 					.stackTextMeta .comments,
-					.stackTextMeta .edit a {padding: 3px 23px;}
-					.stackTextMeta .perma {background: url("../images/sprite-icons.png") -7px -447px no-repeat;}
-					.stackTextMeta .comments {background: url("../images/sprite-icons.png") -5px -398px no-repeat;}
-					.stackTextMeta .edit a {background: url("../images/sprite-icons.png") -7px -812px no-repeat;}
+					.stackTextMeta .edit a {padding: 3px 23px 0 0; float: left;}
 			.stackDetailsRight {float: right; width: 27%;}
 				.stackDetailsRight .stackThis {padding: 30px; background: #5b9929; font-size: 160%; font-weight: normal; color: #fff; text-align: center; margin-top: -35px; cursor: pointer; display: block; line-height: 1;}
 					.stackDetailsRight .stackThis:hover {
@@ -752,14 +749,7 @@ a.bp-secondary-action, span.highlight {font-size: 80%; margin-right: 10px;}
 					display: block;
 					width: 48px;
 					height: 48px;
-					background: url("../images/sprite-icons.png") 0 0 no-repeat;
 				}
-			}
-			.calendar-last-month a {
-				background-position: 21px -1483px;
-			}
-			.calendar-next-month a {
-				background-position: -31px -1483px;
 			}
 		}
 	}

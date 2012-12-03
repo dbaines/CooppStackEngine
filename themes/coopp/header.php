@@ -141,7 +141,7 @@
 				<div class="search-field-filters clearfix">
 					<span class="label">Filter</span>
 					<span class="filter filter-stacks"><input type="radio" value="stack" title="Search Stacks" checked />Search Stacks</span>
-					<span class="filter filter-forum"><input type="radio" name="post_type" value="forum" title="Search Forum"/>Search Forum</span>
+					<span class="filter filter-forum"><input type="radio" value="forum" title="Search Forum"/>Search Forum</span>
 					<span class="filter filter-members"><input type="radio" value="member" title="Search Members"/>Search Members</span>
 					<span class="filter filter-group"><input type="radio" value="group" title="Search Groups"/>Search Groups</span>
 				</div>

@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-		<section id="primary">
+		<section id="primary" class="stack-archives-all">
 			<div id="content" role="main">
 
 			<div class="archiveTabs clearfix">

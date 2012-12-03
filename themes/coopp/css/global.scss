@@ -410,10 +410,10 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 	.stack-short .stackArt {float: left; position: relative;}
 		.stack-short .stackArt img {display: block;}
 		.stack-short .stackArt .stackIRL {position: absolute; top: 10px; left: 0; color: #fff; font-weight: bold; font-size: 120%; background: $coBlue; background-color: rgba(7,115,179,0.85); padding: 10px;}
-	.stack-short .stackDetails {float: left; padding: 20px;}
+	.stack-short .stackDetails {float: left; padding: 20px 26px;}
 		.stack-short .stackDetails h2 {font-size: 260%; font-weight: normal;}
 		.stack-short .stackDetails h3 {font-size: 140%; margin: 0; font-weight: normal;}
-		.stack-short .stackMembers {padding: 20px 0;}
+		.stack-short .stackMembers {padding: 25px 0 50px;}
 	.stackLink a {display: block; position: absolute; top: 0; right: 0; width: 50px; height: 245px; background: #b3b3b3 url("../images/arrow_big.png") 50% 50% no-repeat;
 		-webkit-transition: width .5s ease-in;
 		-moz-transition: width .5s ease-in;
@@ -428,6 +428,8 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 			-o-transition: width .2s ease-in;
 			transition: width .2s ease-in;
 			}
+
+.stack-short.past-stack {}
 
 /* ====================================================
 

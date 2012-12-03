@@ -1,5 +1,5 @@
 
-	<article class="stack stack-short clearfix">
+	<article class="stack stack-short clearfix <?php if ( is_past_stack() ) { echo "past-stack"; } ?>">
 
 		<div class="stackArt">
 			<img src="<?php echo stack_art_small() ?>" alt="" title="" />
@@ -9,7 +9,7 @@
 		</div>
 		<div class="stackDetails">
 			<hgroup class="stackInfo">
-				<h2><?php echo the_title(); ?></h2>
+				<h2><a href="<?php echo the_permalink(); ?>" class="ir" title="View Full Stack Details"><?php echo the_title(); ?></a></h2>
 				<h3><?php echo date( 'l, jS F Y', strtotime( stack_date() ) ) . " at " . stack_time(); ?></h3>
 			</hgroup>
 			<div class="stackMembers">

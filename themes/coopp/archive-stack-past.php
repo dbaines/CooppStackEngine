@@ -38,7 +38,9 @@ get_header(); ?>
 				// The loop
 				if( $query->have_posts() ) :
 					while ( $query->have_posts() ) : $query->the_post();
+						echo "<div class='stack-container'>";
 						get_template_part('stacks/shortstack');
+						echo "</div>";
 					endwhile; wp_reset_query();
 				else : ?>
 					<span class="noresults">There haven't been any past stacks. </span>

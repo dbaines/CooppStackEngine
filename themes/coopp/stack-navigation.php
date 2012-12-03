@@ -20,17 +20,20 @@
 		if($ajaxload == "ajax"){ ?>
 
 			<nav class="ajax-pagination">
-				<span class="pages-total">Page 1 of 1</span>
-				<span class="load-more">Load More Stacks</span>
+				<?php // check if we are on the last page
+				if ( $wp_query->max_num_pages == get_query_var('paged') ) : ?>
+					<a class="disabled" title="No more stacks to load">No more stacks to load.</a>
+				<?php else :
+					next_posts_link( __( 'Load More Stacks', 'twentyten' ) );
+				endif; ?>
 			</nav>
-
 		<?php
 		// If we shouldn't be doing ajax stuff, do regular pagination instead, bro.
 		} else { ?>
 
 				<nav class="classic-pagination">
-					<div class="nav-previous"><?php next_posts_link(); ?></div>
-					<div class="nav-next"><?php previous_posts_link(); ?></div>
+					<div class="nav-previous"><?php previous_posts_link(); ?></div>
+					<div class="nav-next"><?php next_posts_link(); ?></div>
 				</nav><!-- #nav-above -->
 
 		<?php }

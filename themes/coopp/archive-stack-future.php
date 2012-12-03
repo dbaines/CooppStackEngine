@@ -46,7 +46,9 @@ get_header(); ?>
 				// The loop
 				if( $query->have_posts() ) :
 					while ( $query->have_posts() ) : $query->the_post();
+						echo "<div class='stack-container'>";
 						get_template_part('stacks/bigstack');
+						echo "</div>";
 					endwhile;
 				else : ?>
 					<span class="noresults">Sorry, there are no upcoming stacks.</span>

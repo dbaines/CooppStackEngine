@@ -37,11 +37,14 @@ get_header(); ?>
 				// The loop
 				if( $query->have_posts() ) :
 					while ( $query->have_posts() ) : $query->the_post();
+						echo "<div class='stack-container'>";
 						get_template_part('stacks/shortstack');
+						echo "</div>";
 					endwhile;
 				else : ?>
 					<span class="noresults">According to our very accurate statistics, there have never ever actually been any stacks. That shit is whack, yo. </span>
 				<?php endif;
+				get_template_part('stack-navigation');
 
 			?>
 

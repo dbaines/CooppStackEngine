@@ -329,7 +329,7 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 
 ==================================================== */
 
-.stack-full {margin-top: 20px;}
+.stack-full {margin-bottom: 20px;}
 	.stack-full .stackArt {position: relative; overflow: hidden; z-index: 4;}
 		.stack-full .stackArt img {
 			width: 100%;
@@ -405,7 +405,7 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 ==================================================== */
 
 .stack-short {margin-bottom: 20px; position: relative;}
-	.stack-short:last-child {margin-bottom: 0;}
+	//.stack-short:last-child {margin-bottom: 0;}
 	.stack-short .stackArt {float: left; position: relative;}
 		.stack-short .stackArt img {display: block;}
 		.stack-short .stackArt .stackIRL {position: absolute; top: 10px; left: 0; color: #fff; font-weight: bold; font-size: 120%; background: $coBlue; background-color: rgba(7,115,179,0.85); padding: 10px;}
@@ -569,6 +569,9 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 	}
 	.nextStack .stack-full {
 		margin-top: 0;
+	}
+	.stack-short {
+		margin-bottom: 20px;
 	}
 }
 
@@ -999,6 +1002,43 @@ table {width: 100%;}
 table tr td, table tr th {padding: 8px; vertical-align: top;}
 table tr th {text-align: left; background: #ccc;}
 table tr td.label {font-weight: bold; width: 25%;}
+
+/* ====================================================
+
+	PAGINATION
+
+==================================================== */
+
+.classic-pagination {
+	padding: 15px 0;
+	.nav-previous {float: left;}
+	.nav-next {float: right;}
+	a {
+		color: #aaa;
+	}
+	a:hover {
+		color: #ccc;
+	}
+}
+
+.ajax-pagination {
+	a {
+		color: #aaa;
+	}
+	a:hover {
+		color: #ccc;
+	}
+	a.disabled {
+		cursor: not-allowed;
+		color: #666;
+	}
+}
+
+.page-break {
+	border-top: 1px dotted #555;
+	height: 20px;
+	margin-top: 20px;
+}
 
 /* ====================================================
 

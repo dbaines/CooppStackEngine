@@ -231,6 +231,78 @@
 
 	}
 
+/* ====================================================
+
+	AJAX LOAD MORE POSTS
+	from dbaines.com
+
+==================================================== */
+
+$(".ajax-pagination a").live("click", function(e){
+	var button = $(this);
+
+	// stop right there, criminal scum!
+	e.preventDefault();
+
+	// check if disabled, return nothing if disabled
+	if( button.hasClass("disabled") ) {return false;}
+
+	// get the URL to load
+	var linkToGet = button.attr("href");
+
+	// put load more link in to variable in case we need it again later (for error reporting)
+	var oldLoadMore = button.html();
+
+	// show a loading message
+	$(".ajax-pagination").html("<span class='loading-posts'>Loading...</span>");
+
+	// hide any errors
+	$(".load-error").remove();
+
+	// hide the pagination link
+	$(".loadmore-pagination").hide();
+	$(".loadmore-pagination-links").hide();
+
+	// specify our target element to load content from
+	var ajaxTarget = "#primary";
+
+	// loading new content via ajax
+	$("<div>").load(linkToGet+' '+ajaxTarget, function(response, status) {
+
+		if (response.readyState = 4){
+			if(status == "success") {
+
+				// add page break
+				$(".stack-container").append("<div class='page-break'></div>");
+
+				// getting page number
+				//var currentPage = $(".wp-pagenavi .pages", this).html();
+				//$(".page-break").html("<span class='page'>"+currentPage+"</div>");
+
+				// Appending the html from this div in to content container
+				$(".stack-container").append($(this).find(".stack-container").html());
+
+				// Loading new load more link
+				var newLoadMore = $(".ajax-pagination",this).html();
+				$(".ajax-pagination").html(newLoadMore);
+
+				//
+			} else {
+				// Show the load more button again
+				$(".ajax-pagination").html(oldLoadMore);
+
+				// Show error message
+				$(".ajax-pagination").before("<span class='load-error'>Error retrieving stacks. Please try again.</span>");
+
+				// Show pagination links
+				$(".loadmore-pagination").show();
+			}
+		}
+
+	});
+
+});
+
 	/* End jQuery */
 	});
 

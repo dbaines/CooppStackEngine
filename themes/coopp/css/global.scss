@@ -295,7 +295,9 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 	}
 
 	// Mobile menu - hidden by default
-	.mobile-menu-hitbox {display: none;}
+	.mobile-menu-hitbox,
+	.mobile-account-hitbox,
+	.mobile-login-hitbox {display: none;}
 
 /* Page Content */
 
@@ -1310,6 +1312,9 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 		-o-transition: none;
 		transition: none;
 	}
+	.header .cFull {
+		width: 100%;
+	}
 		.logo {
 			display: block;
 			clear: both;
@@ -1322,14 +1327,58 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 		float: none;
 		position: absolute;
 		top: 187px;
-		margin-left: -16px;
 		width: 100%;
 		background: #ccc;
 		display: none;
+		&.mobile-visible {
+			display: block;
+		}
+		.userinfo-logout {
+			float: right;
+			margin-right: 10px;
+		}
+	}
+
+	// Login
+	.login {
+		display: none;
+		position: absolute;
+		top: 159px;
+		padding: 20px 0;
+		width: 100%;
+		background: #ccc;
+		float: none;
+		height: 0;
+		-webkit-transition: all 2s ease-in;
+		&.mobile-visible {
+			display: block;
+			height: auto;
+		}
+		.loginFields {
+			padding-left: 10px;
+			input {
+				max-width: 90%;
+				margin-bottom: 5px;
+			}
+		}
+		.loginActions {
+			padding: 0 10px;
+			input, span {
+				display: block;
+				clear: both;
+				float: none;
+			}
+			span {
+				padding-top: 10px;
+			}
+		}
 	}
 
 	// Search
-	.search-anchor.search-field-visible {display: block;}
+	.search-anchor {
+		&:hover {background: transparent;}
+		&.search-field-visible {display: block;}
+	}
 	.search-field {
 		top: 65px;
 		width: 100%;
@@ -1372,13 +1421,22 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 			}
 		}
 	}
+	.mobile-account-hitbox,
+	.mobile-login-hitbox {
+		display: block;
+		float: left;
+		width: 60px;
+		height: 60px;
+		@include ir;
+		cursor: pointer;
+	}
 	.mobile-menu-hitbox {
 		display: block;
 		float: right;
 		width: 60px;
 		height: 60px;
 		@include ir;
-		background: url("../images/sprite-icons.png") 2px -1008px no-repeat;
+		cursor: pointer;
 	}
 
 	// Index
@@ -1414,6 +1472,9 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 
 	// Profiles
 	#item-header-content h2 {clear: both;}
+	.message-search {
+		position: static;
+	}
 
 	// Forum
 

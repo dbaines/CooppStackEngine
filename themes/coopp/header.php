@@ -148,6 +148,11 @@
 			</form>
 			<div class="search-anchor">Search Co-Opp.net</div>
 			<div class="mobile-menu-hitbox">Show Menu</div>
+			<?php if( is_user_logged_in() ) { ?>
+			<div class="mobile-account-hitbox">Show Account Details</div>
+			<?php } else { ?>
+			<div class="mobile-login-hitbox">Login/Register</div>
+			<?php } ?>
 		</div>
 	</section>
 

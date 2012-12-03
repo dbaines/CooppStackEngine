@@ -87,9 +87,8 @@
 	// Clicking the anchor shows the search field
 	searchAnchor.click(function(){
 		// hide the menu if mobile-visible
-		if ( $(".menu").hasClass("mobile-visible") ) {
-			$(".menu").removeClass("mobile-visible");
-		}
+		$(".menu").removeClass("mobile-visible");
+		$(".userinfo").removeClass("mobile-visible");
 		// if it has the class 'search-field-visible' already, hide the search field instead
 		if( searchAnchor.hasClass('search-field-visible') ) {
 			searchField.removeClass('search-field-visible');
@@ -112,8 +111,10 @@
 
 	var menuhitbox = $(".mobile-menu-hitbox"),
 		menu = $(".menu"),
-		accounthitbox = $(".account-hitbox"),
-		accountinfo = $(".userinfo");
+		accounthitbox = $(".mobile-account-hitbox"),
+		accountinfo = $(".userinfo"),
+		loginhitbox = $(".mobile-login-hitbox"),
+		logininfo = $(".login");
 
 	menuhitbox.click(function(e){
 		e.preventDefault();
@@ -121,16 +122,31 @@
 		searchField.removeClass('search-field-visible');
 		searchAnchor.removeClass('search-field-visible');
 		accountinfo.removeClass("mobile-visible");
+		logininfo.removeClass("mobile-visible");
+		// show menu
 		menu.toggleClass("mobile-visible");
 	});
 
 	accounthitbox.click(function(e){
 		e.preventDefault();
-		// hide search/menu
+		// hide search/account
 		searchField.removeClass('search-field-visible');
 		searchAnchor.removeClass('search-field-visible');
 		menu.removeClass("mobile-visible");
+		logininfo.removeClass("mobile-visible");
+		// show account
 		accountinfo.toggleClass("mobile-visible");
+	});
+
+	loginhitbox.click(function(e){
+		e.preventDefault();
+		// hide search/account
+		searchField.removeClass('search-field-visible');
+		searchAnchor.removeClass('search-field-visible');
+		menu.removeClass("mobile-visible");
+		accountinfo.removeClass("mobile-visible");
+		// show account
+		logininfo.toggleClass("mobile-visible");
 	});
 
 /* ====================================================

@@ -28,7 +28,31 @@
 			text-indent: 0;
 			@include IconFont;
 			content: "\e801";
+			color: $coRed;
 		}
+	// Mobile Buttons
+	.mobile-account-hitbox,
+	.mobile-login-hitbox,
+	.mobile-menu-hitbox {
+		position: relative;
+	}
+	.mobile-account-hitbox:before,
+	.mobile-login-hitbox:before,
+	.mobile-menu-hitbox:before {
+		@include IconFont;
+		position: absolute;
+		width: 100%;
+		top: 12px;
+		left: 0;
+		content: "a";
+		text-indent: 0;
+		color: #fff;
+		font-size: 212%;
+		text-align: center;
+	}
+	.mobile-account-hitbox:before {content: "\6d";}
+	.mobile-login-hitbox:before {content: "\1f511";}
+	.mobile-menu-hitbox:before {content: "\e803";}
 
 	// Search
 	.search-anchor,

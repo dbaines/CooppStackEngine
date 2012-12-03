@@ -140,7 +140,7 @@
 ==================================================== */
 
 	var globalsearch = $("#search"),
-		globalsearch_originalaction = globalsearch.attr("action");
+			globalsearch_originalaction = globalsearch.attr("action");
 
 	$(".search-field-filters .filter").each(function(){
 		var filter = $(this),
@@ -163,11 +163,15 @@
 		// updates the search action URL based on what the user clicks
 		function updateSearchAction(val){
 
+			// remove any post_type definitions
+			globalsearch.find("input[type=hidden]").remove();
+
 			//console.log(val);
 			switch(val) {
 				case "forum":
 					var action = globalsearch_originalaction;
 					globalsearch.attr("action",action);
+					$("<input type='hidden' name='post_type' value='' />").attr("value","forum").appendTo(globalsearch);
 					break;
 				case "member":
 					var action = globalsearch_originalaction + "/members";
@@ -180,6 +184,7 @@
 				case "stack":
 					var action = globalsearch_originalaction;
 					globalsearch.attr("action",action);
+					$("<input type='hidden' name='post_type' value='' />").attr("value","stack").appendTo(globalsearch);
 					break;
 			}
 		}

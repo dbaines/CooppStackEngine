@@ -376,7 +376,8 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 	.stackedMembers {padding: 10px 20px; color: #575757; border-top: 1px solid #c0c0c0; font-size: 85%; position: relative;}
 		.stackedMembers .stack_number {font-size: 120%; font-weight: bold;}
 		.stackedMembers.hasMembers {cursor: pointer; padding-left: 40px;}
-		.stackedMembersList {padding: 0 20px 20px; font-size: 85%; display: none; position: relative; @include hwacceleration;}
+		.stackedMembersList {font-size: 85%; position: relative; @include hwacceleration;}
+			.stackedMembersListWrapper {padding: 0 20px 20px;}
 			.stackedMembersList ul,
 			.stackedMembersList li {list-style: none; margin: 0; padding: 0; position: relative;}
 			.stackedMembersList li {float: left; width: 33%; box-sizing: border-box;}

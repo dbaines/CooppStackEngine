@@ -59,33 +59,35 @@
 		</div>
 		<?php } ?>
 		<div class="stackedMembersList">
-			<ul class="memberlist clearfix">
-			<?php
-				$memberlist = stack_memberlist();
-				foreach($memberlist as $memberid){
-					// Look up member details
-					$avatar = get_avatar( $memberid, '20' );
-					$membername = get_userdata($memberid)->display_name;
-					$class = "member";
-					if( $memberid == stack_requested_by() ) {
-						$class .= " requested";
+			<div class="stackedMembersListWrapper">
+				<ul class="memberlist clearfix">
+				<?php
+					$memberlist = stack_memberlist();
+					foreach($memberlist as $memberid){
+						// Look up member details
+						$avatar = get_avatar( $memberid, '20' );
+						$membername = get_userdata($memberid)->display_name;
+						$class = "member";
+						if( $memberid == stack_requested_by() ) {
+							$class .= " requested";
+						}
+						if( $memberid == get_the_author_meta( 'ID' ) ) {
+							$class .= " poster";
+						}
+						if( $memberid == get_current_user_id() ) {
+							$class .= " currentuser";
+						}
+						//echo $class;
+						echo "<li class='clearfix ".$class."'>";
+						echo "<a href='".bp_core_get_user_domain( $memberid )."' class='clearfix'>";
+						echo $avatar;
+						echo "<span>".$membername."</span>";
+						echo "</a>";
+						echo "</li>";
 					}
-					if( $memberid == get_the_author_meta( 'ID' ) ) {
-						$class .= " poster";
-					}
-					if( $memberid == get_current_user_id() ) {
-						$class .= " currentuser";
-					}
-					//echo $class;
-					echo "<li class='clearfix ".$class."'>";
-					echo "<a href='".bp_core_get_user_domain( $memberid )."' class='clearfix'>";
-					echo $avatar;
-					echo "<span>".$membername."</span>";
-					echo "</a>";
-					echo "</li>";
-				}
-			?>
-			</ul>
+				?>
+				</ul>
+			</div>
 		</div>
 		<div class="stackPosters clearfix">
 			<?php if(stack_requested()) { ?>

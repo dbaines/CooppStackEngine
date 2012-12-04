@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-		<section id="primary" class="forum-results">
+		<section id="primary">
 			<h2 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyeleven' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
 
 
@@ -31,7 +31,6 @@ get_header(); ?>
 								$query->set('post_type', array('reply', 'topic'));
 								add_filter('pre_get_posts','setForumTypes');
 							}
-							//get_template_part( 'search_forum' );
 							get_template_part( 'search-forum' );
 
 						// otherwise, assume we're search stacks

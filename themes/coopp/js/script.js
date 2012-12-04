@@ -15,7 +15,8 @@
 
 ==================================================== */
 
-	$(".stackedMembers.hasMembers").click(function(e){
+/*
+	$(".stackedMembers.hasMembers").live("click",function(e){
 		// Stop right there, criminal scum!
 		e.preventDefault();
 		// toggle display state of the .stackedMembersList div
@@ -23,6 +24,47 @@
 		// toggle the "open" class on this div
 		$(this).toggleClass("open");
 	});
+*/
+
+	$(".stackedMembers.hasMembers").live("click",function(e){
+		// Stop right there, criminal scum!
+		e.preventDefault();
+		toggleMemberDrawer($(this));
+	});
+
+	function hideMemberDrawer($container) {
+		$drawer = $container.find(".stackedMembersList");
+		$drawer.each(function(){
+			$thisdrawer = $(this);
+			var oldHeight = $thisdrawer.height();
+			$thisdrawer.css("height",0).hide().attr("data-old-height",oldHeight);
+		});
+	}
+
+	function toggleMemberDrawer($container) {
+		//console.log("toggle, bitch!");
+		// check if the drawer is already open
+		var $memberBox = $container.next(".stackedMembersList");
+		var memberBoxHeight = $memberBox.attr("data-old-height");
+		console.log(memberBoxHeight);
+
+		// check if open
+		if ( $memberBox.is(":visible") ) {
+			$memberBox.animate({ height: 0 }, { duration: 400, easing: 'linear', complete: function(){
+					$memberBox.hide();
+				}
+			});
+			$container.removeClass("open");
+		} else {
+			$memberBox.show().animate({ height: memberBoxHeight }, 400, 'linear');
+			$container.addClass("open");
+		}
+	}
+
+	// hide member lists by default
+	hideMemberDrawer($(".pagebg"));
+
+
 
 /* ====================================================
 
@@ -281,6 +323,9 @@ $(".ajax-pagination a").live("click", function(e){
 
 				// Appending the html from this div in to content container
 				$(".stack-container").append($(this).find(".stack-container").html());
+
+				// Reset memberlist drawers for "big stack" templates
+				hideMemberDrawer( $(".stack-container") );
 
 				// Loading new load more link
 				var newLoadMore = $(".ajax-pagination",this).html();

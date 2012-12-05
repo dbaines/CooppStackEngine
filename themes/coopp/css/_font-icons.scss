@@ -187,13 +187,18 @@
 		.edit a:before {content: "\65";}
 	}
 	// Stack Location (map pin icon)
-	.stackLocation:before {
-		float: left;
-		width: 32px;
-		font-size: 200%;
-		margin-top: -8px;
-		@include IconFont;
-		content: "\6c";
+	.stackLocation {
+		position: relative;
+		padding-left: 68px !important;
+		&:before {
+			position: absolute;
+			top: 50%;;
+			left: 30px;
+			font-size: 200%;
+			margin-top: -16px;
+			@include IconFont;
+			content: "\6c";
+		}
 	}
 	// Stack server details
 	.stackServerDetails {

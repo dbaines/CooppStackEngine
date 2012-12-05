@@ -41,6 +41,33 @@
 
 	<?php endwhile; ?>
 
+	<h4>Co-Opp Statistics</h4>
+	<?php
+		// load buddypress global (to get id)
+		global $bp;
+		$memberid = $bp->displayed_user->id;
+	?>
+	<table class="profile-fields">
+		<tbody>
+			<tr>
+				<td class="label">Stacks Attended</td>
+				<td class="data"><a href="stacks"><?php echo get_stacks_attended_count($memberid); ?></a></td>
+			</tr>
+			<tr class="alt">
+				<td class="label">Stacks Requested</td>
+				<td class="data"><a href="stacks/requested/"><?php echo get_stacks_requested_count($memberid); ?></a></td>
+			</tr>
+			<tr>
+				<td class="label">Stack Comments</td>
+				<td class="data"><?php echo get_user_comment_count($memberid); ?> </td>
+			</tr>
+			<tr class="alt">
+				<td class="label">Forum Post Count</td>
+				<td class="data"><?php echo get_forum_postcount($memberid); ?></td>
+			</tr>
+		</tbody>
+	</table>
+
 	<?php do_action( 'bp_profile_field_buttons' ); ?>
 
 <?php endif; ?>

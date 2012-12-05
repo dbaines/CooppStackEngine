@@ -164,3 +164,61 @@ function stack_user_going($member){
 		return false;
 	}
 }
+
+/* ====================================================
+
+	USER STATISTICS FUNCTIONS
+
+==================================================== */
+
+// Return the number of comments the user has made
+function get_user_comment_count($memberid){
+	global $wpdb;
+	$where = 'WHERE comment_approved = 1 AND user_id = '.$memberid;
+	$comment_counts = (array) $wpdb->get_results("
+			SELECT COUNT( * ) AS total
+			FROM {$wpdb->comments}
+			{$where}
+		", object);
+	return $comment_counts[0]->total;
+}
+
+// stacks requested
+function get_stacks_requested_count($memberid){
+	$stacks_requested_query_args = array(
+		'post_type' => 'stack',
+		'meta_query' => array(
+			array(
+				'key' => 'stack_requestedby',
+				'value' => $memberid,
+				'compare' => 'IN',
+			)
+		)
+	);
+	$stacks_requested_query = new WP_Query($stacks_requested_query_args);
+	return $stacks_requested_query->found_posts;
+}
+
+// stacks attended
+function get_stacks_attended_count($memberid){
+	$stacks_attended_query_args = array(
+		'post_type' => 'stack',
+		'meta_query' => array(
+			array(
+				'key' => 'stack_users',
+				'value' => $memberid,
+				'compare' => 'IN',
+			)
+		)
+	);
+	$stacks_attended_query = new WP_Query($stacks_attended_query_args);
+	return $stacks_attended_query->found_posts;
+}
+
+// forum post count
+function get_forum_postcount($memberid){
+	// get forum stats
+	$topics = bbp_get_user_topic_count_raw( $memberid );
+	$replies = bbp_get_user_reply_count_raw( $memberid );
+	return ($topics + $replies);
+}

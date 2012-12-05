@@ -438,8 +438,8 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 
 ==================================================== */
 
-.archiveTabs {margin-bottom: -3px;}
-	.archiveTabs a {float: left; color: #fff; padding: 10px 20px; border-bottom: 3px solid transparent; margin-top: 20px;}
+.archiveTabs {margin-bottom: -4px;}
+	.archiveTabs a {float: left; color: #fff; padding: 10px 20px; border-bottom: 4px solid transparent; margin-top: 20px;}
 	.archiveTabs a:hover {border-color: #0b527c; background: #272727;}
 	.archiveTabs a.current {border-color: $coGreen; font-size: 180%; @include OpenSans; margin-top: 0;}
 

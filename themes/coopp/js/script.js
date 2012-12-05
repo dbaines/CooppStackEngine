@@ -15,17 +15,6 @@
 
 ==================================================== */
 
-/*
-	$(".stackedMembers.hasMembers").live("click",function(e){
-		// Stop right there, criminal scum!
-		e.preventDefault();
-		// toggle display state of the .stackedMembersList div
-		$(this).next(".stackedMembersList").stop().slideToggle();
-		// toggle the "open" class on this div
-		$(this).toggleClass("open");
-	});
-*/
-
 	$(".stackedMembers.hasMembers").live("click",function(e){
 		// Stop right there, criminal scum!
 		e.preventDefault();
@@ -46,17 +35,16 @@
 		// check if the drawer is already open
 		var $memberBox = $container.next(".stackedMembersList");
 		var memberBoxHeight = $memberBox.attr("data-old-height");
-		console.log(memberBoxHeight);
 
 		// check if open
 		if ( $memberBox.is(":visible") ) {
-			$memberBox.animate({ height: 0 }, { duration: 400, easing: 'linear', complete: function(){
+			$memberBox.stop().animate({ height: 0 }, { duration: 250, easing: 'easeOutQuad', complete: function(){
 					$memberBox.hide();
 				}
 			});
 			$container.removeClass("open");
 		} else {
-			$memberBox.show().animate({ height: memberBoxHeight }, 400, 'linear');
+			$memberBox.show().stop().animate({ height: memberBoxHeight }, 250, 'easeOutQuad');
 			$container.addClass("open");
 		}
 	}
@@ -102,12 +90,15 @@
 
 ==================================================== */
 
+function tipsify(){
 	$(".userinfo a, #item-buttons a").tipsy({gravity: 'n'});
 	$(".stack-short .stackLink a").tipsy({gravity: 'e'});
 	$(".commenticon").tipsy({gravity: 'n'});
 	$(".search-field-filters .filter input").tipsy({gravity: 'n'});
 	$(".calendar-nextprev a").tipsy({gravity: "n"});
 	$("td.has-stack").tipsy({gravity: "n"});
+}
+tipsify();
 
 /* ====================================================
 
@@ -330,6 +321,9 @@ $(".ajax-pagination a").live("click", function(e){
 				// Loading new load more link
 				var newLoadMore = $(".ajax-pagination",this).html();
 				$(".ajax-pagination").html(newLoadMore);
+
+				// Re Tipsy
+				tipsify();
 
 				//
 			} else {

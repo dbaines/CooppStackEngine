@@ -25,8 +25,13 @@
 		$drawer = $container.find(".stackedMembersList");
 		$drawer.each(function(){
 			$thisdrawer = $(this);
-			var oldHeight = $thisdrawer.height();
-			$thisdrawer.css("height",0).hide().attr("data-old-height",oldHeight);
+			// only do it if drawer doesn't have existing data-old-height
+			if( !$thisdrawer.attr("data-old-height") ){
+				// find height of drawer
+				var oldHeight = $thisdrawer.height();
+				// add it in to a data attribute
+				$thisdrawer.css("height",0).hide().attr("data-old-height",oldHeight);
+			}
 		});
 	}
 

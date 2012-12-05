@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /* ====================================================
 
@@ -48,9 +48,23 @@ function addbox_stacks_content($post){
 	?>
 
 	<div class='stack_meta'>
+		<section>
+			<label for="stack_serverdetails">Server Details</label>
+			<textarea name="stack_serverdetails"><?php echo get_post_meta($post->ID,"stack_serverdetails",true); ?></textarea>
+		</section>
 		<section class="stack_datetime">
 			<label for="stack_date">Date</label><input type="date" name="stack_date" value="<?php echo get_post_meta($post->ID,"stack_date",true); ?>" />
 			<label for="stack_time" class="secondary">Time</label><input type="text" name="stack_time" value="<?php echo get_post_meta($post->ID,"stack_time",true); ?>" />
+			<label for="stack_timezone" class="secondary">Time Zone</label>
+			<select name="stack_timezone" />
+				<option value="9.5" <?php if(get_post_meta($post->ID,"stack_timezone",true) == "9.5"){echo "selected";} ?>>CST (UTC+9.5)</option>
+				<option value="10.5" <?php if(get_post_meta($post->ID,"stack_timezone",true) == "10.5"){echo "selected";} ?>>CDT (UTC+10.5)</option>
+				<option value="11" <?php if(get_post_meta($post->ID,"stack_timezone",true) == "11"){echo "selected";} ?>>EDT (UTC+11)</option>
+				<option value="10" <?php if(get_post_meta($post->ID,"stack_timezone",true) == "10"){echo "selected";} ?>>EST (UTC+10)</option>
+				<option value="9" <?php if(get_post_meta($post->ID,"stack_timezone",true) == "9"){echo "selected";} ?>>WDT (UTC+9)</option>
+				<option value="8" <?php if(get_post_meta($post->ID,"stack_timezone",true) == "8"){echo "selected";} ?>>WST (UTC+8)</option>
+		</select>
+
 		</section>
 		<section>
 			<label for="stack_type">Type</label>
@@ -144,6 +158,7 @@ function coopp_save_postdate($post_id){
 	$stack_time = $_POST['stack_time'];
 	$stack_type = $_POST['stack_type'];
 	$stack_location = $_POST['stack_location'];
+	$stack_serverdetails = $_POST['stack_serverdetails'];
 	$stack_steamid = $_POST['stack_steamid'];
 	$stack_requestedby = $_POST['stack_requestedby'];
 
@@ -166,6 +181,7 @@ function coopp_save_postdate($post_id){
 	update_post_meta( $post_id, 'stack_time', $stack_time );
 	update_post_meta( $post_id, 'stack_type', $stack_type );
 	update_post_meta( $post_id, 'stack_location', $stack_location );
+	update_post_meta( $post_id, 'stack_serverdetails', $stack_serverdetails );
 	update_post_meta( $post_id, 'stack_steamid', $stack_steamid );
 	update_post_meta( $post_id, 'stack_requestedby', $stack_requestedby );
 	update_post_meta( $post_id, 'stack_link_list', $links_list);

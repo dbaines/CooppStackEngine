@@ -116,6 +116,13 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 
 ==================================================== */
 
+// Hide some parts of the admin bar
+#wpadminbar .quicklinks > ul {
+	#wp-admin-bar-wp-logo,
+	#wp-admin-bar-themes,
+	#wp-admin-bar-menus  {display: none;}
+}
+
 /* Header */
 .header {background: #d8d8d9;
 	background-image: -webkit-linear-gradient(top, #ededed 0%, #d8d8d8 100%);
@@ -345,7 +352,8 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 
 		.stack-full .stackDetails {padding: 20px; position: relative; z-index: 5;}
 			.stackDetailsLeft {float: left; width: 70%;}
-				.stackLocation {padding: 20px 20px 20px 0; font-size: 110%;}
+				.stackLocation {padding: 20px 20px 20px 0; font-size: 110%; margin-bottom: 10px;}
+				.stackServerDetails {padding: 20px; background: $coBlue; color: #fff; margin-bottom: 20px; border-radius: 3px;}
 				.stack-full .stackText {}
 				.stack-full .stackTextMeta {font-size: 85%; padding: 15px 0;}
 					.stackTextMeta .perma,
@@ -439,7 +447,7 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 ==================================================== */
 
 .archiveTabs {margin-bottom: -4px;}
-	.archiveTabs a {float: left; color: #fff; padding: 10px 20px; border-bottom: 4px solid transparent; margin-top: 20px;}
+	.archiveTabs a {float: left; color: #fff; padding: 10px 20px; border-bottom: 4px solid $coBlue; margin-top: 20px;}
 	.archiveTabs a:hover {border-color: #0b527c; background: #272727;}
 	.archiveTabs a.current {border-color: $coGreen; font-size: 180%; @include OpenSans; margin-top: 0;}
 

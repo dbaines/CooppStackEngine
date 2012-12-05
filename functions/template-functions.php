@@ -46,7 +46,12 @@ function stack_datetime(){
 
 // Stack Location
 function stack_location(){
-	return get_post_meta(get_the_ID(),"stack_location",true);
+	return nl2br(get_post_meta(get_the_ID(),"stack_location",true));
+}
+
+// Connection Details
+function stack_serverdetails(){
+	return nl2br(get_post_meta(get_the_ID(),"stack_serverdetails",true));
 }
 
 // Stack Type

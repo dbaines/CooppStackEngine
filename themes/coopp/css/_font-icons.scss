@@ -195,6 +195,21 @@
 		@include IconFont;
 		content: "\6c";
 	}
+	// Stack server details
+	.stackServerDetails {
+		position: relative;
+		padding-left: 68px !important;
+		&:before {
+			position: absolute;
+			top: 50%;
+			margin-top: -16px;
+			left: 20px;
+			font-size: 200%;
+			@include IconFont;
+			content: "\e804";
+		}
+	}
+
 	// IRL Stack
 	.stack-full .stackArt .stackIRL:before {
 		float: left;

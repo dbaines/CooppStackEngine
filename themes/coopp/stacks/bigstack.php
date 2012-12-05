@@ -20,6 +20,11 @@
 					<?php echo stack_location(); ?>
 				</div>
 				<?php } ?>
+				<?php if ( stack_serverdetails() != "") { ?>
+				<div class="stackServerDetails">
+						<?php echo stack_serverdetails(); ?>
+				</div>
+				<?php } ?>
 				<div class="stackText">
 					<?php echo the_content(); ?>
 				</div>

@@ -75,6 +75,13 @@ function stack_memberlist(){
 	return $stack_members;
 }
 
+// checks if teams have been posted
+function stack_teams(){
+	$eventid = get_the_ID();
+	$stack_teams = nl2br(get_post_meta($eventid,"stack_teams",true));
+	return $stack_teams;
+}
+
 // Links - return array of links
 function stack_links_array(){
 	return get_post_meta(get_the_ID(), "stack_link_list");
@@ -155,8 +162,8 @@ function stack_art_small(){
 		return $fullImage;
 	} else {
 		return bloginfo('url') . '/wp-content/plugins/coopp-stackengine/images/default_small.png';
-	}
-}
+
+}}
 
 // Check if particular member id is going to stack
 function stack_user_going($member){
@@ -168,6 +175,74 @@ function stack_user_going($member){
 	} else {
 		return false;
 	}
+}
+
+/* ====================================================
+
+	TIMEZONE FUNCTIONS
+
+==================================================== */
+
+function get_user_timezone($userid){
+
+	/* Possible Timezones in Aus:
+		Australia/ACT
+		Australia/Perth
+		Australia/Victoria
+		Australia/Adelaide
+		Australia/Darwin
+		Australia/Queensland
+		Australia/West
+		Australia/Brisbane
+		Australia/Melbourne
+		Australia/South
+		Australia/Hobart
+		Australia/North
+		Australia/Sydney
+		Australia/Canberra
+		Australia/NSW
+		Australia/Tasmania
+	*/
+
+	$timezone = xprofile_get_field_data( 'Time Zone', $userid );
+	switch ($timezone) {
+		case "SA":
+			$output = "Australia/South";
+			break;
+		case "ACT":
+			$output = "Australia/ACT";
+			break;
+		case "QLD":
+			$output = "Australia/Queensland";
+			break;
+		case "WA":
+			$output = "Australia/West";
+			break;
+		case "NT":
+			$output = "Australia/North";
+			break;
+		case "NSW":
+			$output = "Australia/NSW";
+			break;
+		case "TAS":
+			$output = "Australia/Tasmania";
+			break;
+		default:
+			$output = "Australia/South";
+			break;
+	}
+	return $output;
+}
+
+function get_user_time( $userid, $datetime, $format='F j, Y g:i a' ){
+	// create DateTime object
+	$date = new DateTime( date( $format, strtotime($datetime) ) );
+	// get timezone from user
+	$timezone = get_user_timezone($userid);
+	// apply timezone to time
+	$date->setTimezone(new DateTimeZone( $timezone ));
+	// return altered date/time
+	return $date->format($format);
 }
 
 /* ====================================================

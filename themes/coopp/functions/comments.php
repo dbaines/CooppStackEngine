@@ -87,10 +87,12 @@ function coopp_comments_template($comment, $args, $depth){
 		$user_going = false;
 		$requested_by = false;
 		$community_leader = false;
-		if( $comment->user_id == stack_requested() ){
+
+		if( $comment->user_id == stack_requested_by() ) {
 			$additional_classes .= " requested";
 			$requested_by = true;
 		}
+
 		if( stack_user_going($comment->user_id) ) {
 			$additional_classes .= " attending";
 			$user_going = true;

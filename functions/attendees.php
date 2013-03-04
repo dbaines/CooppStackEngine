@@ -5,12 +5,6 @@
 	CO-OPP STACK ENGINE
 	Attendees
 
-	New database table (wp_attendees)
-	* (key) stack_id (id of stack post)
-	* attending (a list of userids that are attending)
-
-	http://codex.wordpress.org/Creating_Tables_with_Plugins
-
 ==================================================== */
 
 require_once(ABSPATH.'wp-includes/pluggable.php');
@@ -109,4 +103,55 @@ function stack_going(){
 	} else {
 		return false;
 	}
+}
+
+/* ====================================================
+
+	TEAM GENERATION
+	divides the stackers by a number and outputs
+	them in to lists
+
+==================================================== */
+
+function generateStackTeams($postid, $number){
+
+	// get stackers
+	$members = get_post_meta($postid,"stack_users");
+	//$members = Array(1,3,1,3,1,3,1,3);
+	// randomise stackers
+	shuffle($members);
+	// count stackers
+	$numberOfMembers = count($members);
+	// divide by input
+	$teamNumbers = ceil($numberOfMembers / $number);
+	// split the stackers list by teamNumbers
+	$teamsArray = array_chunk($members, $teamNumbers);
+
+	// Create new team markup variable
+	$teamMarkup = "";
+
+	// cycle through each team
+	foreach($teamsArray as $key => $team){
+		$teamMarkup .= "<section><h4>Team ".($key+1)."</h4><ul>";
+		foreach($team as $teamMember){
+			// get member details
+			$memberName = get_userdata($teamMember)->display_name;
+			$gamingName = xprofile_get_field_data( 'Gaming Name', $teamMember );
+			$avatar = get_avatar( $teamMember, '20' );
+			$profilelink = bp_core_get_user_domain( $teamMember );
+			// output the member details
+			$teamMarkup .= "<li><a href='". $profilelink ."''>";
+			$teamMarkup .= $avatar;
+			$teamMarkup .= $memberName;
+			$teamMarkup .= "</a>";
+			if($gamingName != ""){
+				$teamMarkup .= " <span class='gname'>(".$gamingName.")</span>";
+			}
+			$teamMarkup .= "</li>";
+		}
+		$teamMarkup .= "</ul></section>";
+	}
+
+	return $teamMarkup;
+
 }

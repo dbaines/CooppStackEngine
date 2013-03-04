@@ -13,5 +13,6 @@
 ==================================================== */
 .stack_meta section {padding: 10px; border-top: 1px solid #ddd;}
 	.stack_meta section:first-child {border-top: 0;}
-	.stack_meta label {width: 100px; padding-right: 20px; display: inline-block;}
+	.stack_meta label {width: 100px; padding-right: 20px; display: inline-block; vertical-align: top; padding-top: 5px;}
 		.stack_meta label.secondary {padding-left: 25px; width: auto;}
+	.stack_meta textarea {width: 80%; height: 80px;}

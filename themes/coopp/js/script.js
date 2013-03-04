@@ -131,9 +131,11 @@ tipsify();
 		if( searchAnchor.hasClass('search-field-visible') ) {
 			searchField.removeClass('search-field-visible');
 			searchAnchor.removeClass('search-field-visible');
+			searchField.find("#s").blur();
 		} else {
 			searchAnchor.addClass('search-field-visible');
 			searchField.addClass('search-field-visible');
+			searchField.find("#s").focus();
 		}
 	});
 	cancelSearch.click(function(){
@@ -268,6 +270,31 @@ tipsify();
 		$(".filter.filter-stacks").click();
 
 	}
+
+/* ====================================================
+
+	REQUEST-A-STACK FORM
+	show/hide fields based on "Type" dropdown
+
+==================================================== */
+
+	// hide IRL values by default
+	$(".stack_irl_field").hide();
+
+	// When changing the "type" dropdown
+	$("#stack_type").change(function(){
+		value = $(this).val();
+		// Check value
+		if(value == "irl") {
+			// IRL fields
+			$(".stack_online_field").hide();
+			$(".stack_irl_field").show();
+		} else {
+			// Online fields
+			$(".stack_online_field").show();
+			$(".stack_irl_field").hide();
+		}
+	});
 
 /* ====================================================
 

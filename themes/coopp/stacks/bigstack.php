@@ -94,6 +94,12 @@
 				</ul>
 			</div>
 		</div>
+		<?php if(stack_teams()) { ?>
+		<div class="stackTeams clearfix">
+			<h3>Teams have been posted!</h3>
+			<?php echo stack_teams(); ?>
+		</div>
+		<?php } ?>
 		<div class="stackPosters clearfix">
 			<?php if(stack_requested()) { ?>
 			<div class="stackRequested">

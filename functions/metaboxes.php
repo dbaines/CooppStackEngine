@@ -23,6 +23,21 @@
 	CREATE THE META BOX
 
 ==================================================== */
+
+// Generate Teams
+// Only show if stack has stackers
+add_action( 'add_meta_boxes', 'addbox_teams' );
+function addbox_teams(){
+	add_meta_box(
+		'teams_meta',
+		__( 'Teams' ),
+		'addbox_teams_content',
+		'stack',
+		'normal',
+		'high'
+	);
+}
+
 add_action( 'add_meta_boxes', 'addbox_stacks' );
 function addbox_stacks(){
 	add_meta_box(
@@ -116,14 +131,136 @@ function addbox_stacks_content($post){
 			<div class="links_list">
 				<?php
 					$linkArray = get_post_meta(get_the_ID(), "stack_link_list");
-					foreach($linkArray[0] as $link){
-						echo '<div class="stack_link"><input type="text" name="stack_links_text[]" value="'.$link['text'].'" placeholder="text" />&nbsp;<input type="text" name="stack_links_url[]" value="'.$link['url'].'" placeholder="url" /><span class="stack_link_delete">Delete</span></div>';
+					if($linkArray) {
+						foreach($linkArray[0] as $link){
+							echo '<div class="stack_link"><input type="text" name="stack_links_text[]" value="'.$link['text'].'" placeholder="text" />&nbsp;<input type="text" name="stack_links_url[]" value="'.$link['url'].'" placeholder="url" /><span class="stack_link_delete">Delete</span></div>';
+						}
 					}
 				?>
 			</div>
 			<button class="stack_add_link">+ Link</button>
 		</section>
 	</div>
+
+	<?php
+}
+
+function getTeamNumber(){
+	$number = '<script>jQuery("#generateTeamsNumber").val();</script>';
+	echo "COOPP".$number;
+}
+
+function addbox_teams_content($post){
+	// verification
+	wp_nonce_field( plugin_basename(__FILE__), 'coopp_teamsnonce' );
+	// content of box
+	global $post;
+
+	// check if this stack has stackers, because we can't generate teams if nobodies stacking
+	if( stack_memberstotal() == 0 ) {
+		echo "Nobody is stacking.";
+		return false;
+	}
+	?>
+
+		This button will generate teams from the list of stackers. Once generated it will push the teams to the stack details page.<br />
+		<input type="text" col="2" value="<?php if($_GET['generateTeams']){echo $_GET['generateTeams'];} else {echo "2";}?>" class="generateTeamsNumber" id="generateTeamsNumber" name="generateTeamsNumber" /><button class="generateTeams" name="generateTeams" id="generateTeams">Generate Teams</button>
+		<div id="teamsPlaceholder">
+			<?php
+				// Check if teams data already exists
+				$existingData = get_post_meta($post->ID,"stack_teams",true);
+				$deleteButton = "<button class='deleteTeams' id='deleteTeams'>Delete Team Data</button>";
+
+				// If a new generate is required
+				if($_GET['generateTeams']) {
+					$teamsNumber = $_GET['generateTeams'];
+					$teams = generateStackTeams(get_the_ID(),$teamsNumber);
+					echo $teams;
+					echo $deleteButton;
+
+					// add teams data to post meta
+					update_post_meta( $post->ID, 'stack_teams', $teams );
+				} else if ($_GET['deleteTeams']){
+					// delete teams from post meta
+					delete_post_meta( $post->ID, 'stack_teams', $teams );
+				} else if ( $existingData ) {
+					// If it does, display the new data
+					echo $existingData;
+					echo $deleteButton;
+				}
+
+
+			?>
+		</div>
+
+		<script>
+			// generate teams button
+			jQuery("#generateTeams").click(function(e){
+				// stop right there, criminal scum!
+				e.preventDefault();
+				// get current url
+				var thispage = document.location;
+				// get teams required
+				var teams = jQuery("#generateTeamsNumber").val();
+				var updatedpage = thispage;
+				// remove any existing generateTeams values
+				if( thispage.href.indexOf("generateTeams") > "-1" || thispage.href.indexOf("deleteTeams") > "-1" ) {
+					// split the URL at each & symbol
+					var urlsplit = thispage.href.split("&");
+					// reset the updated page variable
+					updatedpage = "";
+					// cycle through each split
+					jQuery.each(urlsplit, function(i,section){
+						// if the split section of the URL does not have "generateTeams" in it
+						// add it to the new URL
+						if( section.indexOf("generateTeams") < 0 && section.indexOf("deleteTeams") < 0 ) {
+							if(i != 0){
+								section = "&"+section;
+							}
+							updatedpage = updatedpage + section;
+						}
+					});
+				}
+				// add our generateTeams=[teams] to our new URL
+				updatedpage = updatedpage+"&generateTeams="+teams;
+				// go to the new URL (reloads the page with new data passed to PHP)
+				document.location = updatedpage;
+				//console.log(updatedpage);
+			});
+
+			// delete teams button
+			jQuery("#deleteTeams").live("click", function(e){
+				// stop right there, criminal scum!
+				e.preventDefault();
+				// get current url
+				var thispage = document.location;
+				var updatedpage = thispage;
+				// remove any existing generateTeams values
+				if( thispage.href.indexOf("generateTeams") > "-1" ) {
+					// split the URL at each & symbol
+					var urlsplit = thispage.href.split("&");
+					// reset the updated page variable
+					updatedpage = "";
+					// cycle through each split
+					jQuery.each(urlsplit, function(i,section){
+						// if the split section of the URL does not have "generateTeams" in it
+						// add it to the new URL
+						if( section.indexOf("generateTeams") < 0 && section.indexOf("deleteTeams") < 0 ) {
+							if(i != 0){
+								section = "&"+section;
+							}
+							updatedpage = updatedpage + section;
+						}
+					});
+				}
+				// add our generateTeams=[teams] to our new URL
+				updatedpage = updatedpage+"&deleteTeams=1";
+				// go to the new URL (reloads the page with new data passed to PHP)
+				document.location = updatedpage;
+				//console.log(updatedpage);
+			});
+		</script>
+
 
 	<?php
 }

@@ -51,7 +51,7 @@
 		text-align: center;
 	}
 	.mobile-account-hitbox:before {content: "\6d";}
-	.mobile-login-hitbox:before {content: "\1f511";}
+	.mobile-login-hitbox:before {content: "\f511";}
 	.mobile-menu-hitbox:before {content: "\e803";}
 
 	// Search
@@ -263,5 +263,27 @@
 			position: absolute;
 			top: 13px;
 			left: 10px;
+		}
+	}
+
+	// Large Page Icons
+	.vlarge-icon {
+		&:before {
+			font-size: 250%;
+			@include IconFont;
+			width: 64px;
+			position: relative;
+			left: 50%;
+			margin: 15px 0 15px -32px;
+			display: block;
+		}
+		&.voip:before {
+			content: "\f50a";
+		}
+		&.teams:before {
+			content: "\67";
+		}
+		&.server:before {
+			content: "\f4bb";
 		}
 	}

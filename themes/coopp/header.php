@@ -40,7 +40,7 @@
 	<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 	<link rel="shortcut icon" href="<?php bloginfo( 'url' ); ?>/favicon.ico" />
 	<link rel="apple-touch-icon" href="<?php bloginfo( 'url' ); ?>/apple.png" />
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,600,800' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,600,800' rel='stylesheet' type='text/css'>
 
 	<?php // IMPORTANT JAVASCRIPTS IN HEADER, VIP STATUS ?>
 
@@ -65,16 +65,24 @@
 			// Everywhere else
 			echo "<link rel='image_src' href='".$thumbnail."' />";
 
-		}
+		} else { ?>
+
+			<meta property="og:image" content="http://co-opp.net/wp-content/facebook.png" />
+			<link rel="image_src" href="http://co-opp.net/wp-content/facebook.png" />
+
+
+		<?php }
 
 	?>
 
 	<?php // MORE SOCIAL NETWORKING STUFF ?>
 
-	<meta property="og:type" content="" />
-	<meta property="og:site_name" content="" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Co-Opp" />
 	<meta property="fb:admins" content="" />
 	<meta property="fb:app_id" content="" />
+
+
 
 	<?php // WORDPRESS STUFF
 		if ( is_singular() && get_option( 'thread_comments' ) )
@@ -143,7 +151,7 @@
 					<span class="filter filter-stacks"><input type="radio" value="stack" title="Search Stacks" checked />Search Stacks</span>
 					<span class="filter filter-forum"><input type="radio" value="forum" title="Search Forum"/>Search Forum</span>
 					<span class="filter filter-members"><input type="radio" value="member" title="Search Members"/>Search Members</span>
-					<span class="filter filter-group"><input type="radio" value="group" title="Search Groups"/>Search Groups</span>
+					<!-- <span class="filter filter-group"><input type="radio" value="group" title="Search Groups"/>Search Groups</span> -->
 				</div>
 			</form>
 			<div class="search-anchor">Search Co-Opp.net</div>

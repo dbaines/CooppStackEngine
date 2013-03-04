@@ -3,15 +3,15 @@
 Plugin Name: Co-Opp Stack Engine
 Plugin URI:  http://co-opp.net
 Description: A "stack" post type along with member registration for the stack
-Version:     1.0 
+Version:     1.0
 Author:      David Baines
 Author URI:  http://dbaines.com
 License:     GPL2
 
-/*  
+/*
 
     This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as 
+    it under the terms of the GNU General Public License, version 2, as
     published by the Free Software Foundation.
 
     This program is distributed in the hope that it will be useful,
@@ -32,6 +32,9 @@ License:     GPL2
 
 // The stack post type
 include("functions/post-type.php");
+
+// Request Stacks (creating draft posts and rendering forms)
+include("functions/request-stack.php");
 
 // Meta boxes to go along with the stack post type
 include("functions/metaboxes.php");

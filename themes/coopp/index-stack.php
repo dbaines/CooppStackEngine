@@ -15,6 +15,54 @@
 get_header(); ?>
 
 	<div id="primary">
+
+		<?php if(is_super_admin()) { ?>
+
+		<div class="upcomingStacks clearfix">
+			<h2 class="sectionHead">Requested Stacks</h2>
+			<?php
+				// Load all draft stacks
+				$query_args = array(
+					'post_type' => 'stack',
+					'post_status' => 'draft',
+					'posts_per_page' => 100
+				);
+				$query = new WP_Query($query_args);
+				// Loop
+				if( $query->have_posts() ) :
+					while ( $query->have_posts() ) : $query->the_post(); ?>
+
+						<div class="stack stack-draft">
+
+							<?php // Stack info
+								$memberid = stack_requested_by();
+								$membername = get_userdata($memberid)->display_name;
+								$fulldate = "";
+								if( stack_date() ) {
+									$fulldate .= date( 'l, jS F Y', strtotime( stack_date() ) );
+								}
+								if( stack_time() ) {
+									$fulldate .=  " at " . stack_time();
+								}
+							?>
+
+							<h3><a href="<?php get_bloginfo('url'); ?>wp-admin/post.php?post=<?php the_ID(); ?>&action=edit"><?php the_title(); ?></a></h3>
+							Date/Time: <?php echo $fulldate; ?><br />
+							Requested By: <?php echo $membername;  ?>
+						</div>
+
+					<?php endwhile;
+				else : ?>
+					<div class="stack stack-draft no-drafts">
+						<span class="noresults">No requested stacks waiting</span>
+					</div>
+				<?php endif;
+			?>
+
+		</div>
+
+		<?php } ?>
+
 		<div class="nextStack clearfix">
 
 			<h2 class="sectionHead">Next Stack</h2>
@@ -77,5 +125,5 @@ get_header(); ?>
 
 		</div>
 	</div>
-		
+
 <?php get_footer(); ?>

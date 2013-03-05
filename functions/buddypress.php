@@ -31,25 +31,6 @@ class BP_Stacks_Component extends BP_Component {
 		);
 	}
 
-	/*
-	function includes() {
-		// Files to include
-		$includes = array(
-			'cssjs',
-			'cache',
-			'actions',
-			'screens',
-			'classes',
-			'filters',
-			'template',
-			'functions',
-			'notifications'
-		);
-
-		parent::includes( $includes );
-	}
-	*/
-
 	/**
 	 * Setup globals
 	 *
@@ -60,15 +41,6 @@ class BP_Stacks_Component extends BP_Component {
 		// Define a slug, if necessary
 		if ( !defined( 'BP_STACKS_SLUG' ) )
 			define( 'BP_STACKS_SLUG', $this->id );
-
-		// Global tables for messaging component
-		/*
-		$global_tables = array(
-			'table_name_notices'    => $bp->table_prefix . 'bp_messages_notices',
-			'table_name_messages'   => $bp->table_prefix . 'bp_messages_messages',
-			'table_name_recipients' => $bp->table_prefix . 'bp_messages_recipients'
-		);
-		*/
 
 		// All globals for messaging component.
 		// Note that global_tables is included in this array.

@@ -1027,6 +1027,10 @@ h4 {
 .stackedMembersList li {
   float: left;
   width: 33%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
   box-sizing: border-box; }
 
 .stackedMembersList li a {
@@ -2223,7 +2227,8 @@ table.bbp-replies th {
 .bbp-topic-action,
 .bbp-topic-freshness,
 .bbp-forum-freshness {
-  vertical-align: middle; }
+  vertical-align: middle;
+  position: relative; }
 
 .bbp-topic-freshness > a,
 .bbp-forum-freshness > a {
@@ -2243,7 +2248,8 @@ table.bbp-replies th {
 table.bbp-topics td,
 table.bbp-forums td,
 table.bbp-replies td {
-  padding: 20px; }
+  padding: 20px;
+  position: relative; }
 
 .bbp-forum-title,
 .bbp-topic-permalink {
@@ -2321,20 +2327,29 @@ span.bbp-admin-links a {
   #wrapper fieldset.bbp-form .mceIframeContainer {
     background: #fff; }
 
-.bbpresss_unread_posts_icon a {
-  display: block;
+.relative {
+  position: relative; }
+
+.bbpresss_unread_posts_icon {
+  display: none;
   width: 20px;
   height: 20px;
-  margin-top: 10px; }
-  .bbpresss_unread_posts_icon a img {
-    display: none; }
-.bbpresss_unread_posts_icon.new a {
-  background: url("../images/bbpress_new.png"); }
-.bbpresss_unread_posts_icon.old a {
-  background: url("../images/bbpress_old.png"); }
+  text-indent: -9999px;
+  position: absolute;
+  top: 7px;
+  left: 0px; }
+  .bbpresss_unread_posts_icon.new {
+    background: url("../images/bbpress_new.png"); }
+  .bbpresss_unread_posts_icon.old {
+    background: url("../images/bbpress_old.png"); }
 
-.bbp-topic-unread .bbp-topic-title a {
-  font-weight: bold; }
+table.bbp-topics td.bbp-topic-title .forum_icon_padding,
+table.bbp-forums td.bbp-forum-info .forum_icon_padding {
+  padding-left: 30px;
+  position: relative; }
+
+.coopp-viewedby-buttons {
+  padding-bottom: 20px; }
 
 body .wp-dialog {
   border: none;
@@ -2791,6 +2806,10 @@ a.ctaBlue:hover {
       width: 100%;
       margin-top: 3px;
       border: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -o-box-sizing: border-box;
       box-sizing: border-box;
       background: #0773b3; }
       .archiveTabs a.current {
@@ -2818,6 +2837,10 @@ a.ctaBlue:hover {
   td.bbp-topic-freshness {
     display: block;
     width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
     box-sizing: border-box; }
 
   #content th.bbp-topic-author,

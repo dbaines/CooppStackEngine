@@ -389,7 +389,7 @@ h4 {margin: 25px 0 25px 0; font-size: 150%; border-bottom: 1px solid #bbb; paddi
 			.stackedMembersListWrapper {padding: 0 20px 20px;}
 			.stackedMembersList ul,
 			.stackedMembersList li {list-style: none; margin: 0; padding: 0; position: relative;}
-			.stackedMembersList li {float: left; width: 33%; box-sizing: border-box;}
+			.stackedMembersList li {float: left; width: 33%; @include border-box;}
 				.stackedMembersList li a {padding: 3px; display: block;
 					-webkit-border-radius: 3px;
 					-moz-border-radius: 3px;
@@ -1279,6 +1279,7 @@ table.bbp-replies th {
 .bbp-topic-freshness,
 .bbp-forum-freshness {
 	vertical-align: middle;
+	position: relative;
 }
 // x time ago link
 .bbp-topic-freshness > a,
@@ -1302,6 +1303,7 @@ table.bbp-topics td,
 table.bbp-forums td,
 table.bbp-replies td {
 	padding: 20px;
+	position: relative;
 }
 
 // ---- Thread/Topic Lists ---- //
@@ -1373,28 +1375,38 @@ span.bbp-admin-links a {
 	}
 }
 
+.relative {position: relative;}
+
 // Unread posts icons (deprecated)
 .bbpresss_unread_posts_icon {
-	a {
-		display: block;
-		width: 20px;
-		height: 20px;
-		margin-top: 10px;
-		img {
-			display: none;
-		}
-	}
-	&.new a {
+	display: none;
+	width: 20px;
+	height: 20px;
+	text-indent: -9999px;
+	position: absolute;
+	top: 7px;
+	left: 0px;
+
+	&.new {
 		background: url("../images/bbpress_new.png");
 	}
-	&.old a {
+	&.old {
 		background: url("../images/bbpress_old.png");
 	}
 }
 
-// Unread posts (bbpress mod - mark as read)
-.bbp-topic-unread {
-	.bbp-topic-title a {font-weight: bold;}
+// Indenting Post Details to make room for Unread posts icon
+table.bbp-topics td.bbp-topic-title,
+table.bbp-forums td.bbp-forum-info  {
+	.forum_icon_padding {
+		padding-left: 30px;
+		position: relative;
+	}
+}
+
+// Mark topics read buttons
+.coopp-viewedby-buttons {
+	padding-bottom: 20px;
 }
 
 // Popup tools
@@ -1771,7 +1783,7 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 			width: 100%;
 			margin-top: 3px;
 			border: 0;
-			box-sizing: border-box;
+			@include border-box;
 			background: $coBlue;
 			&.current {
 				background: transparent;
@@ -1803,7 +1815,7 @@ a.ctaBlue {background: #3579b3; color: #fff; padding: 20px; float: right; margin
 	td.bbp-topic-freshness {
 		display: block;
 		width: 100%;
-		box-sizing: border-box;
+		@include border-box;
 	}
 
 	#content th.bbp-topic-author,

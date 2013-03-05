@@ -298,6 +298,21 @@ tipsify();
 
 /* ====================================================
 
+	BBPRESS MODIFICATIONS
+	just for firefox
+
+==================================================== */
+
+	// in firefox, you cannot have position: relative on
+	// on a td. So we'll wrap it in a superfluous div
+	// instead
+	$(".bbp-topic-title, .bbp-forum-info").each(function(){
+		$(this).wrapInner("<div class='forum_icon_padding' />").find(".bbpresss_unread_posts_icon").fadeIn('fast');
+	});
+	//$(".bbp-forum-info").wrapInner("<div class='forum_icon_padding' />");
+
+/* ====================================================
+
 	AJAX LOAD MORE POSTS
 	from dbaines.com
 

@@ -730,8 +730,7 @@ div.bbp-template-notice a {
 #container .widget_display_topics img.avatar,
 #container .widget_display_replies img.avatar {
 	float: none;
-	margin-bottom: -7px;
-	border: 3px double #ddd;
+	margin-bottom: -3px;
 }
 
 fieldset div.avatar {

@@ -24,7 +24,7 @@
 	<?php // NON-PRIOIRITY SCRIPTS ?>
 
 	<script src="<?php bloginfo("template_url"); ?>/js/plugins.js"></script>
-	<script src="<?php bloginfo("template_url"); ?>/js/script.js"></script>
+	<script src="<?php bloginfo("template_url"); ?>/js/script.min.js"></script>
 	<script src="<?php bloginfo("template_url"); ?>/js/buddypress.global.js"></script>
 	<?php wp_footer(); ?>
 

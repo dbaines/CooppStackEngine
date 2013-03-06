@@ -90,7 +90,26 @@ function addbox_stacks_content($post){
 		</section>
 		<section>
 			<label for="stack_location">Location</label>
-			<textarea name="stack_location"><?php echo get_post_meta($post->ID,"stack_location",true); ?></textarea>
+			<textarea name="stack_location"><?php echo get_post_meta($post->ID,"stack_location",true); ?></textarea><br />
+			<div class="stack-indented">
+				<?php
+					$stack_location_status = get_post_meta($post->ID,"stack_location_map",true);
+					if(!$stack_location_status) {
+						// there hasn't been any location map set (probably a new post),
+						// set to off by default
+						$stack_location_status = "";
+					} else {
+						// map setting has been ticked
+						if($stack_location_status == "on"){
+							$stack_location_status = "checked";
+						// map setting has not been ticked
+						} else {
+							$stack_location_status = "";
+						}
+					}
+				?>
+				<input type="checkbox" <?php echo $stack_location_status; ?> id="stack_location_map" name="stack_location_map" /><label for="stack_location_map" class="checkbox-label"> Show map</label>
+			</div>
 		</section>
 		<section>
 			<label for="stack_steamid">Steam GameID</label><input type="text" name="stack_steamid" value="<?php echo get_post_meta($post->ID,"stack_steamid",true); ?>" />
@@ -295,6 +314,7 @@ function coopp_save_postdate($post_id){
 	$stack_time = $_POST['stack_time'];
 	$stack_type = $_POST['stack_type'];
 	$stack_location = $_POST['stack_location'];
+	$stack_location_map = $_POST['stack_location_map'];
 	$stack_serverdetails = $_POST['stack_serverdetails'];
 	$stack_steamid = $_POST['stack_steamid'];
 	$stack_requestedby = $_POST['stack_requestedby'];
@@ -318,6 +338,7 @@ function coopp_save_postdate($post_id){
 	update_post_meta( $post_id, 'stack_time', $stack_time );
 	update_post_meta( $post_id, 'stack_type', $stack_type );
 	update_post_meta( $post_id, 'stack_location', $stack_location );
+	update_post_meta( $post_id, 'stack_location_map', $stack_location_map );
 	update_post_meta( $post_id, 'stack_serverdetails', $stack_serverdetails );
 	update_post_meta( $post_id, 'stack_steamid', $stack_steamid );
 	update_post_meta( $post_id, 'stack_requestedby', $stack_requestedby );

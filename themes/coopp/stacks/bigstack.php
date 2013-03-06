@@ -18,6 +18,11 @@
 				<?php if( stack_location() != "" ){ ?>
 				<div class="stackLocation iconLocation">
 					<?php echo stack_location(); ?>
+					<?php
+						if(stack_map_status()){ ?>
+							<br /><a href="<?php echo stack_map_link();  ?>" class="view-map">View Map</a>
+						<?php }
+					?>
 				</div>
 				<?php } ?>
 				<?php if ( stack_serverdetails() != "") { ?>

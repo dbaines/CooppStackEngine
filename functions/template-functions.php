@@ -49,6 +49,22 @@ function stack_location(){
 	return nl2br(get_post_meta(get_the_ID(),"stack_location",true));
 }
 
+// Stack Map Status
+function stack_map_status(){
+	if(get_post_meta(get_the_ID(),"stack_location_map",true)){
+		return true;
+	} else {
+		return false;
+	}
+}
+
+// Stack Map Link
+function stack_map_link(){
+	$location = get_post_meta(get_the_ID(),"stack_location",true);
+	$provider = "https://maps.google.com.au/maps?q=";
+	return $provider.$location;
+}
+
 // Connection Details
 function stack_serverdetails(){
 	return nl2br(get_post_meta(get_the_ID(),"stack_serverdetails",true));

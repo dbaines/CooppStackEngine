@@ -11,7 +11,7 @@
 ==================================================== */
 
 // Create a new requested stack
-function createRequestedStack($stack_title, $stack_date, $stack_time, $stack_type, $stack_location, $stack_steamid, $stack_requestedby, $stack_content){
+function createRequestedStack($stack_title, $stack_date, $stack_time, $stack_type, $stack_location, $stack_location_map, $stack_steamid, $stack_requestedby, $stack_content){
 
 	// create $post data
 	global $user_ID;
@@ -30,6 +30,7 @@ function createRequestedStack($stack_title, $stack_date, $stack_time, $stack_typ
 	__update_post_meta( $postid, 'stack_time', $stack_time );
 	__update_post_meta( $postid, 'stack_type', $stack_type );
 	__update_post_meta( $postid, 'stack_location', $stack_location );
+	__update_post_meta( $postid, 'stack_location_map', $stack_location_map );
 	__update_post_meta( $postid, 'stack_steamid', $stack_steamid );
 	__update_post_meta( $postid, 'stack_requestedby', $stack_requestedby );
 
@@ -74,6 +75,7 @@ function renderStackForm(){
 		$stack_time = $_POST['stack_time'];
 		$stack_type = $_POST['stack_type'];
 		$stack_location = $_POST['stack_location'];
+		$stack_location_map = $_POST['stack_location_map'];
 		$stack_steamid = $_POST['stack_steamid'];
 		$stack_requestedby = $_POST['stack_requestedby'];
 		$stack_content = $_POST['stack_content'];
@@ -86,6 +88,7 @@ function renderStackForm(){
 		$html .= "Time: ".$stack_time ."<br />";
 		$html .= "Type: ".$stack_type ."<br />";
 		$html .= "Location: ".stripslashes($stack_location) ."<br />";
+		$html .= "Location Map: ".$stack_location_map."<br />";
 		$html .= "Steam ID: ".$stack_steamid ."<br />";
 		$html .= "Content: ".stripslashes($stack_content) ."</p>";
 		$html .= "<p>Please do not reload this page. An administrator will review your request and approve it to go live on Co-Opp.</p>";
@@ -97,7 +100,7 @@ function renderStackForm(){
 			$html .= "<section><div class='sentRequest'>Sorry, you did not include a title. Please go back and include a title. This is to prevent accidental or spam submissions.</div></section>";
 		} else {
 			// Create Post
-			$postid = createRequestedStack($stack_title, $stack_date, $stack_time, $stack_type, $stack_location, $stack_steamid, $stack_requestedby, $stack_content);
+			$postid = createRequestedStack($stack_title, $stack_date, $stack_time, $stack_type, $stack_location, $stack_location_map, $stack_steamid, $stack_requestedby, $stack_content);
 
 			// Get admin emails
 			$admins = get_users('role=administrator');
@@ -114,7 +117,7 @@ function renderStackForm(){
 			$message .= "Stack Time: ".$stack_date." at ".$stack_time." \n";
 			$message .= "Stack Type: ".$stack_type." \n";
 			$message .= "Edit/Approve: ". get_bloginfo('url') . "/wp-admin/post.php?post=" . $postid . "&action=edit";
-			wp_mail( $to, $subject, $message );
+			//wp_mail( $to, $subject, $message );
 		}
 
 	} else {
@@ -148,6 +151,11 @@ function renderStackForm(){
 		$html .= "<section class='stack_irl_field'>";
 		$html .= "<label for='stack_location'>Location (Optional)</label>";
 		$html .= "<input type='text' name='stack_location' id='stack_location' placeholder=\"BennEh's House\" />";
+		$html .= "</section>";
+
+		$html .= "<section class='stack_irl_field'>";
+		$html .= "<label for='stack_location_map'>Show Map</label>";
+		$html .= "<input type='checkbox' name='stack_location_map' id='stack_location_map' />";
 		$html .= "</section>";
 
 		$html .= "<section class='stack_online_field'>";

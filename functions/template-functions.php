@@ -34,13 +34,17 @@ function stack_date(){
 
 // Time
 function stack_time(){
-	return get_post_meta(get_the_ID(),"stack_time",true);
+	$time = get_post_meta(get_the_ID(),"stack_time",true);
+	if($time == ""){
+		$time = "Unspecified Time";
+	}
+	return $time;
 }
 
 // Date and Time
 function stack_datetime(){
-	$date = get_post_meta(get_the_ID(),"stack_date",true);
-	$time = get_post_meta(get_the_ID(),"stack_time",true);
+	$date = stack_date();
+	$time = stack_time();
 	return $date ." at ". $time;
 }
 

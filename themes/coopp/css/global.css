@@ -953,13 +953,42 @@ h4 {
   margin-top: -28px;
   cursor: pointer;
   display: block;
-  line-height: 1; }
+  line-height: 1;
+  position: relative;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+  .stackDetailsRight .stackThis:before, .stackDetailsRight .stackThis:after {
+    content: "";
+    position: absolute;
+    z-index: -2; }
+  .stackDetailsRight .stackThis:before {
+    top: 50%;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    -moz-border-radius: 100px/10px;
+    border-radius: 100px/10px; }
+  .stackDetailsRight .stackThis:before {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
 
 .stackDetailsRight .stackThis:hover {
   -moz-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
   -ms-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
   -o-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2); }
+  .stackDetailsRight .stackThis:hover:before {
+    -webkit-box-shadow: none;
+    box-shadow: none; }
 
 .stackDetailsRight .stackThis.active {
   -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
@@ -2521,7 +2550,27 @@ a.ctaBlue {
   margin: 20px 0;
   clear: both;
   font-size: 120%;
-  font-weight: 600; }
+  font-weight: 600;
+  position: relative;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+  a.ctaBlue:before, a.ctaBlue:after {
+    content: "";
+    position: absolute;
+    z-index: -2; }
+  a.ctaBlue:before {
+    top: 50%;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    -moz-border-radius: 100px/10px;
+    border-radius: 100px/10px; }
 
 a.ctaBlue:hover {
   background: #549cd9; }

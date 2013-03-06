@@ -78,3 +78,31 @@ $calHasIRL: $coBlue;
 @mixin hwacceleration {
 	-webkit-transform: translate3d(0,0,0,0);
 }
+
+// Advanced Drop Shadows
+// http://nicolasgallagher.com/css-drop-shadows-without-images/
+
+@mixin advanced-drop-shadow {
+	position:relative;
+	&:before,
+	&:after {
+	    content:"";
+	    position:absolute;
+	    z-index:-2;
+	}
+}
+
+@mixin curved-shadow {
+	@include advanced-drop-shadow;
+	&:before {
+    top:50%;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -webkit-box-shadow:0 0 15px rgba(0,0,0,0.6);
+    -moz-box-shadow:0 0 15px rgba(0,0,0,0.6);
+    box-shadow:0 0 15px rgba(0,0,0,0.6);
+    -moz-border-radius:100px / 10px;
+     border-radius:100px / 10px;
+	}
+}

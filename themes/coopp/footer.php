@@ -18,7 +18,7 @@
 	<?php // FOOTER ?>
 
 	<footer class="footer">
-		developed by <a target="_blank" href="http://dbaines.com" title="South Australian Web Developer, David Baines">dbaines</a> | branding by ben white | this theme and the stack engine are both <a href="#" target="_blank" title="Co-Opp.net theme and Stack Engine, open source on Github">available on github</a>!
+		developed by <a target="_blank" href="http://dbaines.com" title="South Australian Web Developer, David Baines">dbaines</a> | branding by <a target="_blank" href="http://www.bemm.com.au/" title="Ben White">ben white</a> | this theme and the stack engine are both <a href="https://github.com/dbaines/CooppStackEngine" target="_blank" title="Co-Opp.net theme and Stack Engine, open source on Github">available on github</a>!
 	</footer>
 
 	<?php // GOOGLE ANALYTICS

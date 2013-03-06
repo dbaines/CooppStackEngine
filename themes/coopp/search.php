@@ -37,10 +37,12 @@ get_header(); ?>
 
 					<?php if($forum_search == true){ ?>
 						<table border='0' class='bbp-replies'>
-						<tr>
-							<th class="bbp-reply-author"><?php  _e( 'Author',  'bbpress' ); ?></th>
-							<th class="bbp-reply-content"><?php _e( 'Replies', 'bbpress' ); ?></th>
-						</tr>
+							<thead>
+								<tr>
+									<th class="bbp-reply-author"><?php  _e( 'Author',  'bbpress' ); ?></th>
+									<th class="bbp-reply-content"><?php _e( 'Replies', 'bbpress' ); ?></th>
+								</tr>
+							</thead>
 					<?php } ?>
 
 					<?php /* Start the Loop */ ?>

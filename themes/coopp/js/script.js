@@ -51,6 +51,13 @@
 		} else {
 			$memberBox.show().stop().animate({ height: memberBoxHeight }, 250, 'easeOutQuad');
 			$container.addClass("open");
+			// now that it's open, we're going to recheck the heights in case the
+			// window has been resized and gone in or out of responsive changes
+			var recheckheight = $memberBox.children(".stackedMembersListWrapper").outerHeight();
+			// if it's not matching the existing value, animate to the new height
+			if(memberBoxHeight != recheckheight){
+				$memberBox.show().stop().animate({ height: recheckheight }, 250, 'easeOutQuad');
+			}
 		}
 	}
 

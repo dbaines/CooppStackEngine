@@ -92,7 +92,8 @@ table.bbp-topic th span, table.bbp-replies th span {
 	float: right;
 }
 #content th.bbp-topic-author,
-#content th.bbp-reply-author {
+#content th.bbp-reply-author,
+#content td.bbp-reply-author {
 	text-align: center;
 	width: 120px;
 }

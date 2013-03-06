@@ -1,46 +1,53 @@
-<div class="forum-results">
+<?php
 
-	<h3 class="entry-title"><a href="<?php bbp_reply_url(); ?>"><?php bbp_reply_title(); ?></a></h3>
+	$reply_id = get_the_ID();
 
-	<div class="entry-content">
-		<table class="bbp-replies" id="topic-<?php bbp_topic_id(); ?>-replies">
-			<thead>
-				<tr>
-					<th class="bbp-reply-author"><?php  _e( 'Author',  'bbpress' ); ?></th>
-					<th class="bbp-reply-content"><?php _e( 'Post', 'bbpress' ); ?></th>
-				</tr>
-			</thead>
+?>
 
-			<tbody>
-				<tr class="bbp-reply-header">
-					<td class="bbp-reply-author">
+	<tr class="bbp-reply-header">
+		<td colspan="2">
 
-						<?php bbp_reply_author_display_name(); ?>
+			<?php printf( __( '%1$s at %2$s', 'bbpress' ), get_the_date(), esc_attr( get_the_time() ) ); ?>
+			<?php /* <a href="<?php bbp_reply_url(); ?>" title="<?php bbp_reply_title(); ?>" class="bbp-reply-permalink">#<?php bbp_reply_id(); ?></a> */ ?>
+			<a href="<?php bbp_reply_url($reply_id); ?>" class="bbp-reply-permalink">» <?php bbp_reply_title(); ?></a>
 
-					</td>
-					<td class="bbp-reply-content">
-						<a href="<?php bbp_reply_url(); ?>" title="<?php bbp_reply_title(); ?>">#</a>
+		</td>
+	</tr>
 
-						<?php printf( __( 'Posted on %1$s at %2$s', 'bbpress' ), get_the_date(), esc_attr( get_the_time() ) ); ?>
+	<tr id="post-<?php bbp_reply_id(); ?>" <?php bbp_reply_class(); ?>>
 
-						<span><?php bbp_reply_admin_links(); ?></span>
-					</td>
-				</tr>
+		<td class="bbp-reply-author">
 
-				<tr id="reply-<?php bbp_reply_id(); ?>" <?php bbp_reply_class(); ?>>
+			<?php do_action( 'bbp_theme_before_reply_author_details' ); ?>
 
-					<td class="bbp-reply-author"><?php bbp_reply_author_link( array( 'type' => 'avatar' ) ); ?></td>
+			<?php echo bbp_reply_author_link( array( 'post_id' => $reply_id, 'sep' => '<br />', 'show_role' => false ) ); ?>
+			<?php if ( xprofile_get_field_data( 'Gaming Name', bbp_get_reply_author_id() ) != "" ) {
+				echo "<span class='gaming-name'>AKA ".xprofile_get_field_data( 'Gaming Name', bbp_get_reply_author_id() ) ."</span>";
+			} ?>
+			<?php echo bbp_get_reply_author_role(); ?>
 
-					<td class="bbp-reply-content">
+			<?php if ( is_super_admin() ) : ?>
 
-						<?php bbp_reply_content(); ?>
+				<?php do_action( 'bbp_theme_before_reply_author_admin_details' ); ?>
 
-					</td>
+				<div class="bbp-reply-ip"><?php bbp_author_ip( bbp_get_reply_id(get_the_ID()) ); ?></div>
 
-				</tr><!-- #topic-<?php bbp_topic_id(); ?>-replies -->
-			</tbody>
-		</table>
+				<?php do_action( 'bbp_theme_after_reply_author_admin_details' ); ?>
 
-	</div><!-- .entry-content -->
+			<?php endif; ?>
 
-</div>
+			<?php do_action( 'bbp_theme_after_reply_author_details' ); ?>
+
+		</td>
+
+		<td class="bbp-reply-content">
+
+			<?php do_action( 'bbp_theme_before_reply_content' ); ?>
+
+			<?php bbp_reply_content(); ?>
+
+			<?php do_action( 'bbp_theme_after_reply_content' ); ?>
+
+		</td>
+
+	</tr><!-- #post-<?php bbp_topic_id($reply_id); ?> -->
